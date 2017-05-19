@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.learnhtml.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <ScrollView
+        android:id="@+id/content_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/content_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="暂无内容"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/content_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:text=""
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/content_html"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?attr/colorControlHighlight"
+                android:ellipsize="marquee"
+                android:text=""
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/content_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:text=""
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/content_image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/content_text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:text=""
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/content_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/content_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:gravity="center_horizontal"
+                android:text="@string/content_bottom"
+                android:textColor="?android:attr/textColorSecondaryNoDisable"
+                android:textSize="18dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:background="?attr/colorControlHighlight"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!--  android:focusable="true"
+          android:focusableInTouchMode="true"-->
+
+
+        <EditText
+            android:id="@+id/content_liuyan_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.60"
+            android:background="@drawable/edittext"
+            android:gravity="bottom"
+            android:hint="发表留言"
+            android:lines="2"
+            android:maxLines="2" />
+
+        <Button
+            android:id="@+id/content_liuyan_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="发表"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/content_liuyan_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="全部留言" />
+
+    </LinearLayout>
+
+</LinearLayout>

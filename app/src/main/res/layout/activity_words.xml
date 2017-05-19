@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.learnhtml.WordsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/words_btn_lookmyself"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="与我相关" />
+
+        <Button
+            android:id="@+id/words_btn_looktoend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="倒序查看" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/words_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="0.8" />
+
+    <LinearLayout
+        android:id="@+id/words_layout_none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/words_textView_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="还没有人说话呢，快去"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/words_btn_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="fill_vertical"
+            android:text="留言"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/words_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/words_btn_lookpre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="上一页" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:gravity="right"
+            android:text="第" />
+
+        <EditText
+            android:id="@+id/wrods_edittext_pagenumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:background="@drawable/edittext_white"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:gravity="left"
+            android:text="页" />
+
+        <Button
+            android:id="@+id/words_btn_gopage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.5"
+            android:text="GO" />
+
+        <Button
+            android:id="@+id/words_btn_looknext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="下一页" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/wrods_textview_totlepage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:gravity="center_horizontal"
+        android:text="总共0页" />
+
+
+</LinearLayout>

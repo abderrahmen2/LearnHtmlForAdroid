@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_menu"
+        android:title="HTML教程">
+        <menu>
+            <item
+                android:id="@+id/jianjie"
+                android:icon="@drawable/ic_menu_send"
+                android:title="HTML简介" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/bianjiqi"
+                android:title="HTML编辑器" />
+           <!-- <item
+                android:id="@+id/jichu"
+                android:title="HTML基础" />-->
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/yuansu"
+                android:title="HTML元素" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/biaoti"
+                android:title="HTML标题" />
+          <!--  <item
+                android:id="@+id/duanluo"
+                android:title="HTML段落" />-->
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/lianjie"
+                android:title="HTML链接" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/toubu"
+                android:title="HTML头部" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/biaoge"
+                android:title="HTML表格" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/tupian"
+                android:title="HTML图片" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/qukuai"
+                android:title="HTML区块" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/buju"
+                android:title="HTML布局" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/biaodan"
+                android:title="HTML表单" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/kuangjia"
+                android:title="HTML框架" />
+            <item
+                android:icon="@drawable/ic_menu_send"
+                android:id="@+id/zongjie"
+                android:title="HTML总结" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/html5"
+        android:title="HTML5新特性">
+        <menu>
+            <item
+                android:id="@+id/jiaocheng"
+                android:icon="@drawable/ic_menu_send"
+                android:title="HTML5教程" />
+            <item
+                android:id="@+id/liulanqi"
+                android:icon="@drawable/ic_menu_send"
+                android:title="浏览器支持" />
+           <!-- <item
+                android:id="@+id/xinyuansu"
+                android:title="新元素" />-->
+            <item
+                android:id="@+id/canvas"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Canvas" />
+            <item
+                android:id="@+id/neilianSVG"
+                android:icon="@drawable/ic_menu_send"
+                android:title="内联SVG" />
+            <item
+                android:id="@+id/mathML"
+                android:icon="@drawable/ic_menu_send"
+                android:title="MathML" />
+            <item
+                android:id="@+id/tuofang"
+                android:icon="@drawable/ic_menu_send"
+                android:title="拖放" />
+            <item
+                android:id="@+id/dilidingwei"
+                android:icon="@drawable/ic_menu_send"
+                android:title="地理定位" />
+            <item
+                android:id="@+id/video"
+                android:icon="@drawable/ic_menu_send"
+                android:title="video" />
+            <item
+                android:id="@+id/audio"
+                android:icon="@drawable/ic_menu_send"
+                android:title="audio" />
+            <item
+                android:id="@+id/inputleixing"
+                android:icon="@drawable/ic_menu_send"
+                android:title="input类型" />
+            <item
+                android:id="@+id/biaodanyuansu"
+                android:icon="@drawable/ic_menu_send"
+                android:title="表单元素" />
+            <item
+                android:id="@+id/biaodanshuxing"
+                android:icon="@drawable/ic_menu_send"
+                android:title="表单属性" />
+            <item
+                android:id="@+id/webcunchu"
+                android:icon="@drawable/ic_menu_send"
+                android:title="web存储" />
+            <item
+                android:id="@+id/websql"
+                android:icon="@drawable/ic_menu_send"
+                android:title="WebSql" />
+            <item
+                android:id="@+id/websocket"
+                android:icon="@drawable/ic_menu_send"
+                android:title="WebSocket" />
+        </menu>
+    </item>
+</menu>

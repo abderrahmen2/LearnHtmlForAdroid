@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorControlHighlight"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="com.learnhtml.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="用户名:"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/register_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="请输入用户名"
+                android:inputType="textPersonName"
+                android:maxLength="16"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/register_textview_pw1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="密码:"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/register_password1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="请输入密码"
+                android:maxLength="16"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/register_textview_pw2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="确认密码:"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/register_password2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLength="16"
+                android:ems="10"
+                android:hint="确认密码"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="手机号码:"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/register_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="请输入手机号"
+                android:maxLength="11"
+                android:phoneNumber="true"
+                android:maxLines="1" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_green_light"
+            android:text="注册"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/register_exist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出登录" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
