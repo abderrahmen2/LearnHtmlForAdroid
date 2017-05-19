@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
     EditText pw2;                       //确认密码框
     EditText phone;                     //输入手机号码框
     Button btnRegister;                 //注册按钮
-    TextView textView_pw2;              //输入密码提示文字，即“请输入密码：”，方便修改资料时的显示与隐藏
+    LinearLayout layout_pw2;            //确认密码layout
+   // TextView textView_pw2;              //输入密码提示文字，即“请输入密码：”，方便修改资料时的显示与隐藏
+    LinearLayout loginLayout;           //去登录布局
+    Button btnGoToLogin;                //去登录按钮
+    Button btnLoginOtherUser;           //切换用户按钮
 
     ResultData<UserInfo> resultData;     //服务器端返回注册或者修改的用户的最新资料
     UserInfo mInfo = null;
@@ -59,7 +64,23 @@ public class RegisterActivity extends AppCompatActivity {
 
             } else if (msg.what == 2) {
                 Toast.makeText(RegisterActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            } else if(msg.what ==3 ){
+                setTitle("查看个人信息");
+                layout_pw2.setVisibility(View.GONE);            //隐藏密码框2
+                btnExist.setVisibility(View.VISIBLE);           //显示退出登录按钮
+                loginLayout.setVisibility(View.GONE);           //隐藏去登录的界面
+                btnLoginOtherUser.setVisibility(View.VISIBLE);  //显示切换账号按钮
 
+                userName.setText(mInfo.getUserName());
+                phone.setText(mInfo.getPhone());
+                pw1.setText(mInfo.getPassWord());
+                btnRegister.setText("修改");
+                btnRegister.setBackgroundColor(Color.BLUE);
+
+                //不可编辑
+                pw1.setEnabled(false);
+                userName.setEnabled(false);
+                phone.setEnabled(false);
             }
 
         }
@@ -69,30 +90,17 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        setTitle("注册用户");
         findView();
+        setListener();
 
         Intent intent = getIntent();
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
-            setTitle("查看个人信息");
-
             mInfo = (UserInfo) data;
-            pw2.setVisibility(View.GONE);   //隐藏密码框1
-            textView_pw2.setVisibility(View.GONE);
-            btnExist.setVisibility(View.VISIBLE);
-
-            userName.setText(mInfo.getUserName());
-            phone.setText(mInfo.getPhone());
-            pw2.setText(mInfo.getPassWord());
-            btnRegister.setText("修改");
-            btnRegister.setBackgroundColor(Color.GREEN);
-
-            //不可编辑
-            pw1.setEnabled(false);
-            userName.setEnabled(false);
-            phone.setEnabled(false);
+            mHandler.obtainMessage(3).sendToTarget();
         }
-        setTitle("注册用户");
+
     }
 
     private void findView() {
@@ -103,8 +111,44 @@ public class RegisterActivity extends AppCompatActivity {
         pw2 = (EditText) findViewById(R.id.register_password2);
         phone = (EditText) findViewById(R.id.register_phone);
         btnRegister = (Button) findViewById(R.id.register_button);
-        textView_pw2 = (TextView) findViewById(R.id.register_textview_pw2);
+        layout_pw2 = (LinearLayout) findViewById(R.id.register_layout_pw2);
 
+        btnGoToLogin = (Button) findViewById(R.id.register_login_goto);
+        btnLoginOtherUser = (Button) findViewById(R.id.register_login_otheruser);
+        loginLayout = (LinearLayout) findViewById(R.id.register_layout_login);
+
+    }
+
+    //设置监听器
+    private void setListener() {
+
+        //去登录界面
+        btnLoginOtherUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("userInfo", mInfo);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //去登录界面
+        btnGoToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("userInfo", mInfo);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //退出登录
         btnExist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +157,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //注册，修改，保存按钮
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     //点击确定按钮
@@ -141,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity {
     //点击修改按钮
     private void updateUser() {
         //不可编辑
-        pw2.setEnabled(true);
+        pw1.setEnabled(true);
         phone.setEnabled(true);
         btnExist.setVisibility(View.GONE);
         btnRegister.setText("保存");
@@ -164,14 +210,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         //调用通用类方法，验证用户名是否符合规则,传入字符串，最小长度，最大长度。
         ResultSimple vUserName = ValidateUtils.msIsStrRule(userName.getText().toString().trim(), 6, 16);
-        if(!vUserName.isBoolean()){
-            mHandler.obtainMessage(2, "用户名"+vUserName.getMessage()).sendToTarget();
+        if (!vUserName.isBoolean()) {
+            mHandler.obtainMessage(2, "用户名" + vUserName.getMessage()).sendToTarget();
             return false;
         }
         //调用通用类方法，验证密码是否符合规则,传入字符串，最小长度，最大长度。
-        ResultSimple vPassWord = ValidateUtils.msIsNumberOrLetter(pw2.getText().toString().trim(), 6, 16);
-        if(!vPassWord.isBoolean()){
-            mHandler.obtainMessage(2, "密码"+vPassWord.getMessage()).sendToTarget();
+        ResultSimple vPassWord = ValidateUtils.msIsNumberOrLetter(pw1.getText().toString().trim(), 6, 16);
+        if (!vPassWord.isBoolean()) {
+            mHandler.obtainMessage(2, "密码" + vPassWord.getMessage()).sendToTarget();
             return false;
         }
 
@@ -189,7 +235,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void postHttpUser(final String url) {
         resultData = null;
         final String uName = userName.getText().toString();
-        final String pwText = pw2.getText().toString();
+        final String pwText = pw1.getText().toString();
         final String mPhone = phone.getText().toString();
 
         Thread thread = new Thread(new Runnable() {
@@ -244,13 +290,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(pw2.getVisibility()!=View.GONE || pw2.getVisibility()!=View.INVISIBLE) {
-            exitDialog("离开此页面会丢失您所填写的内容。","舍弃","再想想");
+        if (!"修改".equals(btnRegister.getText().toString().trim())) {
+            exitDialog("离开此页面会丢失您所填写的内容。", "舍弃", "再想想");
+        } else {
+            exitDialog("现在离开？", "马上离开", "稍后离开");
         }
     }
 
     //提示是否退出
-    private void exitDialog(String message,String positiveBtnText,String negativeBtnText) {
+    private void exitDialog(String message, String positiveBtnText, String negativeBtnText) {
         new AlertDialog.Builder(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle("提示")

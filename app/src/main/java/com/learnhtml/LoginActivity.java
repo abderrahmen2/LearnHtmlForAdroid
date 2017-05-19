@@ -46,6 +46,7 @@ import com.utils.ResultWordsData;
 import com.utils.StaticData;
 import com.utils.ValidateUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passWord;
     private Button btnRegister;
     private Button btnLogin;
-    UserInfo resultUserInfo;
+    UserInfo mInfo;
 
 
     private Handler mHandler = new Handler() {
@@ -84,7 +85,17 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login1);
+        findView();
 
+        Intent intent = getIntent();
+        Serializable data = intent.getSerializableExtra("userInfo");
+        if (data != null) {
+            setTitle("切换用户");
+            mInfo = (UserInfo) data;
+        }
+    }
+
+    private void findView() {
         btnRegister = (Button) findViewById(R.id.login1_btn_register);
         btnLogin = (Button) findViewById(R.id.login1_button);
         userName = (EditText) findViewById(R.id.login1_username);
@@ -107,11 +118,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //跳转到注册页面
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("userInfo", mInfo);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
             }
         });
     }
+
 
     //同步方式去登录
     public void postHttpUser(final String userName, final String passWord) {
@@ -146,8 +161,8 @@ public class LoginActivity extends AppCompatActivity {
                         });
                         //登录成功
                         if (resultData.isSuccess()) {
-                            resultUserInfo = resultData.getData();
-                            System.out.println(resultUserInfo.getUserName() + "<---返回来的用户名-----" + resultUserInfo);
+                            mInfo = resultData.getData();
+                            System.out.println(mInfo.getUserName() + "<---返回来的用户名-----" + mInfo);
                             mHandler.obtainMessage(1).sendToTarget();
                         }
                         //服务器异常或者登录失败
@@ -193,7 +208,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         Bundle bundle = new Bundle();
         //传参
-        bundle.putSerializable("userInfo", resultUserInfo);
+        bundle.putSerializable("userInfo", mInfo);
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
@@ -215,6 +230,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Bundle bundle = new Bundle();
+                        //传参
+                        bundle.putSerializable("userInfo", mInfo);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
                     }
