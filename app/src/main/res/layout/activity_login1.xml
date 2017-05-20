@@ -27,7 +27,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.3"
                 android:gravity="end"
-                android:text="用户名："
+                android:text="@string/login_layout_usertext"
                 android:textSize="20dp" />
 
             <EditText
@@ -37,7 +37,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.7"
                 android:ems="10"
-                android:hint="请输入用户名"
+                android:hint="@string/login_layout_inputname"
                 android:inputType="textPersonName"
                 android:maxLength="50" />
         </LinearLayout>
@@ -54,7 +54,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.3"
                 android:gravity="end"
-                android:text="密码："
+                android:text="@string/login_layout_textpw"
                 android:textSize="20dp" />
 
             <EditText
@@ -64,7 +64,7 @@
                 android:layout_weight="0.7"
                 android:layout_gravity="center_vertical"
                 android:ems="10"
-                android:hint="请输入密码"
+                android:hint="@string/login_layout_inputpw"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -75,7 +75,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:background="@color/colorPrimary"
-            android:text="登录"
+            android:text="@string/login_layout_btnlogin"
             android:textColor="@android:color/background_light"
             android:textSize="20dp" />
 
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:text="忘记密码？"
+                android:text="@string/login_layout_forgetpw"
                 android:visibility="gone"/>
 
         </LinearLayout>

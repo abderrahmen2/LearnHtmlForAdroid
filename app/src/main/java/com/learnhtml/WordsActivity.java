@@ -136,14 +136,14 @@ public class WordsActivity extends AppCompatActivity {
 
                 ResultSimple resultSimple = ValidateUtils.msIsNum(page);
                 if(!resultSimple.isBoolean()){
-                    mhandler.obtainMessage(0, "页码"+resultSimple.getMessage()).sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.wrodsactivity_tips_valipage)+resultSimple.getMessage()).sendToTarget();
                     return;
                 }
 
                 if (Integer.parseInt(page) > pageNumber) {
                     editText_nowpagenumber.setFocusable(true);
                     editText_nowpagenumber.setFocusableInTouchMode(true);
-                    mhandler.obtainMessage(0, "客官，总共只有" + pageNumber + "页!").sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.wordsactivity_tips_alltips1) + pageNumber + getString(R.string.wrodsactivity_tips_valitips2)).sendToTarget();
                     return;
                 } else {
                     nowpageNumber = page;
@@ -164,7 +164,7 @@ public class WordsActivity extends AppCompatActivity {
                 //最后一页了
                 if (Integer.parseInt(nowpageNumber) >= pageNumber) {
                     btn_looknext.setEnabled(false);
-                    mhandler.obtainMessage(0, "客官，这是最后一页啦！").sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.wrodsactvity_tips_lastpage)).sendToTarget();
                     return;
                 } else {
                     nowpageNumber = Integer.toString(Integer.parseInt(nowpageNumber) + 1);
@@ -185,7 +185,7 @@ public class WordsActivity extends AppCompatActivity {
                 //第一页了
                 if (Integer.parseInt(nowpageNumber) <= 1) {
                     btn_lookpre.setEnabled(false);
-                    mhandler.obtainMessage(0, "客官，这是第一页啦！").sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.wordsactivity_tips_firstpage)).sendToTarget();
                     return;
 
                 } else {
@@ -207,12 +207,12 @@ public class WordsActivity extends AppCompatActivity {
                 nowpageNumber = "1";//自动跳转到第一页
 
                 //与我相关的留言
-                if ("与我相关".equals(btn_lookmyself.getText().toString())) {
-                    btn_lookmyself.setText("查看全部");
+                if (getString(R.string.wrodsactivity_btn_ilookme).equals(btn_lookmyself.getText().toString())) {
+                    btn_lookmyself.setText(R.string.wrodsactivity_btn_lookall);
                     theState = 1;
                     findContentToService(StaticData.WORDS_URL_SELECTWORDSFORUSER);
                 } else {
-                    btn_lookmyself.setText("与我相关");
+                    btn_lookmyself.setText(getString(R.string.wrodsactivity_btn_ilookme));
                     theState = 0;
                     findContentToService(StaticData.WORDS_URL_SELECTWORDSBYROWID);
                 }
@@ -230,16 +230,16 @@ public class WordsActivity extends AppCompatActivity {
                 nowpageNumber = "1";//自动跳转到第一页
 
                 //倒序查看
-                if ("倒序查看".equals(btn_looktoend.getText())) {
+                if (getString(R.string.wrodsactivity_btn_lookendto).equals(btn_looktoend.getText())) {
                     orderBy = "DESC";
                     findContentToService(StaticData.WORDS_URL_SELECTWORDSBYROWID);
-                    btn_looktoend.setText("顺序查看");
+                    btn_looktoend.setText(R.string.wrodsactivity_btn_looktofirst);
                 }
                 //正常查看
                 else {
                     orderBy = "ASC";
                     findContentToService(StaticData.WORDS_URL_SELECTWORDSBYROWID);
-                    btn_looktoend.setText("倒序查看");
+                    btn_looktoend.setText(R.string.wrodsactivity_btn_lookendto);
                 }
             }
         });
@@ -276,7 +276,7 @@ public class WordsActivity extends AppCompatActivity {
                     editText_nowpagenumber.setText(nowpageNumber);
                 }
 
-                textView_totlepage.setText("总共" + Integer.toString(pageNumber) + "页");
+                textView_totlepage.setText(getString(R.string.wrodsactivity_tips_all1) + Integer.toString(pageNumber) + getString(R.string.wordsactivity_tips_all2));
                 setListView();
             }
         }
@@ -327,12 +327,12 @@ public class WordsActivity extends AppCompatActivity {
                         }
                     } else {
                         System.out.println("请求服务器失败");
-                        mhandler.obtainMessage(0, "请求服务器失败").sendToTarget();
+                        mhandler.obtainMessage(0, getString(R.string.wrodsactivity_tips_service1)).sendToTarget();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    mhandler.obtainMessage(0, "请求服务器异常，请联系管理员！").sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.wordsactivity_tips_service2)).sendToTarget();
                 }
             }
         });
@@ -408,7 +408,7 @@ public class WordsActivity extends AppCompatActivity {
     private void ckecgeActionDialog() {
 
         if (mInfo.getUserName().equals(wordsList.get(listPosition).getUserName())) {
-            String initem[] = {"删除"};
+            String initem[] = {getString(R.string.wordsactivity_str_delete)};
             new AlertDialog.Builder(this)
                     .setItems(initem, new DialogInterface.OnClickListener() {
 
@@ -420,7 +420,7 @@ public class WordsActivity extends AppCompatActivity {
                     .create()
                     .show();
         } else {
-            String initem[] = {"回复"};
+            String initem[] = {getString(R.string.wrordsactivity_str_answer)};
             new AlertDialog.Builder(this)
                     .setItems(initem, new DialogInterface.OnClickListener() {
 
@@ -432,8 +432,6 @@ public class WordsActivity extends AppCompatActivity {
                     .create()
                     .show();
         }
-
-
     }
 
     //回复，弹窗
@@ -441,11 +439,11 @@ public class WordsActivity extends AppCompatActivity {
         final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_liuyan_main, null);
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         //设置标题
-        dialog.setTitle("回复: " + wordsList.get(listPosition).getUserName())
+        dialog.setTitle(getString(R.string.wrodsactivity_tips_answer) + wordsList.get(listPosition).getUserName())
                 //设置界面
                 .setView(linearLayout)
                 //设置确定按钮
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.wrodsactivity_btn_save, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         EditText editText = (EditText) linearLayout.findViewById(R.id.dialog_liuyan_text);
@@ -453,7 +451,7 @@ public class WordsActivity extends AppCompatActivity {
                         if (text.length() < 2 || "".equals(text) || text == null) {
 
                             keepDialogOpen((AlertDialog) dialog);           //利用反射使得对话框不关闭
-                            mhandler.obtainMessage(0, "内容太少了，再说点什么吧").sendToTarget();
+                            mhandler.obtainMessage(0, getString(R.string.wrodsactivity_tips_str1)).sendToTarget();
                         } else {
                             answerText = text;
                             deleteID = null;
@@ -465,7 +463,7 @@ public class WordsActivity extends AppCompatActivity {
                     }
                 })
                 //设置取消按钮
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.wrodsactivity_btn_quxiao, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //利用反射关闭对话框
@@ -503,13 +501,13 @@ public class WordsActivity extends AppCompatActivity {
     private void mySureDeleteWordsDialog() {
         new AlertDialog.Builder(this)
                 //设置标题
-                .setTitle("回复: " + wordsList.get(listPosition).getUserName())
+                .setTitle(getString(R.string.wrodsactivity_tips_answer) + wordsList.get(listPosition).getUserName())
                 //设置界面
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("提示")
-                .setMessage("确定要删除吗?")
+                .setTitle(R.string.wrodsactivity_dialog_tips)
+                .setMessage(R.string.wrodsactivity_dialog_suredelete)
                 //设置确定按钮
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.wrodsactivity_btn_save), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         answerText = null;
@@ -517,7 +515,7 @@ public class WordsActivity extends AppCompatActivity {
                     }
                 })
                 //设置取消按钮
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.wrodsactivity_dialog_quxiao, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //不做任何处理

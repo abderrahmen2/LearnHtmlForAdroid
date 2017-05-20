@@ -18,14 +18,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="与我相关" />
+            android:text="@string/wrodsactivity_btn_ilookme" />
 
         <Button
             android:id="@+id/words_btn_looktoend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="倒序查看" />
+            android:text="@string/wrodsactivity_btn_lookendto" />
     </LinearLayout>
 
     <ListView
@@ -49,7 +49,7 @@
             android:id="@+id/words_textView_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="还没有人说话呢，快去"
+            android:text="@string/wrods_layout_nowords"
             android:textSize="20dp" />
 
         <Button
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:gravity="fill_vertical"
-            android:text="留言"
+            android:text="@string/wrods_layout_liuyan"
             android:textColor="@android:color/holo_red_light"
             android:textSize="25dp" />
     </LinearLayout>
@@ -76,14 +76,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="上一页" />
+            android:text="@string/wrods_layout_pagepre" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.15"
             android:gravity="right"
-            android:text="第" />
+            android:text="@string/wrods_layout_text1" />
 
         <EditText
             android:id="@+id/wrods_edittext_pagenumber"
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.15"
             android:gravity="left"
-            android:text="页" />
+            android:text="@string/wrods_layout_text2" />
 
         <Button
             android:id="@+id/words_btn_gopage"
@@ -108,14 +108,14 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="0.5"
-            android:text="GO" />
+            android:text="@string/wrods_layout_go" />
 
         <Button
             android:id="@+id/words_btn_looknext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="下一页" />
+            android:text="@string/wrods_layout_pagenext" />
 
     </LinearLayout>
 
@@ -125,7 +125,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.03"
         android:gravity="center_horizontal"
-        android:text="总共0页" />
+        android:text="@string/wrods_layout_allpage" />
 
 
 </LinearLayout>

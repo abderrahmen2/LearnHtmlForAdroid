@@ -197,7 +197,7 @@ public class RegisterActivity extends AppCompatActivity {
     //点了注册按钮
     private void insertUser() {
         if (!pw1.getText().toString().equals(pw2.getText().toString())) {
-            Toast.makeText(RegisterActivity.this, R.string.activity_tips_password, Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, getString(R.string.activity_tips_password), Toast.LENGTH_LONG).show();
             return;
         }
         if (validateInfo()) {

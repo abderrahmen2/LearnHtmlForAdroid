@@ -104,12 +104,13 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.login1_button);
         userName = (EditText) findViewById(R.id.login1_username);
         passWord = (EditText) findViewById(R.id.login1_password1);
-        forgetPassWord=(Button)findViewById(R.id.login1_forget_password);
+        forgetPassWord = (Button) findViewById(R.id.login1_forget_password);
 
 
     }
+
     //设置监听
-    private void setListener(){
+    private void setListener() {
 
         forgetPassWord.setOnClickListener(new OnClickListener() {
             @Override

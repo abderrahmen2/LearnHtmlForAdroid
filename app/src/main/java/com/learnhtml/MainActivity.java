@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if (mInfo == null) {//处于未登录状态
-                    mhandler.obtainMessage(0, R.string.mainactivity_tips_gotologin).sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.mainactivity_tips_gotologin)).sendToTarget();
                     return;
                 }
                 Intent intent = new Intent(MainActivity.this, WordsActivity.class);
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if (mInfo == null) {//处于未登录状态
-                    mhandler.obtainMessage(0,  R.string.mainactivity_tips_gotologin).sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.mainactivity_tips_gotologin)).sendToTarget();
                     return;
                 }
                 String mtext = liuyan_editext_text.getText().toString();
@@ -229,6 +229,8 @@ public class MainActivity extends AppCompatActivity
                 content_title.setText(contentList.get(0).getContent());//标题
                 content_text1.setText(contentList.get(1).getContent());//内容1
                 content_remark.setText(R.string.content_bottom);
+                content_image1.setVisibility(View.VISIBLE);
+                content_image2.setVisibility(View.VISIBLE);
 
                 //list中有5个内容,表示只有一个标题,一个内容1，一个内容2
                 if (contentList.size() == 3) {
@@ -236,11 +238,13 @@ public class MainActivity extends AppCompatActivity
                 }
                 //list中有4个内容,表示只有一个标题,一个内容1，一个代码块，一个内容2
                 else if (contentList.size() == 4) {
+                    content_html.setVisibility(View.VISIBLE);
                     content_html.setText(contentList.get(2).getContent());
                     content_text2.setText(contentList.get(3).getContent());
                 }
                 //list中有5个内容,表示只有一个标题,一个内容1，一个代码块，一个内容2，一个内容3
                 else if (contentList.size() == 5) {
+                    content_html.setVisibility(View.VISIBLE);
                     content_html.setText(contentList.get(2).getContent());
                     content_text2.setText(contentList.get(3).getContent());
                     content_text3.setText(contentList.get(4).getContent());
@@ -260,7 +264,7 @@ public class MainActivity extends AppCompatActivity
             //提示
             else if (msg.what == 4) {
                 content_remark.setText(msg.obj.toString());
-                         }
+            }
         }
     };
 
@@ -319,11 +323,9 @@ public class MainActivity extends AppCompatActivity
 
             case "HTML编辑器":
                 findContentFromService(StaticData.HTML_BIANJIQI_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_bianjiqi_img2);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_bianjiqi_img2);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML元素":
@@ -332,11 +334,9 @@ public class MainActivity extends AppCompatActivity
 
             case "HTML标题":
                 findContentFromService(StaticData.HTML_BIAOTI_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_biaoti_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_biaoti_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML链接":
@@ -345,63 +345,49 @@ public class MainActivity extends AppCompatActivity
 
             case "HTML头部":
                 findContentFromService(StaticData.HTML_TOUBU_CODE);
-                if (contentList != null) {
-                    content_html.setVisibility(View.VISIBLE);
-                }
+               // content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML表格":
                 findContentFromService(StaticData.HTML_BIAOGE_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_biaoge_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_biaoge_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML图片":
                 findContentFromService(StaticData.HTML_TUPIAN_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_tupian_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_tupian_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML区块":
                 findContentFromService(StaticData.HTML_QUKUAI_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_qukuai_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_qukuai_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML布局":
                 findContentFromService(StaticData.HTML_BUJU_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_buju_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_buju_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+               // content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML表单":
                 findContentFromService(StaticData.HTML_BIAODAN_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_biaodan_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_biaodan_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML框架":
                 findContentFromService(StaticData.HTML_KUANGJIA_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_kuangjia_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_kuangjia_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML总结":
@@ -415,77 +401,62 @@ public class MainActivity extends AppCompatActivity
 
             case "浏览器支持":
                 findContentFromService(StaticData.HTML5_LIULANQI_CODE);
-                if (contentList != null) {
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "Canvas":
                 findContentFromService(StaticData.HTML5_CANVAS_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_canvas_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_canvas_img1);
+               // content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "内联SVG":
                 findContentFromService(StaticData.HTML5_NEILIANSVG_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_neiliansvg_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_neiliansvg_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "MathML":
                 findContentFromService(StaticData.HTML5_MATHML_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_mathml_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                    content_image2.setImageResource(R.mipmap.content_mathml_img2);
-                    content_image2.setVisibility(View.VISIBLE);
-                    content_text3.setTextSize(13);
-                }
+                content_image1.setImageResource(R.mipmap.content_mathml_img1);
+                // content_image1.setVisibility(View.VISIBLE);
+                // content_html.setVisibility(View.VISIBLE);
+                content_image2.setImageResource(R.mipmap.content_mathml_img2);
+                // content_image2.setVisibility(View.VISIBLE);
+                content_text3.setTextSize(13);
+
                 break;
 
             case "拖放":
                 findContentFromService(StaticData.HTML5_TUOFANG_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_tuofang_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_tuofang_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "地理定位":
                 findContentFromService(StaticData.HTML5_DILIDINGWEI_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_dilidingwei_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_image2.setImageResource(R.mipmap.content_dilidingwei_img2);
-                    content_image2.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_dilidingwei_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                content_image2.setImageResource(R.mipmap.content_dilidingwei_img2);
+                //content_image2.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "video":
                 findContentFromService(StaticData.HTML5_VIDEO_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_video_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_video_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "audio":
                 findContentFromService(StaticData.HTML5_AUDIO_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_audio_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_audio_img1);
+                //content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "input类型":
@@ -494,44 +465,32 @@ public class MainActivity extends AppCompatActivity
 
             case "表单元素":
                 findContentFromService(StaticData.HTML5_BIAODANYUANSU_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_biaodanyuansu_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_biaodanyuansu_img1);
+               // content_image1.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "表单属性":
                 findContentFromService(StaticData.HTML5_BIAODANSHUXING_CODE);
-                if (contentList != null) {
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                //content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "web存储":
                 findContentFromService(StaticData.HTML5_WEBCUNCHU_CODE);
-                if (contentList != null) {
-                    content_image2.setImageResource(R.mipmap.content_webcunchu_img1);
-                    content_image2.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                    content_text3.setTextSize(13);
-                }
+                content_image2.setImageResource(R.mipmap.content_webcunchu_img1);
+                //content_image2.setVisibility(View.VISIBLE);
+                //content_html.setVisibility(View.VISIBLE);
+                content_text3.setTextSize(13);
                 break;
 
             case "WebSql":
                 findContentFromService(StaticData.HTML5_WEBSQL_CODE);
-                if (contentList != null) {
-                    content_image1.setImageResource(R.mipmap.content_websql_img1);
-                    content_image1.setVisibility(View.VISIBLE);
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                content_image1.setImageResource(R.mipmap.content_websql_img1);
                 break;
 
             case "WebSocket":
                 findContentFromService(StaticData.HTML5_WEBSOKET_CODE);
-                if (contentList != null) {
-                    content_html.setVisibility(View.VISIBLE);
-                }
+                //content_html.setVisibility(View.VISIBLE);
                 break;
         }
         return true;
@@ -574,18 +533,19 @@ public class MainActivity extends AppCompatActivity
                         });
                         if (resultListData.isSuccess()) {
                             contentList = resultListData.getList();
+                            System.out.println("list输出：" + contentList);
                             mhandler.obtainMessage(1).sendToTarget();
                         } else {
                             mhandler.obtainMessage(4, resultListData.getMessage()).sendToTarget();
                         }
                     } else {
                         System.out.println("请求失败");
-                        mhandler.obtainMessage(4, R.string.mainactivity_tips_serviceexcetion).sendToTarget();
+                        mhandler.obtainMessage(4, getString(R.string.mainactivity_tips_serviceexcetion)).sendToTarget();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    mhandler.obtainMessage(4, R.string.mainactivity_tips_serviceexcetion2).sendToTarget();
+                    mhandler.obtainMessage(4, getString(R.string.mainactivity_tips_serviceexcetion2)).sendToTarget();
                 }
             }
         });
@@ -639,12 +599,12 @@ public class MainActivity extends AppCompatActivity
 
                     } else {
                         System.out.println("请求失败");
-                        mhandler.obtainMessage(0, R.string.mainactivity_tips_serviceexcetion).sendToTarget();
+                        mhandler.obtainMessage(0, getString(R.string.mainactivity_tips_serviceexcetion)).sendToTarget();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    mhandler.obtainMessage(0, R.string.mainactivity_tips_serviceexcetion2).sendToTarget();
+                    mhandler.obtainMessage(0, getString(R.string.mainactivity_tips_serviceexcetion2)).sendToTarget();
                 }
             }
         });
@@ -674,10 +634,13 @@ public class MainActivity extends AppCompatActivity
         content_html.setText("");
         content_html.setVisibility(View.GONE);
         content_text2.setText("");
-        content_image1.setVisibility(View.GONE);
+
         content_text3.setText("");
         content_text3.setTextSize(18);
+        content_image1.setVisibility(View.GONE);
         content_image2.setVisibility(View.GONE);
+        content_image1.setBackground(null);
+        content_image2.setBackground(null);
         content_remark.setText(R.string.content_remark_ining);
     }
 
@@ -723,7 +686,7 @@ public class MainActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which) {
                         if (state == StaticData.MAINACTIVITY_WORDS_GO) {
                             if (mInfo == null) {//处于未登录状态
-                                mhandler.obtainMessage(0, R.string.mainactivity_tips_gotologin).sendToTarget();
+                                mhandler.obtainMessage(0, getString(R.string.mainactivity_tips_gotologin)).sendToTarget();
                                 return;
                             }
                             Intent intent = new Intent(MainActivity.this, WordsActivity.class);
