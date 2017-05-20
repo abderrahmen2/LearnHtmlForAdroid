@@ -3,12 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+
         android:id="@+id/menu_light_n"
         android:title="@string/menu_light_n">
     </item>
     <item
+
         android:id="@+id/menu_store"
         android:title="@string/menu_store">
+    </item>
+    <item
+
+        android:id="@+id/menu_happy"
+        android:title="@string/menu_happy">
     </item>
     <item
         android:id="@+id/menu_about"

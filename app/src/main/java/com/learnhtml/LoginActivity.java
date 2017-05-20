@@ -61,10 +61,12 @@ import static android.Manifest.permission.READ_CONTACTS;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText userName;
-    private EditText passWord;
-    private Button btnRegister;
-    private Button btnLogin;
+    private EditText userName;          //用户名输入框
+    private EditText passWord;          //密码输入框
+    private Button btnRegister;         //去注册按钮
+    private Button btnLogin;            //登录按钮
+    private Button forgetPassWord;      //忘记密码按钮
+
     UserInfo mInfo;
 
 
@@ -85,12 +87,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login1);
+        setTitle(getString(R.string.loginactivity_tips_title2));
         findView();
+        setListener();
 
         Intent intent = getIntent();
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
-            setTitle("切换用户");
+            setTitle(getString(R.string.loginactivity_tips_title));
             mInfo = (UserInfo) data;
         }
     }
@@ -100,6 +104,19 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.login1_button);
         userName = (EditText) findViewById(R.id.login1_username);
         passWord = (EditText) findViewById(R.id.login1_password1);
+        forgetPassWord=(Button)findViewById(R.id.login1_forget_password);
+
+
+    }
+    //设置监听
+    private void setListener(){
+
+        forgetPassWord.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override
@@ -171,13 +188,13 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        mHandler.obtainMessage(2, "数据解析出现异常！").sendToTarget();
+                        mHandler.obtainMessage(2, getString(R.string.loginactivity_tips_dataecxcetion)).sendToTarget();
                         System.out.println("数据解析出现异常！");
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    mHandler.obtainMessage(2, "请求服务器失败!").sendToTarget();
+                    mHandler.obtainMessage(2, getString(R.string.loginactivity_tips_goserviceexcetion)).sendToTarget();
                 }
             }
         });
@@ -190,13 +207,13 @@ public class LoginActivity extends AppCompatActivity {
         //调用通用类方法，验证用户名是否符合规则,传入字符串，最小长度，最大长度。
         ResultSimple vUserName = ValidateUtils.msIsStrRule(userName.getText().toString().trim(), 6, 16);
         if (!vUserName.isBoolean()) {
-            mHandler.obtainMessage(2, "用户名" + vUserName.getMessage()).sendToTarget();
+            mHandler.obtainMessage(2, getString(R.string.loginactivity_tips_validatename) + vUserName.getMessage()).sendToTarget();
             return false;
         }
         //调用通用类方法，验证密码是否符合规则,传入字符串，最小长度，最大长度。
         ResultSimple vPassWord = ValidateUtils.msIsNumberOrLetter(passWord.getText().toString().trim(), 6, 16);
         if (!vPassWord.isBoolean()) {
-            mHandler.obtainMessage(2, "密码" + vPassWord.getMessage()).sendToTarget();
+            mHandler.obtainMessage(2, getString(R.string.loginactivity_tips_password) + vPassWord.getMessage()).sendToTarget();
             return false;
         }
         return true;
@@ -224,9 +241,9 @@ public class LoginActivity extends AppCompatActivity {
     private void exitDialog() {
         new AlertDialog.Builder(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("提示")
-                .setMessage("是否放弃登录?")
-                .setPositiveButton("马上离开", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.loginactivity_dialog_tips)
+                .setMessage(R.string.loginactivity_dialog_tipsgo)
+                .setPositiveButton(R.string.loginactivity_dialog_gonow, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -238,7 +255,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                 })
-                .setNegativeButton("稍后离开", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.loginactivity_dialog_goletter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

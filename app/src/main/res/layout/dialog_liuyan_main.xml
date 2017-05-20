@@ -16,7 +16,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/edittext"
         android:gravity="top"
-        android:hint="说点什么吧"
+        android:hint="@string/dialog_liuyan_tps"
         android:minLines="5" />
 
 </LinearLayout>

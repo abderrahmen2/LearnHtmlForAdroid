@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (msg.what == 2) {
                 Toast.makeText(RegisterActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
             } else if(msg.what ==3 ){
-                setTitle("查看个人信息");
+                setTitle(getString(R.string.activity_title));
                 layout_pw2.setVisibility(View.GONE);            //隐藏密码框2
                 btnExist.setVisibility(View.VISIBLE);           //显示退出登录按钮
                 loginLayout.setVisibility(View.GONE);           //隐藏去登录的界面
@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                 userName.setText(mInfo.getUserName());
                 phone.setText(mInfo.getPhone());
                 pw1.setText(mInfo.getPassWord());
-                btnRegister.setText("修改");
+                btnRegister.setText(R.string.activity_tips_btnupdate);
                 btnRegister.setBackgroundColor(Color.BLUE);
 
                 //不可编辑
@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        setTitle("注册用户");
+        setTitle(getString(R.string.activity_title_insertuser));
         findView();
         setListener();
 
@@ -161,14 +161,14 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ("注册".equals(btnRegister.getText())) {
+                if (getString(R.string.activity_btn_insert).equals(btnRegister.getText())) {
                     insertUser();
 
-                } else if ("修改".equals(btnRegister.getText())) {
-                    setTitle("修改个人信息");
+                } else if (getString(R.string.activity_btn_update).equals(btnRegister.getText())) {
+                    setTitle(getString(R.string.activity_tips_title2));
                     updateUser();
 
-                } else if ("保存".equals(btnRegister.getText())) {
+                } else if (getString(R.string.activity_btn_save).equals(btnRegister.getText())) {
                     save();
                 }
             }
@@ -190,14 +190,14 @@ public class RegisterActivity extends AppCompatActivity {
         pw1.setEnabled(true);
         phone.setEnabled(true);
         btnExist.setVisibility(View.GONE);
-        btnRegister.setText("保存");
+        btnRegister.setText(R.string.activity_btn_save);
         btnRegister.setBackgroundColor(Color.RED);
     }
 
     //点了注册按钮
     private void insertUser() {
         if (!pw1.getText().toString().equals(pw2.getText().toString())) {
-            Toast.makeText(RegisterActivity.this, "两个密码不一致!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, R.string.activity_tips_password, Toast.LENGTH_LONG).show();
             return;
         }
         if (validateInfo()) {
@@ -211,13 +211,13 @@ public class RegisterActivity extends AppCompatActivity {
         //调用通用类方法，验证用户名是否符合规则,传入字符串，最小长度，最大长度。
         ResultSimple vUserName = ValidateUtils.msIsStrRule(userName.getText().toString().trim(), 6, 16);
         if (!vUserName.isBoolean()) {
-            mHandler.obtainMessage(2, "用户名" + vUserName.getMessage()).sendToTarget();
+            mHandler.obtainMessage(2, getString(R.string.activity_validate_name) + vUserName.getMessage()).sendToTarget();
             return false;
         }
         //调用通用类方法，验证密码是否符合规则,传入字符串，最小长度，最大长度。
         ResultSimple vPassWord = ValidateUtils.msIsNumberOrLetter(pw1.getText().toString().trim(), 6, 16);
         if (!vPassWord.isBoolean()) {
-            mHandler.obtainMessage(2, "密码" + vPassWord.getMessage()).sendToTarget();
+            mHandler.obtainMessage(2, getString(R.string.activity_validate_password) + vPassWord.getMessage()).sendToTarget();
             return false;
         }
 
@@ -290,10 +290,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (!"修改".equals(btnRegister.getText().toString().trim())) {
-            exitDialog("离开此页面会丢失您所填写的内容。", "舍弃", "再想想");
+        if (getString(R.string.activity_btn_update).equals(btnRegister.getText().toString().trim())) {
+            exitDialog(getString(R.string.activity_dialog_tips), getString(R.string.activity_dialog_gonow), getString(R.string.activity_dialog_goletter));
         } else {
-            exitDialog("现在离开？", "马上离开", "稍后离开");
+            exitDialog(getString(R.string.activity_dialog_tipsgo), getString(R.string.activity_dialog_gonow2), getString(R.string.activity_dialog_goletter2));
         }
     }
 
@@ -301,7 +301,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void exitDialog(String message, String positiveBtnText, String negativeBtnText) {
         new AlertDialog.Builder(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("提示")
+                .setTitle(R.string.activity_dialog_title)
                 .setMessage(message)
                 .setPositiveButton(positiveBtnText, new DialogInterface.OnClickListener() {
                     @Override

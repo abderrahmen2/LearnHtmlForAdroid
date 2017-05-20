@@ -33,7 +33,7 @@ public class ValidateUtils {
         Pattern pattern = Pattern.compile("^\\w+$");
         Matcher match = pattern.matcher(str);
         if (!match.matches()) {
-            return new ResultSimple(false, "只能由字母，数字和汉字组成!");
+            return new ResultSimple(false, "只能由字母，下划线，数字和汉字组成!");
         }
 
         return new ResultSimple(true);

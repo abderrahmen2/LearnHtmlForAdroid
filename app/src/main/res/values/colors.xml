@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#445093</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#f33274</color>
 
     <color name="MainActivityBackColor_nig">#bf4d4d6f</color>
     <color name="nav_back_color_nig">#FF467B57</color>
+    <color name="nav_back_color_white">#FFFFFF</color>
+    <color name="nav_back_color_black">#000000</color>
 </resources>

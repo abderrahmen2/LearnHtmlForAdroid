@@ -25,7 +25,6 @@
                 android:id="@+id/content_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="暂无内容"
                 android:textSize="25dp" />
 
             <TextView
@@ -109,7 +108,7 @@
             android:layout_weight="0.60"
             android:background="@drawable/edittext"
             android:gravity="bottom"
-            android:hint="发表留言"
+            android:hint="@string/content_mainlayout_pwords"
             android:lines="2"
             android:maxLines="2" />
 
@@ -118,7 +117,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="发表"
+            android:text="@string/content_mainlayout_wordssubmit"
             android:visibility="gone"/>
 
         <Button
@@ -126,7 +125,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="全部留言" />
+            android:text="@string/content_mainlayout_allword" />
 
     </LinearLayout>
 

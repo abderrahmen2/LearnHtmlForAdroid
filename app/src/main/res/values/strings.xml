@@ -13,13 +13,11 @@
         \n\t\t\t\t HTML5还定义了处理非法文档的具体细节，使得所有浏览器和客户端程序能够一致地处理语法错误；HTML5会在后面中具体介绍，在此就不说明了。
     </string>
 
-
+    <string name="content_remark_ining">加载中.....</string>
     <string name="content_bottom">~~~~~~~到底啦~~~~~~~</string>
-
     <string name="app_name">HTML5学习基地</string>
     <string name="title_activity_html">HtmlActivity</string>
     <string name="title_activity_main">HTML5学习基地</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -30,6 +28,7 @@
     <string name="menu_about">关于</string>
     <string name="menu_store">书籍商店</string>
     <string name="menu_exist">退出登录</string>
+    <string name="menu_happy">开心一刻</string>
 
 
     <!--主界面-->
@@ -52,6 +51,96 @@
     <string name="login_register_btn">注册</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- MainActivity-->
+    <string name="mainactivity_tip_title">HTML5学习基地</string>
+    <string name="mainactivity_tips_username">用户名:</string>
+    <string name="mainactivity_tips_gotologin">请先登录</string>
+    <string name="mainactivitu_actionbar_white">夜间模式</string>
+    <string name="mainactivitu_actionbar_black">日间模式</string>
+    <string name="mainactivity_tips_serviceexcetion">"服务器出现异常，请联系管理员!"</string>
+    <string name="mainactivity_tips_serviceexcetion2">请求服务器发生异常,请联系管理员!</string>
+
+    <!-- MainActivity dialog-->
+    <string name="mainactivity_dialog_wordssuccess">留言成功啦，去看看大家都在说什么吧。</string>
+    <string name="mainactivity_dialog_gonow">马上去</string>
+    <string name="mainactivity_dialog_goletter">稍后再去</string>
+    <string name="mainactivity_dialog_exit">真的要退出吗？</string>
+    <string name="mainactivity_dialog_exitnow">狠心离开</string>
+    <string name="mainactivity_dialog_exitletter">再学会儿</string>
+    <string name="mainactivity_dialog_tps">提示</string>
+
+    <!-- mainLayout -->
+    <string name="content_mainlayout_pwords">发表留言</string>
+    <string name="content_mainlayout_wordssubmit">发表</string>
+    <string name="content_mainlayout_allword">全部留言</string>
+
+    <!-- other string-->
+    <string name="dialog_liuyan_tps">说点什么吧</string>
+    <string name="navheader_tips_login">点击登录</string>
+
+    <!-- activity_main_drawer.xml-->
+    <string name="html_jiaocheng">HTML教程</string>
+    <string name="html_jianjie">HTML简介</string>
+    <string name="html_bianjiqi">HTML编辑器</string>
+    <string name="html_yuansu">HTML元素</string>
+    <string name="html_biaoti">HTML标题</string>
+    <string name="html_lianjie">HTML链接</string>
+    <string name="html_toubu">HTML头部</string>
+    <string name="html_biaoge">HTML表格</string>
+    <string name="html_tupian">HTML图片</string>
+    <string name="html_qukuai">HTML区块</string>
+    <string name="html_buju">HTML布局</string>
+    <string name="html_biaodan">HTML表单</string>
+    <string name="html_kuangjia">HTML框架</string>
+    <string name="html_zongjie">HTML总结</string>
+    <string name="html5_xintexing">HTML5新特性</string>
+    <string name="html5_jiaocheng">HTML5教程</string>
+    <string name="html5_liuyanqi">浏览器支持</string>
+    <string name="html5_canvas">Canvas</string>
+    <string name="html5_svg">内联SVG</string>
+    <string name="hrml5_mathml">MathML</string>
+    <string name="html5_tuofang">拖放</string>
+    <string name="html5_dilidingwei">地理定位</string>
+    <string name="html5_video">video</string>
+    <string name="html5_audio">audio</string>
+    <string name="html5_input">input类型</string>
+    <string name="html5_biaodanyuansu">表单元素</string>
+    <string name="html5_biaodanshuxing">表单属性</string>
+    <string name="html5_webcunchu">web存储</string>
+    <string name="html5_websql">WebSql</string>
+    <string name="html5_websocket">WebSocket</string>
+
+    <!-- LoginActivity.java -->
+    <string name="loginactivity_tips_title">切换用户</string>
+    <string name="loginactivity_tips_dataecxcetion">数据解析出现异常！</string>
+    <string name="loginactivity_tips_goserviceexcetion">请求服务器失败!</string>
+    <string name="loginactivity_tips_validatename">用户名</string>
+    <string name="loginactivity_tips_password">密码</string>
+    <string name="loginactivity_dialog_tips">提示</string>
+    <string name="loginactivity_dialog_tipsgo">是否放弃登录?</string>
+    <string name="loginactivity_dialog_gonow">马上离开</string>
+    <string name="loginactivity_dialog_goletter">稍后离开</string>
+    <string name="loginactivity_tips_title2">登录</string>
+
+    <!-- RegisterActivity.java -->
+    <string name="activity_title">查看个人信息</string>
+    <string name="activity_tips_btnupdate">修改</string>
+    <string name="activity_title_insertuser">注册用户</string>
+    <string name="activity_btn_insert">注册</string>
+    <string name="activity_btn_update">修改</string>
+    <string name="activity_tips_title2">修改个人信息</string>
+    <string name="activity_btn_save">保存</string>
+    <string name="activity_tips_password">两个密码不一致!</string>
+    <string name="activity_validate_name">用户名</string>
+    <string name="activity_validate_password">密码</string>
+    <string name="activity_dialog_tips">离开此页面会丢失您所填写的内容。</string>
+    <string name="activity_dialog_gonow">舍弃</string>
+    <string name="activity_dialog_goletter">再想想</string>
+    <string name="activity_dialog_tipsgo">现在离开？</string>
+    <string name="activity_dialog_gonow2">马上离开</string>
+    <string name="activity_dialog_goletter2">稍后离开</string>
+    <string name="activity_dialog_title">提示</string>
 
 
 </resources>
