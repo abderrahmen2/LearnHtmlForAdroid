@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginSuccess();
 
             } else if (msg.what == 2) {
-                Toast.makeText(LoginActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
             }
 
         }
@@ -244,7 +244,7 @@ public class LoginActivity extends AppCompatActivity {
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle(R.string.loginactivity_dialog_tips)
                 .setMessage(R.string.loginactivity_dialog_tipsgo)
-                .setPositiveButton(R.string.loginactivity_dialog_gonow, new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.loginactivity_dialog_gonow), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -256,7 +256,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                 })
-                .setNegativeButton(R.string.loginactivity_dialog_goletter, new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.loginactivity_dialog_goletter), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
