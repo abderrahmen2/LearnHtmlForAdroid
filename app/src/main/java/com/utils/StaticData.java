@@ -6,26 +6,27 @@ package com.utils;
  */
 
 public class StaticData {
-
+    //服务器地址
+    private final static String SERVICE_URL = "http://192.168.23.1:1101";
 
     //请求获取知识内容URL
-    public final static String MAINACTIVITY_URL_GETCONTENT = "http://192.168.23.1:1101/learn-html/learnhtml/content/learnhtml!findContent.action";
+    public final static String MAINACTIVITY_URL_GETCONTENT = SERVICE_URL+"/learn-html/learnhtml/content/learnhtml!findContent.action";
     //主界面发表留言URL
-    public final static String MAINACTIVITY_URL_INSERTWORDS = "http://192.168.23.1:1101/learn-html/learnhtml/words/learnhtml!insertWords.action";
+    public final static String MAINACTIVITY_URL_INSERTWORDS = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!insertWords.action";
     //登记用户URL
-    public final static String REGISTER_URL_INSERTUSER = "http://192.168.23.1:1101/learn-html/learnhtml/user/learnhtml!insert.action";
+    public final static String REGISTER_URL_INSERTUSER = SERVICE_URL+"/learn-html/learnhtml/user/learnhtml!insert.action";
     //更新用户资料URL
-    public final static String REGISTER_URL_UPDATEUSER = "http://192.168.23.1:1101/learn-html/learnhtml/user/learnhtml!update.action";
+    public final static String REGISTER_URL_UPDATEUSER = SERVICE_URL+"/learn-html/learnhtml/user/learnhtml!update.action";
     //登录的URL
-    public final static String LOGIN_URL_LOGIN = "http://192.168.23.1:1101/learn-html/learnhtml/user/learnhtml!login.action";
+    public final static String LOGIN_URL_LOGIN = SERVICE_URL+"/learn-html/learnhtml/user/learnhtml!login.action";
     //按组号查看留言内容URL
-    public final static String WORDS_URL_SELECTWORDSBYROWID = "http://192.168.23.1:1101/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
+    public final static String WORDS_URL_SELECTWORDSBYROWID = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
     //回复留言URL
-    public final static String WORDS_URL_INSERTWORDS = "http://192.168.23.1:1101/learn-html/learnhtml/words/learnhtml!insertWords.action";
+    public final static String WORDS_URL_INSERTWORDS = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!insertWords.action";
     //删除留言内容URL
-    public final static String WORDS_URL_DELETEWORDS = "http://192.168.23.1:1101/learn-html/learnhtml/words/learnhtml!deleteWords.action";
+    public final static String WORDS_URL_DELETEWORDS = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!deleteWords.action";
     //按组号和用户名查找留言URL
-    public final static String WORDS_URL_SELECTWORDSFORUSER = "http://192.168.23.1:1101/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
+    public final static String WORDS_URL_SELECTWORDSFORUSER = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
 
 
     //内容请求组号

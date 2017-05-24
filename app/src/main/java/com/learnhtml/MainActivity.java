@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
             mInfo = (UserInfo) data;
-            nav_text_username.setText(R.string.mainactivity_tips_username + mInfo.getUserName());
+            nav_text_username.setText(getString(R.string.mainactivity_tips_username) + mInfo.getUserName());
         }
         //设置初始化界面
         setContentViewToNull();
@@ -252,14 +252,14 @@ public class MainActivity extends AppCompatActivity
             }
             //提示
             else if (msg.what == 0) {
-                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
             }
             //留言成功后
             else if (msg.what == 2) {
                 liuyan_editext_text.setText("");
                 scrollViewGetFocusable();
-                checkDialog(StaticData.MAINACTIVITY_WORDS_GO, Integer.toString(R.string.mainactivity_dialog_wordssuccess)
-                        , Integer.toString(R.string.mainactivity_dialog_gonow), Integer.toString(R.string.mainactivity_dialog_goletter));
+                checkDialog(StaticData.MAINACTIVITY_WORDS_GO, getString(R.string.mainactivity_dialog_wordssuccess)
+                        , getString(R.string.mainactivity_dialog_gonow), getString(R.string.mainactivity_dialog_goletter));
             }
             //提示
             else if (msg.what == 4) {
@@ -284,14 +284,14 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.menu_light_n:
                 String str = itm.getTitle().toString();
-                if (Integer.toString(R.string.mainactivitu_actionbar_white).equals(str)) {
+                if (getString(R.string.mainactivitu_actionbar_white).equals(str)) {
                     navigationView.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
                     drawer.setBackgroundColor(getResources().getColor(R.color.MainActivityBackColor_nig));
-                    itm.setTitle(Integer.toString(R.string.mainactivitu_actionbar_black));
-                } else if (Integer.toString(R.string.mainactivitu_actionbar_black).equals(str)) {
+                    itm.setTitle(getString(R.string.mainactivitu_actionbar_black));
+                } else if (getString(R.string.mainactivitu_actionbar_black).equals(str)) {
                     drawer.setBackgroundColor(Color.WHITE);
                     navigationView.setBackgroundColor(Color.WHITE);
-                    itm.setTitle(Integer.toString(R.string.mainactivitu_actionbar_white));
+                    itm.setTitle(getString(R.string.mainactivitu_actionbar_white));
                 }
                 break;
             case R.id.menu_store:
@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity
 
             case "HTML头部":
                 findContentFromService(StaticData.HTML_TOUBU_CODE);
-               // content_html.setVisibility(View.VISIBLE);
+                // content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML表格":
@@ -373,7 +373,7 @@ public class MainActivity extends AppCompatActivity
                 findContentFromService(StaticData.HTML_BUJU_CODE);
                 content_image1.setImageResource(R.mipmap.content_buju_img1);
                 //content_image1.setVisibility(View.VISIBLE);
-               // content_html.setVisibility(View.VISIBLE);
+                // content_html.setVisibility(View.VISIBLE);
                 break;
 
             case "HTML表单":
@@ -407,7 +407,7 @@ public class MainActivity extends AppCompatActivity
             case "Canvas":
                 findContentFromService(StaticData.HTML5_CANVAS_CODE);
                 content_image1.setImageResource(R.mipmap.content_canvas_img1);
-               // content_image1.setVisibility(View.VISIBLE);
+                // content_image1.setVisibility(View.VISIBLE);
                 //content_html.setVisibility(View.VISIBLE);
                 break;
 
@@ -466,7 +466,7 @@ public class MainActivity extends AppCompatActivity
             case "表单元素":
                 findContentFromService(StaticData.HTML5_BIAODANYUANSU_CODE);
                 content_image1.setImageResource(R.mipmap.content_biaodanyuansu_img1);
-               // content_image1.setVisibility(View.VISIBLE);
+                // content_image1.setVisibility(View.VISIBLE);
                 //content_html.setVisibility(View.VISIBLE);
                 break;
 
@@ -670,8 +670,8 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            checkDialog(StaticData.MAINACTIVITY_CLOSE_GO, Integer.toString(R.string.mainactivity_dialog_exit)
-                    , Integer.toString(R.string.mainactivity_dialog_exitnow), Integer.toString(R.string.mainactivity_dialog_exitletter));
+            checkDialog(StaticData.MAINACTIVITY_CLOSE_GO, getString(R.string.mainactivity_dialog_exit)
+                    , getString(R.string.mainactivity_dialog_exitnow), getString(R.string.mainactivity_dialog_exitletter));
         }
     }
 
