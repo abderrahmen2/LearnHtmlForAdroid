@@ -134,6 +134,7 @@
     <string name="activity_tips_password">两个密码不一致!</string>
     <string name="activity_validate_name">用户名</string>
     <string name="activity_validate_password">密码</string>
+    <string name="activity_validate_password2">确认密码</string>
     <string name="activity_dialog_tips">离开此页面会丢失您所填写的内容。</string>
     <string name="activity_dialog_gonow">舍弃</string>
     <string name="activity_dialog_goletter">再想想</string>

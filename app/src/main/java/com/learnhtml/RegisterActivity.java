@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText phone;                     //输入手机号码框
     Button btnRegister;                 //注册按钮
     LinearLayout layout_pw2;            //确认密码layout
-   // TextView textView_pw2;              //输入密码提示文字，即“请输入密码：”，方便修改资料时的显示与隐藏
+    // TextView textView_pw2;              //输入密码提示文字，即“请输入密码：”，方便修改资料时的显示与隐藏
     LinearLayout loginLayout;           //去登录布局
     Button btnGoToLogin;                //去登录按钮
     Button btnLoginOtherUser;           //切换用户按钮
@@ -63,8 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
 
             } else if (msg.what == 2) {
-                Toast.makeText(RegisterActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
-            } else if(msg.what ==3 ){
+                Toast.makeText(RegisterActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+            } else if (msg.what == 3) {
                 setTitle(getString(R.string.activity_title));
                 layout_pw2.setVisibility(View.GONE);            //隐藏密码框2
                 btnExist.setVisibility(View.VISIBLE);           //显示退出登录按钮
@@ -196,13 +196,34 @@ public class RegisterActivity extends AppCompatActivity {
 
     //点了注册按钮
     private void insertUser() {
-        if (!pw1.getText().toString().equals(pw2.getText().toString())) {
-            Toast.makeText(RegisterActivity.this, getString(R.string.activity_tips_password), Toast.LENGTH_LONG).show();
+        //调用通用类方法，验证用户名是否符合规则,传入字符串，最小长度，最大长度。
+        ResultSimple vUserName = ValidateUtils.msIsStrRule(userName.getText().toString().trim(), 6, 16);
+        if (!vUserName.isBoolean()) {
+            mHandler.obtainMessage(2, getString(R.string.activity_validate_name) + vUserName.getMessage()).sendToTarget();
             return;
         }
-        if (validateInfo()) {
-            postHttpUser(StaticData.REGISTER_URL_INSERTUSER);
+        //调用通用类方法，验证密码是否符合规则,传入字符串，最小长度，最大长度。
+        ResultSimple vPassWord = ValidateUtils.msIsNumberOrLetter(pw1.getText().toString().trim(), 6, 16);
+        if (!vPassWord.isBoolean()) {
+            mHandler.obtainMessage(2, getString(R.string.activity_validate_password) + vPassWord.getMessage()).sendToTarget();
+            return;
         }
+        //调用通用类方法，验证密码是否符合规则,传入字符串，最小长度，最大长度。
+        ResultSimple vPassWord2 = ValidateUtils.msIsNumberOrLetter(pw2.getText().toString().trim(), 6, 16);
+        if (!vPassWord.isBoolean()) {
+            mHandler.obtainMessage(2, getString(R.string.activity_validate_password2) + vPassWord.getMessage()).sendToTarget();
+            return;
+        }
+
+        //调用通用类方法，验证手机号码是否输入正确
+        ResultSimple resultSimple = ValidateUtils.msIsOphone(phone.getText().toString().trim());
+        //手机号码不符合要求
+        if (!resultSimple.isBoolean()) {
+            mHandler.obtainMessage(2, resultSimple.getMessage()).sendToTarget();
+            return;
+        }
+        postHttpUser(StaticData.REGISTER_URL_INSERTUSER);
+
     }
 
     //验证信息是否符合要求

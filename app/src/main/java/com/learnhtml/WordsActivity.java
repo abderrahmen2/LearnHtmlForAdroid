@@ -261,7 +261,7 @@ public class WordsActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             //提示
             if (msg.what == 0) {
-                Toast.makeText(WordsActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(WordsActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
             }
             //查找到留言内容了
             else if (msg.what == 1) {
