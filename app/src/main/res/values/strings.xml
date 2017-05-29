@@ -199,5 +199,11 @@
     <string name="wrodsactivity_tips_service1">请求服务器失败</string>
     <string name="wordsactivity_tips_service2">请求服务器异常，请联系管理员！</string>
 
+    <!--  BookActivity -->
+    <string name="bookactivity_title">书籍推荐区</string>
+    <string name="bookactivity_dialog_message">是否确认退出书籍推荐区？</string>
+    <string name="bookactivity_dialog_gonow">离开</string>
+    <string name="bookactivity_dialog_goletter">稍后离开</string>
+
 
 </resources>

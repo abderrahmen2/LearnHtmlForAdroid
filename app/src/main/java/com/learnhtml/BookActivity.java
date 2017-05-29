@@ -14,7 +14,7 @@ public class BookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
-        setTitle("书籍推荐区");
+        setTitle(getString(R.string.bookactivity_title));
     }
 
     @Override
@@ -22,8 +22,8 @@ public class BookActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setIcon(R.mipmap.applogo)
                 .setTitle(R.string.mainactivity_dialog_tps)
-                .setMessage("是否确认退出书籍推荐区？")
-                .setPositiveButton("离开", new DialogInterface.OnClickListener() {
+                .setMessage(R.string.bookactivity_dialog_message)
+                .setPositiveButton(R.string.bookactivity_dialog_gonow, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -31,7 +31,7 @@ public class BookActivity extends AppCompatActivity {
 
                     }
                 })
-                .setNegativeButton("稍后离开", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.bookactivity_dialog_goletter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
