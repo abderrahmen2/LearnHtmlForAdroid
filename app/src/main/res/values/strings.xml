@@ -49,7 +49,6 @@
     <string name="title_activity_register">注册界面</string>
     <string name="login_register_text">还没有账号，去</string>
     <string name="login_register_btn">注册</string>
-
     <string name="action_settings">Settings</string>
 
     <!-- MainActivity-->

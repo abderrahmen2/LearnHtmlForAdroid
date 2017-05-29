@@ -32,9 +32,8 @@
         </activity>
         <activity
             android:name=".WordsActivity"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".BookActivity"></activity>
     </application>
 
 </manifest>

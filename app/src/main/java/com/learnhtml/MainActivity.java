@@ -16,12 +16,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +51,13 @@ import okhttp3.ResponseBody;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //右上角组件
+    View contentView;                              //右上角菜单选项
+    private TextView actionBar;                    //右上角ActionBar
+    private Button light;
+    private Button store;
+    private Button happy;
+    private Button about;
 
     private DrawerLayout drawer = null;
     private Toolbar toolbar = null;
@@ -56,6 +65,7 @@ public class MainActivity extends AppCompatActivity
     private String rowID = "0";                     //知识内容组号
     private UserInfo mInfo = null;                  //个人信息
 
+    //侧滑页头
     private NavigationView navigationView = null;   //侧滑界面
     View headerLayout = null;                       //侧滑界面标题布局
     private TextView nav_text_username = null;      //显示用户名
@@ -87,7 +97,14 @@ public class MainActivity extends AppCompatActivity
         findView();
         nav_loginView();
         setListenter();
-
+        findActionBarView();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         //其他Activity传来数据进行处理
         Intent intent = getIntent();
@@ -102,6 +119,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    //侧滑页面组件
     private void nav_loginView() {
         //添加侧滑页面页头并进行监听
         headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
@@ -124,15 +142,62 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private void findView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    //ActionBar组件
+    private void findActionBarView(){
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        contentView = getLayoutInflater().inflate(R.layout.actionbar_main, null);
+        actionBar = (TextView) findViewById(R.id.actionbar);
+
+        happy = (Button)contentView.findViewById(R.id.action_btn_happy);
+        store = (Button)contentView.findViewById(R.id.action_btn_store);
+        light = (Button)contentView.findViewById(R.id.action_btn_light);
+        about = (Button)contentView.findViewById(R.id.action_btn_about);
+
+        light.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = light.getText().toString();
+                if (getString(R.string.mainactivitu_actionbar_white).equals(str)) {
+                    navigationView.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
+                    drawer.setBackgroundColor(getResources().getColor(R.color.MainActivityBackColor_nig));
+                    light.setText(getString(R.string.mainactivitu_actionbar_black));
+                } else if (getString(R.string.mainactivitu_actionbar_black).equals(str)) {
+                    drawer.setBackgroundColor(Color.WHITE);
+                    navigationView.setBackgroundColor(Color.WHITE);
+                    light.setText(getString(R.string.mainactivitu_actionbar_white));
+                }
+            }
+        });
+        store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                startActivity(intent);
+            }
+        });
+        happy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        actionBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actionBarMenu();
+            }
+        });
+
+    }
+
+    //获取主界面组件
+    private void findView() {
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -269,17 +334,19 @@ public class MainActivity extends AppCompatActivity
     };
 
     //加载ActionBar菜单
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.html, menu);
         return true;
     }
+    */
 
     //ActionBar点击事件
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem itm) {
         int id = itm.getItemId();
+        mhandler.obtainMessage(0, "点击了" + itm.getTitle()).sendToTarget();
         switch (id) {
 
             case R.id.menu_light_n:
@@ -295,6 +362,8 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
             case R.id.menu_store:
+                Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.menu_happy:
@@ -306,7 +375,7 @@ public class MainActivity extends AppCompatActivity
 
 
         return true;
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -708,6 +777,22 @@ public class MainActivity extends AppCompatActivity
                 })
                 .create()
                 .show();
+    }
+
+    private void actionBarMenu() {
+
+        PopupWindow popWnd = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        // 设置背景图片
+        //popWnd.setBackgroundDrawable(new BitmapDrawable());
+        // 需要设置一下此参数，点击外边可消失
+        popWnd.setOutsideTouchable(true);
+
+        //指定popup窗口位于相对某组件的位置
+        popWnd.showAsDropDown(actionBar, -150, -40);
+        //显示在某控件的下方
+         //popWnd.showAsDropDown(actionBar);
+        //如果窗口存在，则更新
+       // popWnd.update();
     }
 
 }

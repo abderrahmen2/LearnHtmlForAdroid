@@ -3,6 +3,7 @@
     <color name="colorPrimary">#445093</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#f33274</color>
+    <color name="colorHuiSe">#D0D0D0</color>
 
     <color name="MainActivityBackColor_nig">#bf4d4d6f</color>
     <color name="nav_back_color_nig">#FF467B57</color>
