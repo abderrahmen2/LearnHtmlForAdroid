@@ -241,7 +241,7 @@ public class LoginActivity extends AppCompatActivity {
     //提示是否退出
     private void exitDialog() {
         new AlertDialog.Builder(this)
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.mipmap.applogo)
                 .setTitle(R.string.loginactivity_dialog_tips)
                 .setMessage(R.string.loginactivity_dialog_tipsgo)
                 .setPositiveButton(getString(R.string.loginactivity_dialog_gonow), new DialogInterface.OnClickListener() {

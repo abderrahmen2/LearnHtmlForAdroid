@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 
     //右上角组件
     View contentView;                              //右上角菜单选项
-    private TextView actionBar;                    //右上角ActionBar
+    private ImageView actionBar;                    //右上角ActionBar
     private Button light;
     private Button store;
     private Button happy;
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity
     private void findActionBarView(){
 
         contentView = getLayoutInflater().inflate(R.layout.actionbar_main, null);
-        actionBar = (TextView) findViewById(R.id.actionbar);
+        actionBar = (ImageView) findViewById(R.id.actionbar);
 
         happy = (Button)contentView.findViewById(R.id.action_btn_happy);
         store = (Button)contentView.findViewById(R.id.action_btn_store);
@@ -332,50 +332,6 @@ public class MainActivity extends AppCompatActivity
             }
         }
     };
-
-    //加载ActionBar菜单
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.html, menu);
-        return true;
-    }
-    */
-
-    //ActionBar点击事件
-   /* @Override
-    public boolean onOptionsItemSelected(MenuItem itm) {
-        int id = itm.getItemId();
-        mhandler.obtainMessage(0, "点击了" + itm.getTitle()).sendToTarget();
-        switch (id) {
-
-            case R.id.menu_light_n:
-                String str = itm.getTitle().toString();
-                if (getString(R.string.mainactivitu_actionbar_white).equals(str)) {
-                    navigationView.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
-                    drawer.setBackgroundColor(getResources().getColor(R.color.MainActivityBackColor_nig));
-                    itm.setTitle(getString(R.string.mainactivitu_actionbar_black));
-                } else if (getString(R.string.mainactivitu_actionbar_black).equals(str)) {
-                    drawer.setBackgroundColor(Color.WHITE);
-                    navigationView.setBackgroundColor(Color.WHITE);
-                    itm.setTitle(getString(R.string.mainactivitu_actionbar_white));
-                }
-                break;
-            case R.id.menu_store:
-                Intent intent = new Intent(MainActivity.this, BookActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.menu_happy:
-                break;
-
-            case R.id.menu_about:
-                break;
-        }
-
-
-        return true;
-    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -747,7 +703,7 @@ public class MainActivity extends AppCompatActivity
     //提示是否退出
     private void checkDialog(final int state, String message, String positiveBtnText, String negativeBtnText) {
         new AlertDialog.Builder(this)
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.mipmap.applogo)
                 .setTitle(R.string.mainactivity_dialog_tps)
                 .setMessage(message)
                 .setPositiveButton(positiveBtnText, new DialogInterface.OnClickListener() {

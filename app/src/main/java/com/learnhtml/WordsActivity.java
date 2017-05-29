@@ -503,7 +503,7 @@ public class WordsActivity extends AppCompatActivity {
                 //设置标题
                 .setTitle(getString(R.string.wrodsactivity_tips_answer) + wordsList.get(listPosition).getUserName())
                 //设置界面
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.mipmap.applogo)
                 .setTitle(R.string.wrodsactivity_dialog_tips)
                 .setMessage(R.string.wrodsactivity_dialog_suredelete)
                 //设置确定按钮

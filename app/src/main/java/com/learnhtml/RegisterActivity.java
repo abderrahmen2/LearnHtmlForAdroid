@@ -321,7 +321,7 @@ public class RegisterActivity extends AppCompatActivity {
     //提示是否退出
     private void exitDialog(String message, String positiveBtnText, String negativeBtnText) {
         new AlertDialog.Builder(this)
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.mipmap.applogo)
                 .setTitle(R.string.activity_dialog_title)
                 .setMessage(message)
                 .setPositiveButton(positiveBtnText, new DialogInterface.OnClickListener() {

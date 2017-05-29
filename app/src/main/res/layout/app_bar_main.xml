@@ -27,18 +27,15 @@
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/actionbar"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="3dp"
                 android:layout_weight="0.2"
-                android:gravity="center"
-                android:text="十"
-                android:textColor="@android:color/white"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
+                android:background="@mipmap/actionbar_day" />
 
         </LinearLayout>
 

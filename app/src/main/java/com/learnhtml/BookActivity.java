@@ -20,7 +20,7 @@ public class BookActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.mipmap.applogo)
                 .setTitle(R.string.mainactivity_dialog_tps)
                 .setMessage("是否确认退出书籍推荐区？")
                 .setPositiveButton("离开", new DialogInterface.OnClickListener() {
