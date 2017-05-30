@@ -8,11 +8,28 @@ import android.os.Bundle;
 
 import com.utils.StaticData;
 
+import java.io.Serializable;
+
 public class BookActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        Serializable lg= intent.getSerializableExtra("light");
+        if (lg == null) {
+            setTheme(R.style.AppTheme_Light_White);
+        }
+        //点了日间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_white))){
+            setTheme(R.style.AppTheme_Light_Black);
+        }
+        //点了夜间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_black))){
+            setTheme(R.style.AppTheme_Light_White);
+        }
+
         setContentView(R.layout.activity_book);
         setTitle(getString(R.string.bookactivity_title));
     }

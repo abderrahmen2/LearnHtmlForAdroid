@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorHuiSe"
+
     android:orientation="vertical">
 
     <LinearLayout
@@ -24,19 +24,19 @@
             android:id="@+id/action_btn_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
             android:layout_weight="0.85"
             android:background="@android:color/transparent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:text="夜间模式"
-            android:textSize="20dp" />
+            android:theme="@style/AppTheme.ActionBarItem" />
 
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/nav_back_color_black" />
+        android:background="@color/nav_back_color_white" />
 
     <LinearLayout
         android:id="@+id/action_layout_store"
@@ -57,17 +57,18 @@
             android:id="@+id/action_btn_store"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
             android:layout_weight="0.85"
             android:background="@android:color/transparent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:text="书籍推荐"
-            android:textSize="20dp" />
+            android:theme="@style/AppTheme.ActionBarItem" />
     </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/nav_back_color_black" />
+        android:background="@color/nav_back_color_white" />
 
     <LinearLayout
         android:id="@+id/action_layout_happy"
@@ -93,12 +94,13 @@
             android:layout_weight="0.85"
             android:background="@android:color/transparent"
             android:text="开心一刻"
-            android:textSize="20dp" />
+            android:theme="@style/AppTheme.ActionBarItem" />
     </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/nav_back_color_black" />
+        android:background="@color/nav_back_color_white" />
 
     <LinearLayout
         android:id="@+id/action_layout_about"
@@ -119,12 +121,12 @@
             android:id="@+id/action_btn_about"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
             android:layout_weight="0.85"
             android:background="@android:color/transparent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:text="关于"
-            android:textSize="20dp" />
+            android:theme="@style/AppTheme.ActionBarItem" />
     </LinearLayout>
 
 </LinearLayout>

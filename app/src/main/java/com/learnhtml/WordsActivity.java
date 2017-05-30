@@ -71,9 +71,25 @@ public class WordsActivity extends AppCompatActivity {
     private LinearLayout words_layout_none;         //留言为空时，显示的面板
     private Button btn_words_none;                  //留言为空时显示面板里的按钮
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        Serializable lg= intent.getSerializableExtra("light");
+        if (lg == null) {
+            setTheme(R.style.AppTheme_Light_White);
+        }
+        //点了日间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_white))){
+            setTheme(R.style.AppTheme_Light_Black);
+        }
+        //点了夜间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_black))){
+            setTheme(R.style.AppTheme_Light_White);
+        }
+
         setContentView(R.layout.activity_words);
         findView();             //找到界面组件
         setLineter();           //设置监听
@@ -81,7 +97,6 @@ public class WordsActivity extends AppCompatActivity {
 
 
         //其他Activity传来数据进行处理
-        Intent intent = getIntent();
         Serializable data = intent.getSerializableExtra("userInfo");
         Serializable id = intent.getSerializableExtra("rowid");
         if (data != null) {

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity
     private List<ContentInfo> contentList;          //服务器返回的知识list
     private String rowID = "0";                     //知识内容组号
     private UserInfo mInfo = null;                  //个人信息
+    private String appLight = "夜间模式"; //亮度模式
 
     //侧滑页头
     private NavigationView navigationView = null;   //侧滑界面
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme_NoActionBar);
         setContentView(R.layout.activity_main);
         setTitle(R.string.mainactivity_tip_title);
 
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity
         nav_loginView();
         setListenter();
         findActionBarView();
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -108,6 +112,12 @@ public class MainActivity extends AppCompatActivity
 
         //其他Activity传来数据进行处理
         Intent intent = getIntent();
+        Serializable lg = intent.getSerializableExtra("light");
+        if (lg == null) {
+            setMainLight(null);
+        } else {
+            setMainLight(lg.toString());
+        }
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
             mInfo = (UserInfo) data;
@@ -142,36 +152,31 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    //ActionBar组件
-    private void findActionBarView(){
+    //ActionBar右上角组件
+    private void findActionBarView() {
 
         contentView = getLayoutInflater().inflate(R.layout.actionbar_main, null);
         actionBar = (ImageView) findViewById(R.id.actionbar);
 
-        happy = (Button)contentView.findViewById(R.id.action_btn_happy);
-        store = (Button)contentView.findViewById(R.id.action_btn_store);
-        light = (Button)contentView.findViewById(R.id.action_btn_light);
-        about = (Button)contentView.findViewById(R.id.action_btn_about);
+        happy = (Button) contentView.findViewById(R.id.action_btn_happy);
+        store = (Button) contentView.findViewById(R.id.action_btn_store);
+        light = (Button) contentView.findViewById(R.id.action_btn_light);
+        about = (Button) contentView.findViewById(R.id.action_btn_about);
 
         light.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str = light.getText().toString();
-                if (getString(R.string.mainactivitu_actionbar_white).equals(str)) {
-                    navigationView.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
-                    drawer.setBackgroundColor(getResources().getColor(R.color.MainActivityBackColor_nig));
-                    light.setText(getString(R.string.mainactivitu_actionbar_black));
-                } else if (getString(R.string.mainactivitu_actionbar_black).equals(str)) {
-                    drawer.setBackgroundColor(Color.WHITE);
-                    navigationView.setBackgroundColor(Color.WHITE);
-                    light.setText(getString(R.string.mainactivitu_actionbar_white));
-                }
+                setMainLight(str);
             }
         });
         store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("light", appLight);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -669,6 +674,26 @@ public class MainActivity extends AppCompatActivity
         content_remark.setText(R.string.content_remark_ining);
     }
 
+    //界面光亮设置
+    private void setMainLight(String str) {
+        if (str == null) {
+            drawer.setBackgroundColor(Color.WHITE);
+            navigationView.setBackgroundColor(Color.WHITE);
+            return;
+        }
+        appLight = str;
+
+        if (getString(R.string.mainactivitu_actionbar_white).equals(str)) {
+            navigationView.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
+            drawer.setBackgroundColor(getResources().getColor(R.color.MainActivityBackColor_nig));
+            light.setText(getString(R.string.mainactivitu_actionbar_black));
+        } else if (getString(R.string.mainactivitu_actionbar_black).equals(str)) {
+            drawer.setBackgroundColor(Color.WHITE);
+            navigationView.setBackgroundColor(Color.WHITE);
+            light.setText(getString(R.string.mainactivitu_actionbar_white));
+        }
+    }
+
     /**
      * 登录或者查看个人信息
      */
@@ -678,12 +703,16 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("userInfo", mInfo);
+            bundle.putSerializable("light", appLight);
             intent.putExtras(bundle);
             startActivity(intent);
             finish();
         } else {
             //去登录
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("light", appLight);
+            intent.putExtras(bundle);
             startActivity(intent);
             finish();
         }
@@ -739,16 +768,16 @@ public class MainActivity extends AppCompatActivity
 
         PopupWindow popWnd = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         // 设置背景图片
-        //popWnd.setBackgroundDrawable(new BitmapDrawable());
+        popWnd.setBackgroundDrawable(getResources().getDrawable(R.mipmap.actionbar_img));
         // 需要设置一下此参数，点击外边可消失
         popWnd.setOutsideTouchable(true);
 
         //指定popup窗口位于相对某组件的位置
-        popWnd.showAsDropDown(actionBar, -150, -40);
+        popWnd.showAsDropDown(actionBar, -200, 20);
         //显示在某控件的下方
-         //popWnd.showAsDropDown(actionBar);
+        //popWnd.showAsDropDown(actionBar);
         //如果窗口存在，则更新
-       // popWnd.update();
+        // popWnd.update();
     }
 
 }

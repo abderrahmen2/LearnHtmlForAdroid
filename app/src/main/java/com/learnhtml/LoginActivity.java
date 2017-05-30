@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button forgetPassWord;      //忘记密码按钮
 
     UserInfo mInfo;
+    private String appLight;
 
 
     private Handler mHandler = new Handler() {
@@ -86,12 +88,26 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        Serializable lg= intent.getSerializableExtra("light");
+        if (lg == null) {
+            setTheme(R.style.AppTheme_Light_White);
+        }
+        //点了日间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_white))){
+            appLight=lg.toString();
+            setTheme(R.style.AppTheme_Light_Black);
+        }
+        //点了夜间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_black))){
+            appLight=lg.toString();
+            setTheme(R.style.AppTheme_Light_White);
+        }
         setContentView(R.layout.activity_login1);
         setTitle(getString(R.string.loginactivity_tips_title2));
         findView();
         setListener();
 
-        Intent intent = getIntent();
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
             setTitle(getString(R.string.loginactivity_tips_title));
@@ -138,6 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("userInfo", mInfo);
+                bundle.putSerializable("light", appLight);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
@@ -227,6 +244,7 @@ public class LoginActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         //传参
         bundle.putSerializable("userInfo", mInfo);
+        bundle.putSerializable("light", appLight);
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
@@ -251,6 +269,7 @@ public class LoginActivity extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         //传参
                         bundle.putSerializable("userInfo", mInfo);
+                        bundle.putSerializable("light", appLight);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         finish();

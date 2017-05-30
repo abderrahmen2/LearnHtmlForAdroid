@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#f33274</color>
     <color name="colorHuiSe">#D0D0D0</color>
+    <color name="colorHuiSe1">#C0C0C0</color>
+    <color name="colorHuiSe2">#A9A9A9</color>
+
+    <!--仿微信颜色-->
+    <color name="color_weixin_actionbar">#48484A</color>
 
     <color name="MainActivityBackColor_nig">#bf4d4d6f</color>
     <color name="nav_back_color_nig">#FF467B57</color>

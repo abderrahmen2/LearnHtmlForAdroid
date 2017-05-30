@@ -48,53 +48,33 @@ public class RegisterActivity extends AppCompatActivity {
 
     ResultData<UserInfo> resultData;     //服务器端返回注册或者修改的用户的最新资料
     UserInfo mInfo = null;
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 1) {
-                //注册成功
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                Bundle bundle = new Bundle();
-                //传参
-                bundle.putSerializable("userInfo", mInfo);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
-
-            } else if (msg.what == 2) {
-                Toast.makeText(RegisterActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
-            } else if (msg.what == 3) {
-                setTitle(getString(R.string.activity_title));
-                layout_pw2.setVisibility(View.GONE);            //隐藏密码框2
-                btnExist.setVisibility(View.VISIBLE);           //显示退出登录按钮
-                loginLayout.setVisibility(View.GONE);           //隐藏去登录的界面
-                btnLoginOtherUser.setVisibility(View.VISIBLE);  //显示切换账号按钮
-
-                userName.setText(mInfo.getUserName());
-                phone.setText(mInfo.getPhone());
-                pw1.setText(mInfo.getPassWord());
-                btnRegister.setText(R.string.activity_tips_btnupdate);
-                btnRegister.setBackgroundColor(Color.BLUE);
-
-                //不可编辑
-                pw1.setEnabled(false);
-                userName.setEnabled(false);
-                phone.setEnabled(false);
-            }
-
-        }
-    };
+    private String appLight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        Serializable lg= intent.getSerializableExtra("light");
+        if (lg == null) {
+            setTheme(R.style.AppTheme_Light_White);
+        }
+        //点了日间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_white))){
+            appLight=lg.toString();
+            setTheme(R.style.AppTheme_Light_Black);
+        }
+        //点了夜间模式
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_black))){
+            appLight=lg.toString();
+            setTheme(R.style.AppTheme_Light_White);
+        }
+
         setContentView(R.layout.activity_register);
         setTitle(getString(R.string.activity_title_insertuser));
         findView();
         setListener();
 
-        Intent intent = getIntent();
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
             mInfo = (UserInfo) data;
@@ -129,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("userInfo", mInfo);
+                bundle.putSerializable("light", appLight);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
@@ -142,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("userInfo", mInfo);
+                bundle.putSerializable("light", appLight);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
@@ -183,6 +165,44 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
     }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                //注册成功
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                Bundle bundle = new Bundle();
+                //传参
+                bundle.putSerializable("userInfo", mInfo);
+                bundle.putSerializable("light", appLight);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+
+            } else if (msg.what == 2) {
+                Toast.makeText(RegisterActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+            } else if (msg.what == 3) {
+                setTitle(getString(R.string.activity_title));
+                layout_pw2.setVisibility(View.GONE);            //隐藏密码框2
+                btnExist.setVisibility(View.VISIBLE);           //显示退出登录按钮
+                loginLayout.setVisibility(View.GONE);           //隐藏去登录的界面
+                btnLoginOtherUser.setVisibility(View.VISIBLE);  //显示切换账号按钮
+
+                userName.setText(mInfo.getUserName());
+                phone.setText(mInfo.getPhone());
+                pw1.setText(mInfo.getPassWord());
+                btnRegister.setText(R.string.activity_tips_btnupdate);
+                btnRegister.setBackgroundColor(Color.BLUE);
+
+                //不可编辑
+                pw1.setEnabled(false);
+                userName.setEnabled(false);
+                phone.setEnabled(false);
+            }
+
+        }
+    };
 
     //点击修改按钮
     private void updateUser() {
@@ -330,6 +350,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("userInfo", mInfo);
+                        bundle.putSerializable("light", appLight);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         finish();
