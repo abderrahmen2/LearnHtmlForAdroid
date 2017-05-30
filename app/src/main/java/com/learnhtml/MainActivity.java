@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     private List<ContentInfo> contentList;          //服务器返回的知识list
     private String rowID = "0";                     //知识内容组号
     private UserInfo mInfo = null;                  //个人信息
-    private String appLight = "夜间模式"; //亮度模式
+    private String appLight = "日间模式"; //亮度模式
 
     //侧滑页头
     private NavigationView navigationView = null;   //侧滑界面
