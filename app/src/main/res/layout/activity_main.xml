@@ -19,7 +19,19 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/activity_main_drawer"
-        />
+        >
+        <!-- app:menu="@menu/activity_main_drawer"
+        app:headerLayout="@layout/nav_header_main"-->
+
+     <!--   <include layout="@layout/nav_header_main" />-->
+
+        <ListView
+            android:layout_marginTop="@dimen/nav_header_height"
+            android:id="@+id/nav_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

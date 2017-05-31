@@ -5,12 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.MotionEvent;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,20 +16,25 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.entity.ContentInfo;
+import com.entity.SysMenu;
 import com.entity.UserInfo;
 import com.entity.WordsInfo;
 import com.utils.ResultListData;
@@ -40,7 +43,10 @@ import com.utils.StaticData;
 import com.utils.ValidateUtils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -62,10 +68,11 @@ public class MainActivity extends AppCompatActivity
 
     private DrawerLayout drawer = null;
     private Toolbar toolbar = null;
+    private List<SysMenu> menutList;
     private List<ContentInfo> contentList;          //服务器返回的知识list
     private String rowID = "0";                     //知识内容组号
     private UserInfo mInfo = null;                  //个人信息
-    private String appLight = "日间模式"; //亮度模式
+    private String appLight = "日间模式";            //亮度模式
 
     //侧滑页头
     private NavigationView navigationView = null;   //侧滑界面
@@ -73,6 +80,7 @@ public class MainActivity extends AppCompatActivity
     private TextView nav_text_username = null;      //显示用户名
     private ImageView nav_tes = null;               //显示头像
     private TextView nav_text = null;               //显示性别
+    private ListView nav_listview;
 
     //content_main
     private TextView content_title;
@@ -121,35 +129,46 @@ public class MainActivity extends AppCompatActivity
         Serializable data = intent.getSerializableExtra("userInfo");
         if (data != null) {
             mInfo = (UserInfo) data;
+            System.out.println(mInfo.getUserName() + "已经登录的用户名");
+            nav_text.setText("手机号码:" + mInfo.getPhone());
             nav_text_username.setText(getString(R.string.mainactivity_tips_username) + mInfo.getUserName());
         }
         //设置初始化界面
         setContentViewToNull();
         findContentFromService(StaticData.HTML_JIANJIE_CODE);
+        //findMenu();
 
     }
 
     //侧滑页面组件
     private void nav_loginView() {
-        //添加侧滑页面页头并进行监听
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //添加固定的菜单
+        navigationView.inflateMenu(R.menu.activity_main_drawer);
+        navigationView.setNavigationItemSelectedListener(this);
+
         headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         nav_tes = (ImageView) headerLayout.findViewById(R.id.nav_header_btn_img);
         nav_tes.setVisibility(View.INVISIBLE);
         nav_text = (TextView) headerLayout.findViewById(R.id.nav_header_text1);
-        nav_text.setVisibility(View.INVISIBLE);
         nav_text_username = (TextView) headerLayout.findViewById(R.id.nav_header_username);
         nav_text_username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("点击了去登录");
                 goUserInfoOrLogin();
             }
         });
         nav_tes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("点击了去登录");
                 goUserInfoOrLogin();
             }
         });
+
+        nav_listview = (ListView) findViewById(R.id.nav_listview);
     }
 
     //ActionBar右上角组件
@@ -183,13 +202,18 @@ public class MainActivity extends AppCompatActivity
         happy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction("android.intent.action.VIEW");
+                Uri content_url = Uri.parse("https://www.qiushibaike.com/");
+                intent.setData(content_url);
+                startActivity(intent);
 
             }
         });
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                detailsDialog();
             }
         });
         actionBar.setOnClickListener(new View.OnClickListener() {
@@ -203,9 +227,6 @@ public class MainActivity extends AppCompatActivity
 
     //获取主界面组件
     private void findView() {
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         content_remark = (TextView) findViewById(R.id.content_remark);
         content_text1 = (TextView) findViewById(R.id.content_text1);
@@ -237,6 +258,7 @@ public class MainActivity extends AppCompatActivity
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("userInfo", mInfo);
                 bundle.putSerializable("rowid", rowID);
+                bundle.putSerializable("light", appLight);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
@@ -256,7 +278,7 @@ public class MainActivity extends AppCompatActivity
                 //调用方法对内容进行验证
                 ResultSimple resultSimple = ValidateUtils.msIsLengthRule(mtext, 2, 2000);
                 if (!resultSimple.isBoolean()) {
-                    mhandler.obtainMessage(0, resultSimple.getMessage()).sendToTarget();
+                    mhandler.obtainMessage(0, "留言内容" + resultSimple.getMessage()).sendToTarget();
                     return;
                 }
 
@@ -334,6 +356,18 @@ public class MainActivity extends AppCompatActivity
             //提示
             else if (msg.what == 4) {
                 content_remark.setText(msg.obj.toString());
+            }
+            //获取侧滑菜单成功
+            else if (msg.what == 5) {
+                navigationView.getMenu().clear();
+                nav_listview.setVisibility(View.VISIBLE);
+                setMenuToListView();
+            }
+            //获取侧滑菜单失败
+            else if (msg.what == 6) {
+                nav_listview.setVisibility(View.GONE);
+                navigationView.inflateMenu(R.menu.activity_main_drawer);
+                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
             }
         }
     };
@@ -583,6 +617,59 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
+     * 从服务器获取菜单
+     * 同步方式去获取侧滑菜单选项
+     */
+    public void findMenu() {
+
+        Thread thread = new Thread(new Runnable() {
+
+            //step 1: 同样的需要创建一个OkHttpClick对象
+            OkHttpClient okHttpClient = new OkHttpClient();
+
+            //step 2: 创建  FormBody.Builder
+            FormBody formBody = new FormBody.Builder()
+                    .build();
+
+            //step 2: 创建请求
+            Request request = new Request.Builder().url(StaticData.MAINACTIVITY_URL_MENU)
+                    .post(formBody)
+                    .build();
+
+            @Override
+            public void run() {
+                try {
+                    Response response = okHttpClient.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        System.out.println("请求成功");
+                        ResponseBody s = response.body();
+                        String responsestr = s.string();
+
+                        //对服务器返回的List进行JSON
+                        ResultListData<SysMenu> resultListData = JSON.parseObject(responsestr, new TypeReference<ResultListData<SysMenu>>() {
+                        });
+                        if (resultListData.isSuccess()) {
+                            menutList = resultListData.getList();
+                            System.out.println("menutList输出：" + menutList);
+                            mhandler.obtainMessage(5).sendToTarget();
+                        } else {
+                            mhandler.obtainMessage(6, resultListData.getMessage()).sendToTarget();
+                        }
+                    } else {
+                        System.out.println("请求失败");
+                        mhandler.obtainMessage(6, getString(R.string.mainactivity_tips_serviceexcetion)).sendToTarget();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    mhandler.obtainMessage(6, getString(R.string.mainactivity_tips_serviceexcetion2)).sendToTarget();
+                }
+            }
+        });
+        thread.start();
+    }
+
+    /**
      * 发表
      * 同步方式去提交到服务器
      */
@@ -684,12 +771,14 @@ public class MainActivity extends AppCompatActivity
         appLight = str;
 
         if (getString(R.string.mainactivitu_actionbar_white).equals(str)) {
+            nav_listview.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
             navigationView.setBackgroundColor(getResources().getColor(R.color.nav_back_color_nig));
             drawer.setBackgroundColor(getResources().getColor(R.color.MainActivityBackColor_nig));
             light.setText(getString(R.string.mainactivitu_actionbar_black));
         } else if (getString(R.string.mainactivitu_actionbar_black).equals(str)) {
             drawer.setBackgroundColor(Color.WHITE);
             navigationView.setBackgroundColor(Color.WHITE);
+            nav_listview.setBackgroundColor(Color.WHITE);
             light.setText(getString(R.string.mainactivitu_actionbar_white));
         }
     }
@@ -764,6 +853,7 @@ public class MainActivity extends AppCompatActivity
                 .show();
     }
 
+    //右上角弹出菜单
     private void actionBarMenu() {
 
         PopupWindow popWnd = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -778,6 +868,41 @@ public class MainActivity extends AppCompatActivity
         //popWnd.showAsDropDown(actionBar);
         //如果窗口存在，则更新
         // popWnd.update();
+    }
+
+    //填充侧滑页面菜单
+    private void setMenuToListView() {
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        for (SysMenu wordsInfo : menutList) {
+            Map<String, Object> listItem = new HashMap<String, Object>();
+            listItem.put("menu", wordsInfo.getMenuName());
+            listItems.add(listItem);
+        }
+
+        //定义特定的适配器
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems, R.layout.listview_menu,
+                new String[]{"menu"},
+                new int[]{R.id.menu_listview_btn});
+
+        //为ListView添加是配置
+        nav_listview.setAdapter(simpleAdapter);
+    }
+
+    //关于
+    private void detailsDialog() {
+        LinearLayout mainView = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_book_details, null);
+        TextView text = (TextView) mainView.findViewById(R.id.dialog_bookdetails_text);
+        text.setText(R.string.about);
+        new AlertDialog.Builder(this)
+                .setIcon(R.mipmap.applogo)
+                .setTitle(getString(R.string.menu_about))
+                .setView(mainView)
+                .setNegativeButton("关闭", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .create().show();
     }
 
 }

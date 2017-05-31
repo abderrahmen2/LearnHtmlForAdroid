@@ -9,24 +9,27 @@ public class StaticData {
     //服务器地址
     private final static String SERVICE_URL = "http://192.168.23.1:1101";
 
+
+    //请求菜单
+    public final static String MAINACTIVITY_URL_MENU = SERVICE_URL + "/learn-html/learnhtml/sysmenu/learnhtml!findmenu.action";
     //请求获取知识内容URL
-    public final static String MAINACTIVITY_URL_GETCONTENT = SERVICE_URL+"/learn-html/learnhtml/content/learnhtml!findContent.action";
+    public final static String MAINACTIVITY_URL_GETCONTENT = SERVICE_URL + "/learn-html/learnhtml/content/learnhtml!findContent.action";
     //主界面发表留言URL
-    public final static String MAINACTIVITY_URL_INSERTWORDS = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!insertWords.action";
+    public final static String MAINACTIVITY_URL_INSERTWORDS = SERVICE_URL + "/learn-html/learnhtml/words/learnhtml!insertWords.action";
     //登记用户URL
-    public final static String REGISTER_URL_INSERTUSER = SERVICE_URL+"/learn-html/learnhtml/user/learnhtml!insert.action";
+    public final static String REGISTER_URL_INSERTUSER = SERVICE_URL + "/learn-html/learnhtml/user/learnhtml!insert.action";
     //更新用户资料URL
-    public final static String REGISTER_URL_UPDATEUSER = SERVICE_URL+"/learn-html/learnhtml/user/learnhtml!update.action";
+    public final static String REGISTER_URL_UPDATEUSER = SERVICE_URL + "/learn-html/learnhtml/user/learnhtml!update.action";
     //登录的URL
-    public final static String LOGIN_URL_LOGIN = SERVICE_URL+"/learn-html/learnhtml/user/learnhtml!login.action";
+    public final static String LOGIN_URL_LOGIN = SERVICE_URL + "/learn-html/learnhtml/user/learnhtml!login.action";
     //按组号查看留言内容URL
-    public final static String WORDS_URL_SELECTWORDSBYROWID = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
+    public final static String WORDS_URL_SELECTWORDSBYROWID = SERVICE_URL + "/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
     //回复留言URL
-    public final static String WORDS_URL_INSERTWORDS = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!insertWords.action";
+    public final static String WORDS_URL_INSERTWORDS = SERVICE_URL + "/learn-html/learnhtml/words/learnhtml!insertWords.action";
     //删除留言内容URL
-    public final static String WORDS_URL_DELETEWORDS = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!deleteWords.action";
+    public final static String WORDS_URL_DELETEWORDS = SERVICE_URL + "/learn-html/learnhtml/words/learnhtml!deleteWords.action";
     //按组号和用户名查找留言URL
-    public final static String WORDS_URL_SELECTWORDSFORUSER = SERVICE_URL+"/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
+    public final static String WORDS_URL_SELECTWORDSFORUSER = SERVICE_URL + "/learn-html/learnhtml/words/learnhtml!selectWordsForUser.action";
 
 
     //内容请求组号
@@ -47,6 +50,7 @@ public class StaticData {
     public final static int HTML_KUANGJIA_CODE = 21500;         //HTML框架
     public final static int HTML_ZONGJIE_CODE = 21600;          //HTML总结
 
+    public final static int HTML5_XINTEXING_CODE = 21701;       //HTML5新特性
     public final static int HTML5_JIAOCHENG_CODE = 21700;       //HTML5教程
     public final static int HTML5_LIULANQI_CODE = 21800;        //HTML5浏览器
     public final static int HTML5_XINYUANSU_CODE = 21900;       //HTML5新元素
@@ -74,4 +78,15 @@ public class StaticData {
 
     public final static int MAINACTIVITY_WORDS_GO = 1;      //主界面留言成功标示
     public final static int MAINACTIVITY_CLOSE_GO = 2;      //退出程序标示
+
+    //书籍推荐，购买书籍链接地址
+    public final static String BOOK1_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.36.1fKbUD&id=521584787158&ns=1&abbucket=9";
+    public final static String BOOK2_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.27.7Y8zrV&id=521538217847&ns=1&abbucket=9";
+    public final static String BOOK3_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.167.7Y8zrV&id=550395676904&ns=1&abbucket=9";
+    public final static String BOOK4_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.229.7Y8zrV&id=541109667693&ns=1&abbucket=9";
+    public final static String BOOK5_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.250.7Y8zrV&id=21803540523&ns=1&abbucket=9";
+    public final static String BOOK6_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.306.7Y8zrV&id=526190552253&ns=1&abbucket=9";
+    public final static String BOOK7_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.30.7Y8zrV&id=547422839233&ns=1&abbucket=9";
+    public final static String BOOK8_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.44.7Y8zrV&id=540812222399&ns=1&abbucket=9#";
+    public final static String BOOK9_URL = "https://detail.tmall.com/item.htm?spm=a230r.1.14.113.7Y8zrV&id=540286336090&ns=1&abbucket=9";
 }

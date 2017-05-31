@@ -331,7 +331,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getString(R.string.activity_btn_update).equals(btnRegister.getText().toString().trim())) {
+        if (getString(R.string.activity_btn_save).equals(btnRegister.getText().toString().trim())) {
             exitDialog(getString(R.string.activity_dialog_tips), getString(R.string.activity_dialog_gonow), getString(R.string.activity_dialog_goletter));
         } else {
             exitDialog(getString(R.string.activity_dialog_tipsgo), getString(R.string.activity_dialog_gonow2), getString(R.string.activity_dialog_goletter2));

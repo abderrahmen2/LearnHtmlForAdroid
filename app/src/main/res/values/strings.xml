@@ -204,6 +204,63 @@
     <string name="bookactivity_dialog_message">是否确认退出书籍推荐区？</string>
     <string name="bookactivity_dialog_gonow">离开</string>
     <string name="bookactivity_dialog_goletter">稍后离开</string>
+    <string name="bookactivity_book1_name">疯狂HTML5</string>
+    <string name="bookactivity_book1_details">如今HTML 5规范呼之欲出，各浏览器厂商更早已摩拳擦掌，纷纷推出支持HTML5规范的浏览器：Firefox、Opera、Chrome等浏览器早已很好地支持各种HTML 5规范，微软也宣布IE9将会更好地支持CSS 3、SVG和HTML 5等新规范，这些迹象表明：HTML 5时代到来了。
+    《疯狂HTML 5/CSS3/JavaScript讲义》是一本全面介绍HTML 5、CSS3和JavaScript前端开发技术的图书，系统地介绍了HTML 5常用的元素和属性、HTML 5的表单元素和属性、HTML5的绘图支持、HTML 5的多媒体支持、CSS3的功能和用法、最前沿的变形与动画功能等。除此之外，本书还系统地介绍了JavaScript编程知识，包括JavaScript基本语法、DOM编程，以及HTML5新增的本地存储、离线应用、JavaScript多线程、客户端通信支持、WebSocket编程等。
+    《疯狂HTML5/CSS3/JavaScript讲义》的定位是一本前端开发的“实战性”图书，因此在介绍各知识点时并不是简单地停留在知识点层面阐述，而是结合了大量实例来让读者对照练习、学以致用。本书最后还提供了一个基于HTML5技术的小游戏：疯狂俄罗斯方块。该游戏综合运用了HTML5的绘图支持、客户端存储等技术，具有较高的参考价值。本书提供了配套的答疑网站，如果读者在阅读本书时遇到了技术问题，可以登录疯狂Java联盟发帖，笔者将会及时予以解答。
+    </string>
+
+    <string name="bookactivity_book2_name">HTML5从入门到精通</string>
+    <string name="bookactivity_book2_details">《HTML 5从入门到精通》系统、全面地讲解了HTML语言及其最新版本HTML 5的新功能与新特性，技术新颖实用。书中所有知识点均结合实例进行讲解，方便读者动手实践。同时在每章的最后还设置了习题，通过这些习题可以对本章学到的知识进行巩固。本书不仅能够使读者系统而全面地学习理论知识，还能满足读者充分实践的需求。
+    全书共分23章，包括HTML基础、HTML文件基本标记、设计网页文本内容、使用列表、超链接、使用图像、表格的应用、层标记——div、编辑表单、多媒体页面、HTML 5的新特性、HTML 5与HTML 4的区别、HTML 5的结构、HTML 5中的表单、HTML 5中的文件与拖放、多媒体播放、绘制图形、数据存储、离线应用程序、使用Web Worker处理线程、通信API、获取地理位置信息、旅游信息网前台页面。书中所有知识点都结合具体实例进行介绍，涉及的程序代码给出了详细的注释，可以使读者轻松领会HTML语言程序开发的精髓，快速提高开发技能。
+    </string>
+
+    <string name="bookactivity_book3_name">HTML5基础知识</string>
+    <string name="bookactivity_book3_details">《HTML5基础知识、核心技术与前沿案例 》是一本引导初、中级学习者深入了解并有效掌握HTML5核心技巧的技术实战书籍，全书采用“基础知识+案例驱动”的双轨模式，精心安排了大量经典的HTML5设计实战案例，包括页面元素与布局、动画与动效、图形与图像、交互操作、页面组件、音频与视频、响应式设计等，并精选了微信小游戏、创意网站等综合性的前沿交互应用。实例基本涵盖了初、中级学习者在实战中几乎可能遇到的所有问题，展示了各种流行的互动设计理念，让读者能够轻松地学习基础知识，有效掌握各种核心技巧，快速上手前沿应用开发，并通过HTML5发现交互设计的乐趣。
+    </string>
+
+    <string name="bookactivity_book4_name">HTML5+CSS3前端技术</string>
+    <string name="bookactivity_book4_details">本书在HTML和CSS基础上，系统地讲述了HTML5和CSS3的Web前端开发技术，内容覆盖HTML5新增的元素、属性与API，以及CSS3使用广泛、应用成熟的模块，力图帮助读者快速掌握最新的Web前端开发技术。
+        全书主要分为3部分。第1部分为HTML5及其应用，包括第1章至第12章，主要介绍HTML和HTML5，内容包括HTML基础元素，HTML5新增的元素和canvas、SVG、Web Workers、Web Storage 等新增的API。第2部分为CSS3及其应用，包括第13章至第15章，主要介绍CSS和CSS3，内容包括基本选择器，复合选择器，用CSS设置元素样式，也包括CSS3的盒模型、CSS3布局、图像边框等内容。第3部分是第16章，为综合案例，介绍一个网站示例。
+        本书知识全面，案例丰富，易学易用，将知识点融于200余个案例之中，配有全部代码和素材资源，方便读者学习和掌握网站前端开发技术。
+    </string>
+
+    <string name="bookactivity_book5_name">HTML网页制作</string>
+    <string name="bookactivity_book5_details">HTML是网页制作的基础语言，是每个网页制作者必须掌握的内容。刘西杰编写的《HTML\CSS\JavaScript网页制作从入门到精通》系统、全面地介绍了各种HTML网页制作标记，不仅包括基本的语法、说明和范例演示，还穿插了在Dreamweaver中应用HTML的范例效果，便于读者***好地利用HTML完成网页中各部分的细节制作。
+     全书共分为18章和4个附录，重点介绍使用HTML进行网页制作的方方面面，同时讲解了目前流行的Web标准与CSS网页布局实例，以及基于JavaScript语言的网页***制作。为了便于读者学习，附录中汇集了经过作者精心整理的网页制作技巧60多例。
+    </string>
+
+
+    <string name="bookactivity_book6_name">HTML 5与CSS3权威指南</string>
+    <string name="bookactivity_book6_details">《HTML 5与CSS 3权威指南（第3版 下册）》是HTML 5与CSS 3领域公认的标杆之作，被读者誉为“系统学习HTML 5与CSS 3的著作”和“Web前端工程师案头必备图书之一”。
+        前两版累计印刷超过15次，网络书店评论超过8000条，98%以上的评论都是五星级的好评。不仅是HTML 5与CSS 3图书领域当之无愧的领头羊，而且在整个原创计算机图书领域是佼佼者。
+        第3版首先从技术的角度根据的HTML 5和CSS 3标准进行了更新和补充，其次根据读者的反馈对内容的组织结构和写作方式做了进一步的优化，内容更经典，阅读体验也更好。
+    </string>
+
+    <string name="bookactivity_book7_name">HTML5动画制作神器</string>
+    <string name="bookactivity_book7_details">本书详细地介绍了Edge Animate CC中的所有知识点，以通俗易懂的文字、精美的案例和新颖的版式讲解各种类型交互动画的制作方法和技巧，将Edge Animate CC的知识点与实际应用案例相结合，使读者易学易用、快速掌握使用Edge Animate CC制作交互动画的相关知识。
+        \n\t\t全书共分为11章，分别讲解初识Edge Animate、掌握Edge Animate的基本操作、图形的创建与操作、添加文本和格式化文本、使用时间轴制作动画、使用触发器动作、符号元素在动画中的使用、HTML和CSS样式在Edge Animate中的应用、使用JavaScript和jQuery控制动画、Edge Animate动画制作技巧和Edge Animate动画的发布与输出等内容。在内容安排上，从基础出发，讲解Edge Animate的各个知识点，深入浅出，使读者能够在最短的时间里轻松掌握各种类型交互式动画的制作流程和方法。
+    </string>
+
+    <string name="bookactivity_book8_name"> HTML5移动Web开发实战</string>
+    <string name="bookactivity_book8_details">本书是腾讯公司前资深前端工程师呕心沥血之作，移动Web开发者必读佳品
+        全方位展现用HTML5开发移动Web和应用的完整过程，以及各种策略和技巧
+        赠送270分钟高清配套教学视频
+        详细讲解了HTML5的新增功能、CSS3核心概念、WebPage、WebApp，触摸屏API、地理定位、WebSocket、通信基础、实时Web技术、感官世界、history和导航等内容
+        从实战开发的角度，详细介绍了jQueryMobile、SenchaTouch、Bootstrap和PhoneGap等移动Web开发框架的应用
+        注重实战，详细介绍了175个实例和3个综合案例，几乎每个知识点都配备了完整可运行的示例代码，并对重点内容专门录制了高清配套教学视频辅助读者学习
+    </string>
+
+    <string name="bookactivity_book9_name">HTML5游戏开发案例教程 </string>
+    <string name="bookactivity_book9_details">本书是HTML5游戏开发课程教材。全书分为6章，内容包括构建Canvas开发环境、Canvas基本功能、CreateJS函数库、简单效果案例、
+        HTML5小型游戏、太空英雄大战游戏。全书每章内容与实例紧密结合，并与极客学院网站视频教学课程相结合，学生可以扫描二维码
+        进行视频课程学习，有助于学生随时理解知识、应用知识，使得视频、书籍和课堂紧密配合，达到学以致用的目的。
+    </string>
+
+    <!-- 关于 -->
+    <string name="about">HTML5学习基地是一款为广大初学者准备的App；App内无广告、无收费功能，是一款完全免费、完全开放
+    学习软件。本软件由陈中雨先生开发并提供技术支持。
+    </string>
 
 
 </resources>
