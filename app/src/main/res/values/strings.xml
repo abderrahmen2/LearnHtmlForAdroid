@@ -1,17 +1,2225 @@
 <resources>
     <!--content-->
     <string name="content_jiaocheng_title">HTML简介</string>
-    <string name="content_jiaocheng_text">
+    <string name="content_jiaocheng_text1">
         \t\t\t\t HTML5是HTML(超文本标记语言,英文：HyperText Markup Language，HTML)下一个主要的修订版本，现在仍处于发展阶段。目标是取代1999年所制定的HTML 4.01和XHTML 1.0标准，
         以期能在互联网应用迅速发展的时候，使网络标准达到符合当代的网络需求。广义论及HTML5时，实际指的是包括HTML、CSS和JavaScript在内的一套技术组合。它希望能够减少浏览器对于需要插件的丰富性网络应用服务
         （plug-in-based rich internet application，RIA)，如Adobe Flash、Microsoft Silverlight，与Oracle JavaFX的需求，并且提供更多能有效增强网络应用的标准集。具体来说，HTML5添加了许多新
-        的语法特征，其中包括\n
+        的语法特征，其中包括:\n
         &lt; video &gt; \n &lt; audio &gt; \n &lt;canvas&gt; \n 三个元素，同时集成了SVG内容。这些元素是为了更容易的在网页中添加和处理多媒体和图片内容而添加的。其它新的元素包括
         &lt;section&gt;, &lt;article &gt;, &lt;header &gt;,
         和&lt; nav &gt; 是为了丰富文档的数据内容。新的属性的添加也是为了同样的目的。同时也有一些属性和元素被卸载掉了。一些元素，像&lt;a&gt;, 和&lt;menu&gt;被修改，重新定义或标准化了。同时APIs和DOM已经成为HTML5中的基础部
         分了。
         \n\t\t\t\t HTML5还定义了处理非法文档的具体细节，使得所有浏览器和客户端程序能够一致地处理语法错误；HTML5会在后面中具体介绍，在此就不说明了。
     </string>
+
+
+    <string name="content_bianjiqi_title">html编辑器</string>
+    <string name="content_bianjiqi_text1">
+    　　现在有HTML编辑器有很多 ，这里为大家推荐几款常用的编辑器：\n
+　　Notepad++：https://notepad-plus-plus.org/ \n
+　　Sublime Text：http://www.sublimetext.com/ \n
+　　HBuilder：http://www.dcloud.io/ \n
+你可以从以上软件的官网中下载对应的软件，按步骤安装即可。接下来我们将为大家演示如何使用Notepad++工具来创建 HTML 文件，其他两个工具操作步骤类似。\n
+　　Notepad++是 Windows操作系统下的一套文本编辑器(软件版权许可证: GPL)，有完整的中文化接口及支持多国语言编写的功能(UTF8技术)。\n\n
+步骤 1:　新建 HTML 文件\n
+　　在 Notepad++ 安装完成后，选择" 文件(F)-&gt;新建(N) "，在新建的文件中输入以下代码：
+    </string>
+
+    <string name="content_bianjiqi_html">
+&lt;DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt;\n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;百度一下&lt;/title&gt;\n
+&lt;head&gt;\n
+&lt;body&gt; \n
+　　&lt;h1&gt;我的第一个标题&lt;/h1&gt;\n
+　　&lt;p&gt;我的第一个段落。&lt;/p&gt; \n
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+
+    <string name="content_bianjiqi_text2">
+步骤 2: 另存为 HTML 文件\n
+\t\t\t\t选择" 文件(F)->另存为(A) "，文件名为 runoob.html；当您保存 HTML 文件时，既可以使用 .htm 也可以使用 .html 扩展名。两者没有区别，完全根据您的喜好。在一个容易记忆的文件夹中保存这个文件，比如 runoob。\n\n
+
+步骤 3: 在浏览器中运行这个 HTML 文件\n
+　　启动您的浏览器，然后选择"文件"菜单的"打开文件"命令，或者直接在文件夹中双击您的 HTML 文件。\n
+运行显示结果类似如下:
+    </string>
+
+    <string name="content_yuansu_title">HTML元素</string>
+    <string name="content_yuansu_text1">
+        HTML 元素语法：\n
+　HTML 元素以开始标签起始\n
+　HTML 元素以结束标签终止\n
+　元素的内容是开始标签与结束标签之间的内容\n
+　某些 HTML 元素具有空内容（empty content）\n
+　空元素在开始标签中进行关闭（以开始标签的结束而结束）\n
+　大多数 HTML 元素可拥有属性\n
+
+嵌套的 HTML 元素：\n
+HTML 文档由嵌套的 HTML 元素构成。\n
+HTML 文档实例\n\n
+    </string>
+    <string name="content_yuansu_text2">
+        HTML 实例解析\n
+
+&lt;p&gt; 元素:\n
+&lt;p&gt;这是第一个段落。&lt;/p&gt;\n
+这个 &lt;p&gt; 元素定义了 HTML 文档中的一个段落。这个元素拥有一个开始标签 &lt;p&gt; 以及一个结束标签 &lt;/p&gt;.元素内容是: 这是第一个段落。\n\n
+&lt;body&gt; 元素:\n
+&lt;body&gt;\n
+　　&lt;p&gt;这是第一个段落。&lt;/p&gt;\n
+&lt;/body&gt;\n
+&lt;body&gt; 元素定义了 HTML 文档的主体。这个元素拥有一个开始标签 &lt;body&gt; 以及一个结束标签 &lt;/body&gt;。元素内容是另一个 HTML 元素（p 元素）。\n\n
+&lt;html&gt; 元素：\n
+&lt;html&gt;\n
+&lt;body&gt;\n
+　　&lt;p&gt;这是第一个段落。&lt;/p&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+&lt;html&gt; 元素定义了整个 HTML 文档。这个元素拥有一个开始标签 &lt;html&gt; ，以及一个结束标签 &lt;/html&gt;.元素内容是另一个 HTML 元素（body 元素）。
+    </string>
+
+
+    <string name="content_biaoti_title">HTML标题</string>
+    <string name="content_biaoti_text1">
+        标题（Heading）是通过 \n
+　　&lt;h1&gt; &lt;/h1&gt;\n
+　　&lt;h2&gt; &lt;/h2&gt;\n
+　　&lt;h3&gt; &lt;/h3&gt;\n
+　　&lt;h4&gt; &lt;/h4&gt;\n
+　　&lt;h5&gt; &lt;/h5&gt;\n
+　　&lt;h6&gt;&lt;/h6&gt; \n
+标签进行定义的。其中&lt;h1&gt; 定义最大的标题，&lt;h6&gt; 定义最小的标题。\n
+标题的重要性：\n
+　　请确保将 HTML 标题 标签只用于标题。不要仅仅是为了生成粗体或大号的文本而使用标题。搜索引擎使用标题为您的网页的结构和内容编制索引。因为用户可以通过标题来快速浏览您的网页，所以用标题来呈现文档结构是很重要的。应该将 h1 用作主标题（最重要的），其后是 h2（次重要的），再其次是 h3，以此类推。\n\n
+
+实例：\n
+新建一个HTML页面输入以下代码：
+    </string>
+    <string name="content_biaoti_html">
+        &lt;!DOCTYPE&gt;\n
+&lt;html&gt;\n
+&lt;head&gt;\n
+　　&lt;title&gt;测试标题&lt;/title&gt;\n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+　　&lt;h1&gt;这是一个标题。&lt;/h1&gt; \n
+　　&lt;h2&gt;这是一个标题。&lt;/h2&gt;\n
+　　&lt;h3&gt;这是一个标题。&lt;/h3&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+    </string>
+    <string name="content_biaoti_text2">用浏览器运行结果如下:</string>
+
+
+    <string name="content_lianjie_title">HTML 链接</string>
+    <string name="content_lianjie_text1">
+        　　HTML 使用超级链接与网络上的另一个文档相连。几乎可以在所有的网页中找到链接。点击链接可以从一张页面跳转到另一张页面。\n
+
+HTML 超链接（链接）:\n
+　　HTML使用标签 &lt;a&gt;来设置超文本链接。超链接可以是一个字，一个词，或者一组词，也可以是一幅图像，您可以点击这些内容来跳转到新的文档或者当前文档中的某个部分。当您把鼠标指针移动到网页中的某个链接上时，箭头会变为一只小手。在标签&lt;a&gt; 中使用了href属性来描述链接的地址。默认情况下，链接将以以下形式出现在浏览器中：\n
+　　1.一个未访问过的链接显示为蓝色字体并带有下划线。\n
+　　2.访问过的链接显示为紫色并带有下划线。\n
+　　3.点击链接时，链接显示为红色并带有下划线。\n
+注意：如果为这些超链接设置了 CSS 样式，展示样式会根据 CSS 的设定而显示。\n\n
+
+HTML 链接语法\n
+　链接的 HTML 代码很简单。它类似这样：\n
+　　&lt;a href="url"&gt;链接文本&lt;/a&gt;\n
+　href 属性描述了链接的目标。\n
+    </string>
+    <string name="content_lianjie_text2">
+        HTML 链接 - target 属性\n
+　　使用 target 属性，你可以定义被链接的文档在何处显示。\n
+下面的这行会在新窗口打开文档：\n
+实例：\n
+　&lt;a href="http://www.baidu.com/" target="_blank"&gt;访问百度&lt;/a&gt;\n\n
+
+HTML 链接- id 属性\n
+　　id属性可用于创建在一个HTML文档书签标记。\n
+提示: 书签是不以任何特殊的方式显示，在HTML文档中是不显示的，所以对于读者来说是隐藏的。\n
+实例\n
+在HTML文档中插入ID:\n
+　　&lt;a id="tips"&gt;有用的提示部分&lt;/a&gt;\n
+在HTML文档中创建一个链接到"有用的提示部分(id="tips"）"：\n
+　　&lt;a href="#tips"&gt;访问有用的提示部分&lt;/a&gt;\n
+或者，从另一个页面创建一个链接到"有用的提示部分(id="tips"）"：\n
+　　&lt;a href="http://www.runoob.com/html/html-links.html#tips"&gt;\n
+访问有用的提示部分&lt;/a&gt;
+    </string>
+
+
+    <string name="content_toubu_title">HTML头部&lt;head&gt;</string>
+    <string name="content_toubu_text1">
+HTML &lt;head&gt; 元素：\n
+&lt;head&gt; 元素包含了所有的头部标签元素。在 &lt;head&gt;元素中你可以插入脚本（scripts）, 样式文件（CSS），及各种meta信息。可以添加在头部区域的元素标签如下：\n
+　　&lt;title&gt;\n
+　　&lt;style&gt;\n
+　　&lt;meta&gt;\n
+　　&lt;link&gt;\n
+　　&lt;script&gt;\n
+　　&lt;noscript&gt;\n
+　　&lt;base&gt;\n\n
+
+HTML &lt;title&gt; 元素：\n
+　　&lt;title&gt; 标签定义了不同文档的标题。\n
+　　&lt;title&gt; 在 HTML/XHTML 文档中是必须的。\n
+&lt;title&gt; 元素:\n
+（1）定义了浏览器工具栏的标题。\n
+（2）当网页添加到收藏夹时，显示在收藏夹中的标题。\n
+（3）显示在搜索引擎结果页面的标题。\n\n
+
+HTML &lt;base&gt; 元素：\n
+　　&lt;base&gt; 标签描述了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接。\n\n
+
+HTML &lt;link&gt; 元素：\n
+　　&lt;link&gt; 标签定义了文档与外部资源之间的关系。&lt;link&gt; 标签通常用于链接到样式表。\n\n
+
+HTML &lt;style&gt; 元素：\n
+　　&lt;style&gt; 标签定义了HTML文档的样式文件引用地址。在&lt;style&gt; 元素中你也可以直接添加样式来渲染 HTML 文档。\n\n
+
+HTML &lt;meta&gt; 元素：\n
+　　meta标签描述了一些基本的元数据。&lt;meta&gt; 标签提供了元数据.元数据也不显示在页面上，但会被浏览器解析。META 元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。元数据可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务。&lt;meta&gt; 一般放置于 &lt;head&gt; 区域。\n\n
+
+HTML &lt;script&gt; 元素：\n
+　　&lt;script&gt;标签用于加载JS脚本文件。\n\n
+
+以下是综合实例：
+    </string>
+    <string name="content_toubu_html">
+ &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;!-- 为搜索引擎定义关键词: --&gt;\n
+　　&lt;meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript"&gt;\n
+　　&lt;!-- 为网页定义描述内容: --&gt;\n
+　　&lt;meta name="description" content="免费 Web  编程 教程"&gt;\n
+　　&lt;!-- 定义网页作者: --&gt;\n
+　　&lt;meta name="author" content="Novice"&gt;\n
+　　&lt;!-- 每30秒中刷新当前页面: --&gt;\n
+　　&lt;meta http-equiv="refresh" content="30"&gt;\n
+
+　　&lt;base href="http://www.runoob.com/images/" target="_blank"&gt;\n
+　　link rel="stylesheet" type="text/css" href="mystyle.css"&gt;\n
+　　&lt;title&gt;我是标题&lt;/title&gt;\n\n
+
+　　&lt;!-- CSS样式 --&gt;\n
+　　&lt;style type="text/css"&gt;\n
+　　　　.mybody {background-color:yellow}\n
+　　　　.test {color:blue}\n
+　　&lt;/style&gt;\n\n
+
+　　&lt;!-- 自定义js --&gt;\n
+　　&lt;script type="text/javascript"&gt;\n
+　　function(){\n
+　　　　var i=10;\n
+　　　　if (i&lt;5)\n
+  　　　{\n
+  　　　　　// some code\n
+  　　　}\n
+　　}\n
+　&lt;/script&gt;\n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+　　　　这里写主体内容\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+    </string>
+    <string name="content_toubu_text2">这只是个定义或者引入内容而已，故没有运行结果图。</string>
+
+
+    <string name="content_biaoge_title">HTML表格</string>
+    <string name="content_biaoge_text1">
+        　　表格由 &lt;table&gt; 标签来定义。每个表格均有若干行（由 &lt;tr&gt; 标签定义），每行被分割为若干单元格（由 &lt;td&gt; 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。\n\n
+
+表格边框属性：\n
+表格边框属性用 border表示，例如：\n
+　&lt;table border="1"&gt;\n
+　&lt;/table&gt;\n
+这就表示这个表格显示边框，并且边框显示度为1。如果不定义边框属性，表格将不显示边框。有时这很有用，但是大多数时候，我们希望使用边框属性来显示一个带有边框的表格。\n\n
+
+表格表头：\n
+表格的表头使用 &lt;th&gt; 标签进行定义。大多数浏览器会把表头显示为粗体居中的文本。\n\n
+
+实例：
+    </string>
+    <string name="content_biaoge_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;body&gt;\n
+　　&lt;table border="1"&gt; \n
+　　　　&lt;tr&gt; \n
+　　　　　　&lt;th&gt;Header 1&lt;/th&gt; \n
+　　　　　　&lt;th&gt;Header 2&lt;/th&gt; \n
+　　　　&lt;/tr&gt; \n
+　　　　&lt;tr&gt; \n
+　　　　　　&lt;td&gt;row 1, cell 1&lt;/td&gt;\n
+　　　　　　&lt;td&gt;row 1, cell 2&lt;/td&gt; \n
+　　　　&lt;/tr&gt; \n
+　　　　&lt;tr&gt;\n
+　　　　　　&lt;td&gt;row 2, cell 1&lt;/td&gt; \n
+　　　　　　&lt;td&gt;row 2, cell 2&lt;/td&gt;\n
+　　　　&lt;/tr&gt;\n
+　　&lt;/table&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+    </string>
+    <string name="content_biaoge_text2">运行结果如下图所示：</string>
+    <string name="content_biaoge_text3">
+        表格其他属性：\n
+&lt;caption&gt; 定义表格标题\n
+&lt;colgroup&gt; 定义表格列的组\n
+&lt;col&gt;  定义用于表格列的属性\n
+&lt;thead&gt; 定义表格的页眉\n
+&lt;tbody&gt;  定义表格的主体\n
+&lt;tfoot&gt;  定义表格的页脚\n
+    </string>
+
+    <string name="content_tupian_title">HTML图片</string>
+    <string name="content_tupian_text1">
+ 图像标签&lt;img&gt;和源属性（src）：\n
+　　在 HTML 中，图像由&lt;img&gt; 标签定义。&lt;img&gt; 是空标签，意思是说，它只包含属性，并且没有闭合标签。要在页面上显示图像，你需要使用源属性（src）。src 指 "source"。源属性的值是图像的 URL 地址。\n\n
+定义图像的语法是：\n
+&lt;img src="url" alt="some_text"&gt;\n
+URL 指存储图像的位置。如果名为 "pulpit.jpg" 的图像位于 www.runoob.com 的 images 目录中，那么其 URL 为http://www.runoob.com/images/pulpit.jpg。浏览器将图像显示在文档中图像标签出现的地方。如果你将图像标签置于两个段落之间，那么浏览器会首先显示第一个段落，然后显示图片，最后显示第二段。\n\n
+
+HTML 图像- Alt属性：\n
+alt 属性用来为图像定义一串预备的可替换的文本，替换文本属性的值是用户定义的。\n
+例如：\n
+&lt;img src="boat.gif" alt="Big Boat"&gt;\n
+在浏览器无法载入图像时，替换文本属性告诉读者她们失去的信息。此时，浏览器将显示这个替代性的文本而不是图像。为页面上的图像都加上替换文本属性是个好习惯，这样有助于更好的显示信息，并且对于那些使用纯文本浏览器的人来说是非常有用的。\n\n
+
+HTML 图像- 设置图像的高度与宽度：\n
+height（高度） 与 width（宽度）属性用于设置图像的高度与宽度。\n
+属性值默认单位为像素:\n
+&lt;img src="pulpit.jpg" alt="Pulpit rock" width="304" height="228"&gt;\n
+提示: 指定图像的高度和宽度的一个很好的习惯。如果图像指定了高度宽度，页面加载时就会保留指定的尺寸。如果没有指定图片的大小，加载页面时有可能会破坏HTML页面的整体布局\n\n
+
+基本的注意事项 - 有用的提示：\n
+注意1: 假如某个 HTML 文件包含十个图像，那么为了正确显示这个页面，需要加载 11 个文件。加载图片是需要时间的，所以我们的建议是：慎用图片。\n
+注意2: 加载页面时，要注意插入页面图像的路径，如果不能正确设置图像的位置，浏览器无法加载图片，图像标签就会显示一个破碎的图片。\n\n
+
+实例：
+    </string>
+    <string name="content_tupian_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;测试引用本地图片&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+　　&lt;h2&gt;Norwegian Mountain Trip&lt;/h2&gt;\n
+　　&lt;img border="0" src="/myimg.png" alt="加载图片失败!" width="304" height="228"&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+    </string>
+    <string name="content_tupian_text2">运行结果如下图所示：</string>
+
+
+    <string name="content_qukuai_title">HTML区块</string>
+    <string name="content_qukuai_text1">
+        HTML 可以通过 &lt;div&gt; 和 &lt;span&gt;将元素组合起来。\n\n
+
+HTML 区块元素：\n
+　　大多数 HTML 元素被定义为块级元素或内联元素。块级元素在浏览器显示时，通常会以新行来开始（和结束）。\n
+实例: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;\n\n
+
+HTML 内联元素:\n
+　　内联元素在显示时通常不会以新行开始。\n
+实例: &lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;\n\n
+
+HTML &lt;div&gt; 元素:\n
+　　HTML &lt;div&gt; 元素是块级元素，它可用于组合其他 HTML 元素的容器。&lt;div&gt; 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。如果与 CSS 一同使用，&lt;div&gt; 元素可用于对大的内容块设置样式属性。\n
+&lt;div&gt; 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 &lt;table&gt; 元素进行文档布局不是表格的正确用法。&lt;table&gt; 元素的作用是显示表格化的数据。\n\n
+
+HTML &lt;span&gt; 与元素:\n
+　　HTML &lt;span&gt; 元素是内联元素，可用作文本的容器&lt;span&gt; 元素也没有特定的含义。当与 CSS 一同使用时，&lt;span&gt; 元素可用于为部分文本设置样式属性。\n\n
+
+下面是一个例子：
+    </string>
+    <string name="content_qukuai_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;HTML区块&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+　　&lt;p&gt;这是一些文本。&lt;/p&gt;\n
+　　&lt;div style="color:#0000FF"&gt;\n
+  　　　&lt;h3&gt;这是一个在 div 元素中的标题。&lt;/h3&gt;\n
+  　　　&lt;p&gt;这是一个在 div 元素中的文本。&lt;/p&gt;\n
+　　&lt;/div&gt;\n
+　　&lt;p&gt;这是一些文本。&lt;/p&gt;\n\n
+
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+    </string>
+    <string name="content_qukuai_text2">运行结果如下图所示：</string>
+
+
+    <string name="content_buju_title">HTML布局</string>
+    <string name="content_buju_text1">
+        网站布局：\n
+　　大多数网站会把内容安排到多个列中（就像杂志或报纸那样）。大多数网站可以使用 &lt;div&gt; 或者 &lt;table&gt; 元素来创建多列。CSS 用于对元素进行定位，或者为页面创建背景以及色彩丰富的外观。虽然我们可以使用HTML table标签来设计出漂亮的布局，但是table标签是不建议作为布局工具使用的 - 表格不是布局工具。\n\n
+
+HTML 布局 - 使用表格：\n
+　　使用 HTML &lt;table&gt; 标签是创建布局的一种简单的方式。\n
+大多数站点可以使用 &lt;div&gt; 或者 &lt;table&gt; 元素来创建多列。CSS 用于对元素进行定位，或者为页面创建背景以及色彩丰富的外观。即使可以使用 HTML 表格来创建漂亮的布局，但设计表格的目的是呈现表格化数据 ，表格不是布局工具；并且使用table给页面布局，对于后期维护或者要修改页面内容样式的难度非常大；所以现在大多数人都会使用&lt;div&gt;去给页面进行相应的布局。\n\n
+
+HTML 布局 - 使用&lt;div&gt; 元素：\n
+　　div 元素是用于分组 HTML 元素的块级元素，使用&lt;div&gt;对页面进行布局可以有很好的定位效果，并且对于后期维护也是很简单的，所以现在聪明想人都会使用&lt;div&gt;去给页面进行布局。\n\n
+
+HTML 布局 - 有用的提示：\n
+Tip1: 使用 CSS 最大的好处是，如果把 CSS 代码存放到外部样式表中，那么站点会更易于维护。通过编辑单一的文件，就可以改变所有页面的布局。如需学习更多有关 CSS 的知识，请去网上查找，这里不做过多的说明。\n
+Tip2: 由于创建高级的布局非常耗时，使用模板是一个快速的选项。通过搜索引擎可以找到很多免费的网站模板（您可以使用这些预先构建好的网站布局，并优化它们）。\n\n
+
+下面这个例子使用&lt;div&gt;对页面进行布局：
+    </string>
+    <string name="content_buju_html">
+        &lt;!DOCTYPE html&gt; \n
+&lt;html&gt; \n
+&lt;head&gt;  \n
+　　&lt;meta charset="utf-8"&gt;  \n
+　　&lt;title&gt;布局&lt;/title&gt;  \n
+&lt;/head&gt; \n
+&lt;body&gt;\n
+　　&lt;div id="container" style="width:500px"&gt; \n
+　　　　&lt;div id="header" style="background-color:#FFA500;"&gt; \n
+　　　　　　&lt;h1 style="margin-bottom:0;"&gt;主要的网页标题&lt;/h1&gt;\n
+　　　　&lt;/div&gt; \n
+　　　　&lt;div id="menu"\n
+style="background-color:#FFD700;height:200px;width:100px;float:left;"&gt; 　　\n　　　　　　　　　　	　　　　&lt;b&gt;菜单&lt;/b&gt;&lt;br&gt; \n
+　　　　　　HTML&lt;br&gt; \n
+　　　　　　CSS&lt;br&gt; \n
+　　　　　　JavaScript\n
+　　　&lt;/div&gt; \n
+　　　&lt;div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;"&gt; \n
+　　内容在这里\n
+　　　&lt;/div&gt; \n
+　　　&lt;div id="footer" style="background-color:#FFA500;clear:both;text-align:center;"&gt; \n
+　　　版权 Novice\n
+　　　&lt;/div&gt; \n
+&lt;/div&gt; \n
+&lt;/body&gt; \n
+&lt;/html&gt;
+    </string>
+    <string name="content_buju_text2">运行结果如下图所示：</string>
+
+
+    <string name="content_biaodan_title">HTML 表单和输入</string>
+    <string name="content_biaodan_text1">
+        　　表单是一个包含表单元素的区域。表单元素是允许用户在表单中输入内容,比如：文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。\n
+表单使用表单标签 &lt;form&gt; 来设置:\n
+&lt;form&gt;\n
+　　input 元素\n
+&lt;/form&gt;\n\n
+
+HTML 表单 - 输入元素\n
+　　多数情况下被用到的表单标签是输入标签（&lt;input&gt;），输入类型是由类型属性（type）定义的，大多数经常被用到的输入类型如下：\n\n
+
+1.文本域（Text Fields）\n
+　　文本域通过&lt;input type="text"&gt; 标签来设定，当用户要在表单中键入字母、数字等内容时，就会用到文本域。\n
+&lt;form&gt;\n
+　　First name: &lt;input type="text" name="firstname"&gt;&lt;br&gt;\n
+　　Last name: &lt;input type="text" name="lastname"&gt;\n
+&lt;/form&gt;\n
+注意:表单本身并不可见。同时，在大多数浏览器中，文本域的缺省宽度是20个字符。\n\n
+
+2.密码字段\n
+　密码字段通过标签&lt;input type="password"&gt; 来定义:\n
+&lt;form&gt;\n
+　　Password: &lt;input type="password" name="pwd"&gt;\n
+&lt;/form&gt;\n
+注意:密码字段字符不会明文显示，而是以星号或圆点替代。\n\n
+
+3.单选按钮（Radio Buttons）\n
+&lt;input type="radio"&gt; 标签定义了表单单选框选项\n
+&lt;form&gt;\n
+　　&lt;input type="radio" name="sex" value="male"&gt;Male&lt;br&gt;\n
+　　&lt;input type="radio" name="sex" value="female"&gt;Female\n
+&lt;/form&gt;\n\n
+
+4.复选框（Checkboxes）\n
+&lt;input type="checkbox"&gt; 定义了复选框. 用户需要从若干给定的选择中选取一个或若干选项。\n
+&lt;form&gt;\n
+　　&lt;input type="checkbox" name="vehicle" value="Bike"&gt;I have a bike&lt;br&gt;\n
+　　&lt;input type="checkbox" name="vehicle" value="Car"&gt;I have a car \n
+&lt;/form&gt;\n\n
+
+5.提交按钮(Submit Button)\n
+&lt;input type="submit"&gt; 定义了提交按钮，当用户单击确认按钮时，表单的内容会被传送到另一个文件。表单的动作属性定义了目的文件的文件名。由动作属性定义的这个文件通常会对接收到的输入数据进行相关的处理。\n
+&lt;form name="input" action="html_form_action.php" method="get"&gt;\n
+　　Username: &lt;input type="text" name="user"&gt;\n
+　　&lt;input type="submit" value="Submit"&gt;\n
+&lt;/form&gt;\n\n
+
+下面是一个综合的实例：
+    </string>
+    <string name="content_biaodan_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;表单测试&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+&lt;!--action 表示表单提交的路径，method表示提交到get方法，当前也可以提交到post方法，不写method默认提交到get方法--&gt;\n
+&lt;form action="" method="get"&gt;\n
+	&lt;!-- 文本域（Text Fields）--&gt;\n
+	First name: &lt;input type="text" name="firstname"&gt;&lt;br&gt;\n
+	Last name: &lt;input type="text" name="lastname"&gt;&lt;br&gt;&lt;br&gt;\n\n
+
+	&lt;!-- 密码字段 --&gt;\n
+	Password: &lt;input type="password" name="pwd"&gt;&lt;br&gt;&lt;br&gt;\n\n
+
+	&lt;!-- 单选按钮（Radio Buttons）  --&gt;\n
+	&lt;input type="radio" name="sex" value="male"&gt;Male&lt;br&gt;\n
+	&lt;input type="radio" name="sex" value="female"&gt;Female&lt;br&gt;&lt;br&gt;\n\n
+
+	&lt;!-- 复选框（Checkboxes） --&gt;\n
+	&lt;input type="checkbox" name="vehicle" value="Bike"&gt;I have a bike&lt;br&gt;\n
+	&lt;input type="checkbox" name="vehicle" value="Car"&gt;I have a car &lt;br&gt;&lt;br&gt;\n\n
+
+	&lt;!-- 提交按钮(Submit Button)  --&gt;\n
+	Username: &lt;input type="text" name="user"&gt;\n
+	&lt;input type="submit" value="Submit"&gt;\n\n
+
+&lt;/form&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_biaodan_text2">运行结果如下图所示：</string>
+
+
+    <string name="content_kuangjia_title">HTML框架</string>
+    <string name="content_kuangjia_text1">
+        　　通过使用框架，你可以在同一个浏览器窗口中显示不止一个版面，在同一个页面内你可以有多个HTML页面在运行。\n\n
+iframe语法:\n
+&lt;iframe src="URL"&gt;&lt;/iframe&gt;\n
+该URL指向不同的网页。\n\n
+
+Iframe - 设置高度与宽度：\n
+　　height 和 width 属性用来定义iframe标签的高度与宽度，属性默认以像素为单位, 但是你可以指定其按比例显示 (如："80%").\n
+实例\n
+&lt;iframe src="demo_iframe.htm" width="200" height="200"&gt;&lt;/iframe&gt;\n\n
+
+Iframe - 移除边框：\n
+　　frameborder 属性用于定义iframe表示是否显示边框，设置属性值为 "0" 移除iframe的边框。\n
+实例\n
+&lt;iframe src="demo_iframe.htm" frameborder="0"&gt;&lt;/iframe&gt;\n\n
+
+使用iframe来显示目标链接页面，iframe可以显示一个目标链接的页面，目标链接的属性必须使用iframe的属性。\n
+实例\n
+&lt;iframe src="demo_iframe.htm" name="iframe_a"&gt;\n
+&lt;/iframe&gt;\n
+ &lt;p&gt;\n
+&lt;a href="http://www.runoob.com" target="iframe_a"&gt;RUNOOB.COM&lt;/a&gt;&lt;/p&gt;\n\n
+
+综合实例：
+    </string>
+    <string name="content_kuangjia_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;测试框架&lt;/title&gt; \n
+&lt;/head&gt; \n
+&lt;body&gt;\n\n
+
+　　&lt;iframe src="demo_iframe.htm" name="iframe_a"&gt;&lt;/iframe&gt;\n
+　　&lt;p&gt;&lt;a href="http://www.runoob.com" target="iframe_a"&gt;百度&lt;/a&gt;&lt;/p&gt;\n\n
+
+&lt;p&gt;&lt;b&gt;注意：&lt;/b&gt; \n
+因为 a 标签的 target 属性是名为 iframe_a 的 iframe 框架，所以在点击链接时页面会显示在 iframe框架中。\n
+&lt;/p&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_kuangjia_text2">以上代码运行结果如下图所示：</string>
+
+
+    <string name="content_zongjie_title">HTML总结</string>
+    <string name="content_zongjie_text1">
+        　　本教程已教你如何使用 HTML 创建站点。HTML 是一种在 Web 上使用的通用标记语言。HTML 允许你格式化文本，添加图片，创建链接、输入表单、框架和表格等等，并可将之存为文本文件，浏览器即可读取和显示。HTML 的关键是标签，其作用是指示将出现的内容。只有你对HTML的标签很熟悉，并各种标签结合着使用，再加上一点经验，你也是一位前端大神。\n\n
+
+那么现在问题来了，你已学完HTML，接下来该学习什么呢？\n
+1.学习 CSS\n
+　　CSS被用来同时控制多重网页的样式和布局。通过使用 CSS，所有的格式化均可从 HTML 中剥离出来，并存储于一个独立的文件中。\n
+\n
+2.学习 JavaScript\n
+　　JavaScript 可以让你的网页更加生动。如果你只想展示内容，静态网站是很好的展示形象，如果你想与用户进行交换或者让网页更加生动那就需要使用到Javascript。JavaScript是互联网上最流行的脚本语言，目前所有主流浏览器都支持Javascript。\n\n
+
+3.站点服务器\n
+　在自己的服务器上托管网站始终是一个选项。有几点需要考虑：\n
+3.1硬件支出\n
+　　如果要运行"真正"的网站，您不得不购买强大的服务器硬件。不要指望低价的 PC 能够应付这些工作。您还需要稳定的（一天 24 小时）高速连接。\n
+3.2软件支出\n
+　　请记住，服务器授权通常比客户端授权更昂贵。同时请注意，服务器授权也许有用户数量限制。\n
+3.3人工费\n
+不要指望低廉的人工费用。您必须安装自己的硬件和软件。您同时要处理漏洞和病毒，以确保您的服务器时刻正常地运行于一个"任何事都可能发生"的环境中。\n
+    </string>
+    <string name="content_zongjie_text2">
+        3.4使用因特网服务提供商（ISP）\n
+　　从 ISP 租用服务器也很常见。大多数小公司会把网站存放到由 ISP 提供的服务器上。其优势有以下几点：\n
+连接速度：\n
+　　大多数 ISP 都拥有连接因特网的高速连接。\n
+强大的硬件：\n
+　　ISP 的 web 服务器通常强大到能够由若干网站分享资源。您还要看一下 ISP 是否提供高效的负载平衡，以及必要的备份服务器。\n
+安全性和可靠性：\n
+ISP 是网站托管方面的专家。他们应该提供 99% 以上的在线时间，最新的软件补丁，以及最好的病毒防护。\n\n
+
+选择 ISP 时的注意事项：\n
+24 小时支持\n
+　　确保 ISP 提供 24 小时支持。不要使自己置于无法解决严重问题的尴尬境地，同时还必须等待第二个工作日。如果您不希望支付长途电话费，那么免费电话服务也是必要的。\n\n
+
+每日备份\n
+　　确保 ISP 会执行每日备份的例行工作，否则您有可能损失有价值的数据。\n\n
+
+流量\n
+　　研究一下 ISP 的流量限制。如果出现由于网站受欢迎而激增的不可预期的访问量，那么您要确保不会因此支付额外费用。\n\n
+
+带宽或内容限制\n
+　　研究一下 ISP 的带宽和内容限制。如果您计划发布图片或播出视频或音频，请确保您有此权限。\n\n
+
+E-mail 功能\n
+　　请确保 ISP 支持您需要的 e-mail 功能。\n\n
+
+数据库访问\n
+　　如果您计划使用网站数据库中的数据，那么请确保您的 ISP 支持您需要的数据库访问。
+    </string>
+
+
+    <string name="content_html5jiaocheng_title">HTML5</string>
+    <string name="content_html5jiaocheng_text1">
+        1.HTML5简介\n
+　　HTML5是HTML最新的修订版本，2014年10月由万维网联盟（W3C）完成标准制定。\n
+　　HTML5的设计目的是为了在移动设备上支持多媒体。\n
+　　HTML5 简单易学。\n
+注意：对于中文网页需要使用 &lt;meta charset="utf-8"&gt; 声明编码，否则会出现乱码。\n\n
+
+1.1 什么是 HTML5?\n
+　　HTML5 是下一代 HTML 标准。\n
+　　HTML , HTML 4.01的上一个版本诞生于 1999 年。自从那以后，Web 世界已经经历了巨变。\n
+　　HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了某些 HTML5 支持。\n\n
+
+1.2 HTML5 是如何起步的？\n
+　　HTML5 是 W3C 与 WHATWG 合作的结果,WHATWG 指 Web Hypertext Application Technology Working Group。\n
+　　WHATWG 致力于 web 表单和应用程序，而 W3C 专注于 XHTML 2.0。在 2006 年，双方决定进行合作，来创建一个新版本的 HTML。\n\n
+
+HTML5 中的一些有趣的新特性：\n
+　　用于绘画的 canvas 元素\n
+　　用于媒介回放的 video 和 audio 元素\n
+　　对本地离线存储的更好的支持\n
+　　新的特殊内容元素，比如 article、footer、header、nav、section\n
+　　新的表单控件，比如 calendar、date、time、email、url、search\n\n
+
+1.3 HTML5 &lt;!DOCTYPE&gt;\n
+&lt;!doctype&gt; 声明必须位于 HTML5 文档中的第一行,使用非常简单:\n
+&lt;!DOCTYPE html&gt;\n\n
+
+2.HTML5 的改进\n
+　　新元素\n
+　　新属性\n
+　　完全支持 CSS3\n
+　　Video 和 Audio\n
+　　2D/3D 制图\n
+　　本地存储\n
+　　本地 SQL 数据\n
+　　Web 应用\n\n
+
+3.HTML5 多媒体\n
+使用 HTML5 你可以简单的在网页中播放 视频(video)与音频 (audio) 。\n
+ 　　&lt;video&gt;\n
+ 　　&lt;audio&gt;\n\n
+
+4.HTML5 应用\n
+　　使用 HTML5 你可以简单地开发应用\n
+　　本地数据存储\n
+　　访问本地文件\n
+　　本地 SQL 数据\n
+　　缓存引用\n
+　　Javascript 工作者\n
+XHTMLHttpRequest 2\n\n
+    </string>
+    <string name="content_html5jiaocheng_text2">
+        5.HTML5 图形\n
+使用 HTML5 你可以简单的绘制图形:\n
+　　使用 &lt;canvas&gt; 元素。\n
+　　使用内联 SVG。\n
+　　使用 CSS3 2D 转换、CSS3 3D 转换。\n\n
+
+6.HTML5 使用 CSS3\n
+　　新选择器\n
+　　新属性\n
+　　动画\n
+　　2D/3D 转换\n
+　　圆角\n
+　　阴影效果\n
+　　可下载的字体\n\n
+
+7.语义元素\n
+HTML5 添加了很多语义元素如下所示：\n
+　&lt;article&gt; 定义页面独立的内容区域\n
+　&lt;aside&gt; 定义页面的侧边栏内容\n
+　&lt;bdi&gt; 允许您设置一段文本，使其脱离其父元素的文本方向设置\n
+　&lt;command&gt; 定义命令按钮，比如单选按钮、复选框或按钮\n
+　&lt;details&gt; 用于描述文档或文档某个部分的细节\n
+　&lt;dialog&gt; 定义对话框，比如提示框\n
+　&lt;summary&gt; 标签包含 details 元素的标题\n
+　&lt;figure&gt;  规定独立的流内容（图像、图表、照片、代码等等）\n
+　&lt;figcaption&gt;  定义 &lt;figure&gt; 元素的标题\n
+　&lt;footer&gt; 定义 section 或 document 的页脚\n
+　&lt;header&gt;  定义了文档的头部区域\n
+　&lt;mark&gt;  定义带有记号的文本\n
+　&lt;meter&gt;  定义度量衡。仅用于已知最大和最小值的度量\n
+　&lt;nav&gt;  定义导航链接的部分\n
+　&lt;progress&gt;  定义任何类型的任务的进度\n
+　&lt;ruby&gt;  定义 ruby 注释（中文注音或字符）\n
+　&lt;rt&gt;  定义字符（中文注音或字符）的解释或发音\n
+　&lt;rp&gt;  在 ruby 注释中使用，定义不支持 ruby 元素的浏览器所显示的内容\n
+　&lt;section&gt; 定义文档中的节（section、区段）\n
+　&lt;time&gt; 定义日期或时间\n
+　&lt;wbr&gt;  规定在文本中的何处适合添加换行符\n\n
+
+8.HTML5 表单\n
+　　新表单元素, 新属性，新输入类型，自动验证。\n\n
+
+9.已移除元素\n
+以下的 HTML 4.01 元素在HTML5中已经被删除:\n
+　&lt;acronym&gt;\n
+　&lt;applet&gt;\n
+　&lt;basefont&gt;\n
+　&lt;big&gt;\n
+　&lt;center&gt;\n
+　&lt;dir&gt;\n
+　&lt;font&gt;\n
+　&lt;frame&gt;\n
+　&lt;frameset&gt;\n
+　&lt;noframes&gt;\n
+　&lt;strike&gt;\n\n
+
+10.HTML5 浏览器支持\n
+　　最新版本的 Safari、Chrome、Firefox 以及 Opera 支持某些 HTML5 特性。Internet Explorer 9 将支持某些 HTML5 特性。
+    </string>
+
+    <string name="content_html5liulanqi_title">HTML5 浏览器支持</string>
+    <string name="content_html5liulanqi_text1">
+        　　学习了这段内容之后你可以让一些较早的浏览器（不支持HTML5）支持 HTML5，现代新出的浏览器都支持 HTML5。此外，所有浏览器，包括旧的和最新的，对无法识别的元素会作为内联元素自动处理。正因为如此，你可以 "教会" 浏览器处理 "未知" 的 HTML 元素。\n
+甚至你可以教会 IE6 (Windows XP 2001) 浏览器处理未知的 HTML 元素。\n\n
+
+1. HTML5 元素定义为块元素\n
+HTML5 定了 8 个新的 HTML 语义（semantic） 元素。所有这些元素都是 块级 元素。\n
+为了能让旧版本的浏览器正确显示这些元素，你可以设置 CSS 的 display 属性值为 block。\n
+实例\n
+header, section, footer, aside, nav, main, article, figure { display: block;}\n\n
+
+2. Internet Explorer 浏览器问题\n
+　　你可以使用以上的方法来为 IE 浏览器添加 HTML5 元素，但是：Internet Explorer 8 及更早 IE 版本的浏览器不支持以上的方式。我们可以使用 Sjoerd Visscher 创建的 "HTML5 Enabling JavaScript", " shiv" 来解决该问题:\n
+&lt;!--[if lt IE 9]&gt;\n
+　&lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;\n
+&lt;/script&gt;\n
+&lt;![endif]--&gt;\n
+以上代码是一个注释，作用是在 IE 浏览器的版本小于 IE9 时将读取 html5.js 文件，并解析它。\n
+注意：国内用户请使用某站的静态资源库（Google 资源库在国内不稳定）：\n
+&lt;!--[if lt IE 9]&gt;\n
+　&lt;script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"&gt;\n
+&lt;/script&gt;\n
+&lt;![endif]--&gt;\n
+针对IE浏览器html5shiv 是比较好的解决方案。html5shiv主要解决HTML5提出的新的元素不被IE6-8识别，这些新元素不能作为父节点包裹子元素，并且不能应用CSS样式。\n\n
+
+以下实例是完美的 Shiv 解决方案：
+    </string>
+    <string name="content_html5liulanqi_html">&lt;!DOCTYPE html&gt; \n
+&lt;html&gt; \n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;渲染 HTML5&lt;/title&gt; \n
+　　&lt;!--[if lt IE 9]&gt; \n
+　　&lt;script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"&gt;\n
+　　&lt;/script&gt; \n
+　　&lt;![endif]--&gt; \n
+&lt;/head&gt; \n
+&lt;body&gt; \n
+　　&lt;h1&gt;我的第一篇文章&lt;/h1&gt; \n
+　　&lt;article&gt; 学的不仅是技术，更是梦想！！！ \n
+　　&lt;/article&gt; \n
+&lt;/body&gt; \n
+&lt;/html&gt;
+    </string>
+    <string name="content_html5liulanqi_text2">
+        \t\t html5shiv.js 引用代码必须放在 &lt;head&gt; 元素中，因为 IE 浏览器在解析 HTML5 新元素时需要先加载该文件。
+    </string>
+
+    <string name="content_canvas_title">HTML5 Canvas</string>
+    <string name="content_canvas_text1">
+        什么是 Canvas?\n
+　　HTML5 &lt;canvas&gt; 元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成，&lt;canvas&gt; 标签只是图形容器，您必须使用脚本来绘制图形；你可以通过多种方法使用Canva绘制路径,盒、圆、字符以及添加图像。\n
+　　&lt;canvas&gt; 标签定义图形，比如图表和其他图像，您必须使用脚本来绘制图形。在画布（Canvas）上画一个红色矩形，渐变矩形，彩色矩形，和一些彩色的文字。\n\n
+
+1.浏览器支持\n
+以下是表示支持 &lt;canvas&gt; 元素的最低浏览器版本要求：\n
+Google：4.0版本\n
+IE ：9.0版本\n
+Firefox：2.0版本\n
+safari：3.1版本\n
+Opera：9.0版本\n\n
+
+2.创建一个画布（Canvas）\n
+　　一个画布在网页中是一个矩形框，通过 &lt;canvas&gt; 元素来绘制.\n
+注意: 默认情况下 &lt;canvas&gt; 元素没有边框和内容。\n
+&lt;canvas&gt;简单实例如下:\n
+&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;\n
+注意: 标签通常需要指定一个id属性 (脚本中经常引用), width 和 height 属性定义的
+画布的大小。\n
+提示:你可以在HTML页面中使用多个 &lt;canvas&gt; 元素.\n
+使用 style 属性来添加边框:\n
+实例\n
+&lt;canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"&gt; &lt;/canvas&gt;\n\n
+
+3. Canvas 坐标\n
+canvas 是一个二维网格。\n
+canvas 的左上角坐标为 (0,0)\n
+上面的 fillRect 方法拥有参数 (0,0,150,75)。\n
+意思是：在画布上绘制 150x75 的矩形，从左上角开始 (0,0)。\n\n
+
+4. Canvas - 路径\n
+在Canvas上画线，我们将使用以下两种方法：\n
+　　moveTo(x,y) 定义线条开始坐标\n
+　　lineTo(x,y) 定义线条结束坐标\n
+绘制线条我们必须使用到 "ink" 的方法，就像stroke().\n
+
+5. Canvas - 文本\n
+使用 canvas 绘制文本，重要的属性和方法如下：\n
+　　font - 定义字体\n
+　　fillText(text,x,y) - 在 canvas 上绘制实心的文本\n
+　　strokeText(text,x,y) - 在 canvas 上绘制空心的文本\n\n
+
+6. Canvas - 绘圆\n
+在canvas中绘制圆形, 我们将使用以下方法:\n
+　　arc(x,y,r,start,stop)\n
+实际上我们在绘制圆形时使用了 "ink" 的方法, 比如 stroke() 或者 fill().\n\n
+
+7. Canvas - 渐变\n
+　　渐变可以填充在矩形, 圆形, 线条, 文本等等, 各种形状可以自己定义不同的颜色。
+以下有两种不同的方式来设置Canvas渐变：\n
+创建线条渐变：\n
+　createLinearGradient(x,y,x1,y1)\n
+创建一个径向/圆渐变：\n
+　createRadialGradient(x,y,r,x1,y1,r1)\n
+当我们使用渐变对象，必须使用两种或两种以上的停止颜色。addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1.使用渐变，设置fillStyle或strokeStyle的值为 渐变，然后绘制形状，如矩形，文本，或一条线。\n\n
+
+综合实例：
+    </string>
+    <string name="content_canvas_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;Test Canvas&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+	&lt;canvas id="myCanvasTr" width="200" height="100" style="border:1px solid #d3d3d3;"&gt;\n
+　　您的浏览器不支持 HTML5 canvas 标签。\n
+&lt;/canvas&gt;\n
+	&lt;br/&gt;\n
+	&lt;canvas id="myCanvasText" width="200" height="100" style="border:1px solid #d3d3d3;"&gt;\n
+　　您的浏览器不支持 HTML5 canvas 标签。\n
+　　&lt;/canvas&gt;\n
+	&lt;br/&gt;\n
+	&lt;canvas id="myCanvasColor" width="200" height="100" style="border:1px solid #d3d3d3;"&gt;\n
+　　您的浏览器不支持 HTML5 canvas 标签。\n
+　　&lt;/canvas&gt;\n
+&lt;script&gt;\n
+	//绘圆js代码块\n
+	var c=document.getElementById("myCanvasTr");\n
+	var ctx=c.getContext("2d");\n
+	ctx.beginPath();\n
+	ctx.arc(95,50,40,0,2*Math.PI);\n
+	ctx.stroke();\n\n
+
+	//使用 "Arial" 字体在画布上绘制一个高 30px 的文字（空心）,js代码块\n
+	var c=document.getElementById("myCanvasText");\n
+	var ctx=c.getContext("2d");\n
+	ctx.font="30px Arial";\n
+	ctx.strokeText("Hello World",10,50);\n\n
+
+	//使用 createRadialGradient()创建一个径向/圆渐变,使用渐变填充矩形, js代码块\n
+	var c=document.getElementById("myCanvasColor");\n
+	var ctx=c.getContext("2d");\n
+	var grd=ctx.createRadialGradient(75,50,5,90,60,100);\n
+	grd.addColorStop(0,"red");\n
+	grd.addColorStop(1,"white");\n
+	ctx.fillStyle=grd;\n
+	ctx.fillRect(10,10,150,80);\n
+&lt;/script&gt; \n
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_canvas_text2">
+        \t\t以上代码在实际的开发中不会这么写，实际开发中会把JavaScript代码放在&lt;head&gt;标签里，此处为了方便暂时放在此处。代码运行结果如下图所示：
+    </string>
+
+    <string name="content_neiliansvg_title">内联SVG</string>
+    <string name="content_neiliansvg_text1">
+        1. 什么是SVG？\n
+　　SVG 指可伸缩矢量图形 (Scalable Vector Graphics)。\n
+　　SVG 用于定义用于网络的基于矢量的图形。\n
+　　SVG 使用 XML 格式定义图形。\n
+　　SVG 图像在放大或改变尺寸的情况下其图形质量不会有损失。\n
+　　SVG 是万维网联盟的标准。\n\n
+
+2. SVG优势\n
+与其他图像格式相比（比如 JPEG 和 GIF），使用 SVG 的优势在于：\n
+　　SVG 图像可通过文本编辑器来创建和修改。\n
+　　SVG 图像可被搜索、索引、脚本化或压缩。\n
+　　SVG 是可伸缩的。\n
+　　SVG 图像可在任何的分辨率下被高质量地打印。\n
+SVG 可在图像质量不下降的情况下被放大。\n\n
+
+3.浏览器支持\n
+Internet Explorer 9+, Firefox, Opera, Chrome, 和 Safari 支持内联SVG。\n\n
+
+4.SVG 与 Canvas两者间的区别\n
+　　SVG 是一种使用 XML 描述 2D 图形的语言。\n
+　　Canvas 通过 JavaScript 来绘制 2D 图形。\n
+　　SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。\n
+　　在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。\n
+　　Canvas 是逐像素进行渲染的。在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。\n\n
+
+5.Canvas 与 SVG 的比较\n
+下表列出了 canvas 与 SVG 之间的一些不同之处。\n
+Canvas:\n
+1.依赖分辨率\n
+2.不支持事件处理器\n
+3.弱的文本渲染能力\n
+4.能够以 .png 或 .jpg 格式保存结果图像\n
+5.最适合图像密集型的游戏，其中的许多对象会被频繁重绘\n
+SVG:\n
+1.不依赖分辨率\n
+2.支持事件处理器\n
+3.最适合带有大型渲染区域的应用程序（比如谷歌地图）\n
+4.复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）\n
+5.不适合游戏应用\n\n
+
+以下例子是把 SVG 直接嵌入 HTML 5页面：
+    </string>
+    <string name="content_neiliansvg_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;把 SVG 直接嵌入 HTML 5页面&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n\n
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190"&gt;\n
+   &lt;polygon points="100,10 40,180 190,60 10,60 160,180"
+   style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"/&gt;\n\n
+&lt;/svg&gt;\n\n
+
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_neiliansvg_text2">运行结果非常炫，如下图：</string>
+
+
+    <string name="content_mathml_title">MathML</string>
+    <string name="content_mathml_text1">
+        　　HTML5 可以在文档中使用 MathML 元素，对应的标签是 &lt;math&gt;...&lt;/math&gt; 。\n
+　　MathML 是数学标记语言，是一种基于XML（标准通用标记语言的子集）的标准，用来在互联网上书写数学符号和公式的置标语言。\n
+注意：大部分浏览器都支持 MathML 标签，如果你的浏览器不支持该标签，可以使用最新版的 Firefox 或 Safari 浏览器查看。\n\n
+
+以下是一个简单的 MathML 实例：
+    </string>
+    <string name="content_mathml_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+   &lt;head&gt;\n
+      &lt;meta charset="UTF-8"&gt;\n
+      &lt;title&gt;勾股定理&lt;/title&gt;\n
+   &lt;/head&gt;\n
+   &lt;body&gt;\n
+      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;\n
+
+         &lt;mrow&gt;\n
+            &lt;msup&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;\n
+            &lt;mo&gt;+&lt;/mo&gt;
+				\n\n
+            &lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+            &lt;mo&gt;=&lt;/mo&gt;\n\n
+
+            &lt;msup&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;\n
+         &lt;/mrow&gt;\n\n
+
+      &lt;/math&gt;\n\n
+
+   &lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_mathml_text2">运行结果图，如下所示：</string>
+    <string name="content_mathml_text3">
+        以下实例是一个 2×2 矩阵\n
+&lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+   &lt;head&gt;\n
+      &lt;meta charset="UTF-8"&gt;\n
+      &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;\n
+   &lt;/head&gt;\n\n
+
+   &lt;body&gt;\n
+      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;\n\n
+
+         &lt;mrow&gt;\n
+            &lt;mi&gt;A&lt;/mi&gt;\n
+            &lt;mo&gt;=&lt;/mo&gt;
+            \n\n
+            &lt;mfenced open="[" close="]"&gt;\n\n
+
+               &lt;mtable&gt;\n
+                  &lt;mtr&gt;\n
+                     &lt;mtd&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mtd&gt;\n
+                     &lt;mtd&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/mtd&gt;\n
+                  &lt;/mtr&gt;\n\n
+
+                  &lt;mtr&gt;\n
+                     &lt;mtd&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;/mtd&gt;\n
+                     &lt;mtd&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;/mtd&gt;\n
+                  &lt;/mtr&gt;\n
+               &lt;/mtable&gt;\n\n
+
+            &lt;/mfenced&gt;\n
+         &lt;/mrow&gt;\n
+      &lt;/math&gt;\n\n
+
+   &lt;/body&gt;\n
+&lt;/html&gt;\n
+运行以上代码效果图如下所示：
+    </string>
+
+    <string name="content_tuofang_title">拖放(Drag 和 Drop)</string>
+    <string name="content_tuofang_text1">
+        　　拖放（Drag 和 drop）是 HTML5 标准的组成部分。\n\n
+
+1.拖放定义\n
+　　拖放是一种常见的特性，即抓取对象以后拖到另一个位置，在 HTML5 中，拖放是标准的一部分，任何元素都能够拖放。\n\n
+
+2.浏览器支持\n
+　　Internet Explorer 9+, Firefox, Opera, Chrome, 和 Safari 支持拖动。\n
+注意:Safari 5.1.2不支持拖动.\n\n
+
+3.设置元素为可拖放\n
+　　首先，为了使元素可拖动，把 draggable 属性设置为 true ：\n
+&lt;img draggable="true"&gt;\n\n
+
+4.拖动什么 - ondragstart 和 setData()\n
+　　然后，规定当元素被拖动时，会发生什么。\n
+　　在后面的例子中，ondragstart 属性调用了一个函数，drag(event)，它规定了被拖动的数据。\n
+dataTransfer.setData() 方法设置被拖数据的数据类型和值：\n
+function drag(ev)\n
+{\n
+    ev.dataTransfer.setData("Text",ev.target.id);\n
+}\n
+在这个例子中，数据类型是 "Text"，值是可拖动元素的 id ("drag1")。\n\n
+
+5.放到何处 - ondragover\n
+　　ondragover 事件规定在何处放置被拖动的数据。默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。这要通过调用 ondragover 事件的 event.preventDefault() 方法：\n
+event.preventDefault()\n\n
+
+6.进行放置 - ondrop\n
+　　当放置被拖数据时，会发生 drop 事件。\n
+　　在下面的实例，ondrop 属性调用了一个函数，drop(event)：\n
+function drop(ev)\n
+{\n
+    ev.preventDefault();\n
+    var data=ev.dataTransfer.getData("Text");\n
+    ev.target.appendChild(document.getElementById(data));\n
+}\n
+代码解释：\n
+　　调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）。\n
+　　通过 dataTransfer.getData("Text") 方法获得被拖的数据。该方法将返回在 setData() 方法中设置为相同类型的任何数据。\n
+　　被拖数据是被拖元素的 id ("drag1")。\n
+　　把被拖元素追加到放置元素（目标元素）中。\n\n
+
+拖放实例：
+    </string>
+    <string name="content_tuofang_html">
+        &lt;!DOCTYPE HTML&gt;\n
+&lt;html&gt;\n
+&lt;head&gt;\n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;测试拖放功能&lt;/title&gt;\n
+　　&lt;style type="text/css"&gt;\n
+#div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}\n
+　　&lt;/style&gt;\n
+　　&lt;script&gt;\n
+　　function allowDrop(ev)\n
+　　{\n
+	　　ev.preventDefault();\n
+　　}\n\n
+
+　　function drag(ev)\n
+　　{\n
+	　　ev.dataTransfer.setData("Text",ev.target.id);\n
+　　}\n
+
+　　function drop(ev)\n
+　　{\n
+	　　ev.preventDefault();\n
+	　　var data=ev.dataTransfer.getData("Text");\n
+	　　ev.target.appendChild(document.getElementById(data));\n
+　　}\n
+　　&lt;/script&gt;\n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+\n
+　　&lt;p&gt;拖动文字矩形框中:&lt;/p&gt;\n\n
+
+　　&lt;div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"&gt;&lt;/div&gt;\n
+　　&lt;br&gt;\n
+	&lt;p id="drag1" ondragstart="drag(event)" draggable="true"&gt;把我拖到框里&lt;/p&gt;\n\n
+
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_tuofang_text2">运行结果如下图所示：</string>
+    <string name="content_tuofang_text3">然后把“把我拖到框里”这几个字拖到框里就可以了，这个非常简单。</string>
+
+
+    <string name="content_dilidingwei_title">Geolocation(地理定位)</string>
+    <string name="content_dilidingwei_text1">
+        1.定位用户的位置\n
+　　HTML5 Geolocation API 用于获得用户的地理位置。\n
+鉴于该特性可能侵犯用户的隐私，除非用户同意，否则用户位置信息是不可用的。\n\n
+
+2.浏览器支持\n
+Internet Explorer 9+, Firefox, Chrome, Safari 和 Opera 支持Geolocation（地理定位）.\n
+注意: Geolocation（地理定位）对于拥有 GPS 的设备，比如 iPhone，地理定位更加精确。\n\n
+
+3.HTML5 - 使用地理定位\n
+　　请使用 getCurrentPosition() 方法来获得用户的位置。\n\n
+
+4.处理错误和拒绝\n
+　　getCurrentPosition() 方法的第二个参数用于处理错误。它规定当获取用户位置失败时运行的函数。\n\n
+
+5.在地图中显示结果\n
+　　如需在地图中显示结果，您需要访问可使用经纬度的地图服务，比如谷歌地图或百度地图。\n\n
+
+6.给定位置的信息\n
+本页演示的是如何在地图上显示用户的位置；不过，地理定位对于给定位置的信息同样很有用处。\n
+实例:\n
+　　更新本地信息。\n
+　　显示用户周围的兴趣点。\n
+　　交互式车载导航系统 (GPS)。\n
+定位实例：
+    </string>
+    <string name="content_dilidingwei_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt;\n
+　　&lt;meta?charset="utf-8"&gt;\n
+　　&lt;title&gt;测试地理定位&lt;/title&gt;\n
+　　　&lt;script type="text/javascript"&gt;\n
+　　var x=document.getElementById("demo");\n
+　　function getLocation(){\n
+	　　　if (navigator.geolocation){\n
+		　　navigator.geolocation.watchPosition(showPosition);\n
+	　　　}else{\n
+		　　x.innerHTML="该浏览器不支持获取地理位置。";\n
+	　　　}\n
+　　}\n
+　　function showPosition(position){\n
+	　　　x.innerHTML="纬度: " + position.coords.latitude + "&lt;br&gt;经度: " + position.coords.longitude;	\n
+　　}\n
+　　&lt;/script&gt;\n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+&lt;p id="demo"&gt;点击按钮获取您当前坐标（可能需要比较长的时间获取最好是Goolge浏览器）：\n
+　　&lt;/p&gt;\n
+　　&lt;button onclick="getLocation()"&gt;点我&lt;/button&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_dilidingwei_text2">运行结果如下图所示：</string>
+    <string name="content_dilidingwei_text3">
+        点击“点我”这个按钮后会显示你当前地理的经纬度（很精确哦）。\n\n
+
+7.Geolocation 对象 - 其他有趣的方法\n
+　　watchPosition() - 返回用户的当前位置，并继续返回用户移动时的更新位置（就像汽车上的 GPS）。\n
+　　clearWatch() - 停止 watchPosition() 方法。\n\n
+
+8.getCurrentPosition() 方法 - 返回数据\n
+　　若成功，则 getCurrentPosition() 方法返回对象。始终会返回 latitude、longitude 以及accuracy 属性。如果可用，则会返回其他下面的属性。
+    </string>
+
+
+    <string name="content_video_title">Video(视频)</string>
+    <string name="content_video_text1">
+        1.Web站点上的视频\n
+　　直到现在，仍然不存在一项旨在网页上显示视频的标准。今天，大多数视频是通过插件（比如 Flash）来显示的。然而，并非所有浏览器都拥有同样的插件，HTML5 规定了一种通过 video 元素来包含视频的标准方法。\n\n
+
+2.浏览器支持\n
+Internet Explorer 9+, Firefox, Opera, Chrome, 和 Safari 支持 &lt;video&gt; 元素.\n
+注意: Internet Explorer 8 或者更早的IE版本不支持 &lt;video&gt; 元素。\n\n
+
+3.HTML5 (视频)- 如何工作\n
+　　&lt;video&gt; 元素提供了 播放、暂停和音量控件来控制视频。同时&lt;video&gt; 元素元素也提供了 width 和 height 属性控制视频的尺寸.如果设置的高度和宽度，所需的视频空间会在页面加载时保留。。如果没有设置这些属性，浏览器不知道大小的视频，浏览器就不能再加载时保留特定的空间，页面就会根据原始视频的大小而改变。\n
+&lt;video&gt; 与&lt;/video&gt; 标签之间插入的内容是提供给不支持 video 元素的浏览器显示的。\n
+&lt;video&gt; 元素支持多个 &lt;source&gt; 元素. &lt;source&gt; 元素可以链接不同的视频文件。浏览器将使用第一个可识别的格式。\n\n
+
+4.视频格式与浏览器的支持\n
+当前， &lt;video&gt; 元素支持三种视频格式：MP4,WebM,和Ogg:\n
+MP4 = 带有 H.264 视频编码和 AAC 音频编码的 MPEG 4 文件。\n
+WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件。\n
+Ogg = 带有 Theora 视频编码和 Vorbis 音频编码的 Ogg 文件。\n
+浏览器支持视频格式如下：\n
+Internet Explorer：支持MP4，不支持WebM，Ogg。\n
+Chrome：支持MP4，WebM，Ogg。\n
+Firefox：支持MP4，WebM，Ogg。\n
+Safari：支持MP4，不支持WebM，Ogg。\n
+Opera：(从 Opera 25 起)支持MP4，WebM，Ogg。\n\n
+
+5.视频格式\n
+视频格式对应的MIME-type如下：\n
+MP4：video/mp4\n
+WebM：video/webm\n
+Ogg：video/ogg\n\n
+
+6.HTML5 &lt;video&gt; - 使用 DOM 进行控制\n
+HTML5 &lt;video&gt; 和 &lt;audio&gt; 元素同样拥有方法、属性和事件。\n
+&lt;video&gt; 和 &lt;audio&gt;元素的方法、属性和事件可以使用JavaScript进行控制.\n
+其中的方法有用于播放、暂停以及加载等。其中的属性（比如时长、音量等）可以被读取或设置。其中的 DOM 事件能够通知您，比方说，&lt;video&gt; 元素开始播放、已暂停，已停止，等等。\n\n
+
+7.HTML5 Video 标签\n
+&lt;video&gt;：定义一个视频\n\n
+
+&lt;source&gt;：定义多种媒体资源,比如 &lt;video&gt; 和&lt;audio&gt;\n\n
+
+&lt;track&gt;：定义在媒体播放器文本轨迹\n\n
+
+实例：
+    </string>
+    <string name="content_video_html">
+        &lt;!DOCTYPE html&gt; \n
+&lt;html&gt; \n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;视频播放&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt; \n
+　　&lt;div style="text-align:center"&gt; \n
+　　　　&lt;button onclick="playPause()"&gt;播放/暂停&lt;/button&gt; \n
+　　　　&lt;button onclick="makeBig()"&gt;放大&lt;/button&gt;\n
+　　　　&lt;button onclick="makeSmall()"&gt;缩小&lt;/button&gt;\n
+　　　　&lt;button onclick="makeNormal()"&gt;普通&lt;/button&gt;\n
+　　　　&lt;br&gt; \n
+　　　　&lt;video id="video1" width="420"&gt;\n
+　　　　　　&lt;source src="mov_bbb.mp4" type="video/mp4"&gt;\n
+　　　　　　&lt;source src="mov_bbb.ogg" type="video/ogg"&gt;\n
+　　　　　　您的浏览器不支持 HTML5 video 标签。\n
+　　　　&lt;/video&gt;\n
+　　&lt;/div&gt; \n
+&lt;script&gt; \n
+var myVideo=document.getElementById("video1"); \n
+function playPause()\n
+{ \n
+	if (myVideo.paused) \n
+	  myVideo.play(); \n
+	else \n
+	  myVideo.pause(); \n
+} \n
+	function makeBig()\n
+{ \n
+	myVideo.width=560; \n
+} \n
+	function makeSmall()\n
+{ \n
+	myVideo.width=320; \n
+} \n
+	function makeNormal()\n
+{ \n
+	myVideo.width=420; \n
+} \n
+&lt;/script&gt; \n
+&lt;/body&gt; \n
+&lt;/html&gt;
+    </string>
+    <string name="content_video_text2">运行结果如下图：</string>
+
+
+    <string name="content_audio_title">Audio(音频)</string>
+    <string name="content_audio_text1">
+        1.互联网上的音频\n
+　　直到现在，仍然不存在一项旨在网页上播放音频的标准。\n
+今天，大多数音频是通过插件（比如 Flash）来播放的。然而，并非所有浏览器都拥有同样的插件。HTML5 规定了在网页上嵌入音频元素的标准，即使用 &lt;audio&gt; 元素。\n\n
+
+2.浏览器支持\n
+Internet Explorer 9+, Firefox, Opera, Chrome, 和 Safari 都支持 &lt;audio&gt; 元素。\n
+注意: Internet Explorer 8 及更早IE版本不支持 &lt;audio&gt; 元素。\n\n
+
+3.HTML5 Audio - 如何工作\n
+　　control 属性供添加播放、暂停和音量控件。在&lt;audio&gt; 与 &lt;/audio&gt; 之间你需要插入浏览器不支持的&lt;audio&gt;元素的提示文本 。&lt;audio&gt; 元素允许使用多个 &lt;source&gt; 元素. &lt;source&gt; 元素可以链接不同的音频文件，浏览器将使用第一个支持的音频文件。\n\n
+
+4.音频格式及浏览器支持\n
+目前, &lt;audio&gt;元素支持三种音频格式文件: MP3, Wav, 和 Ogg，现在各种浏览器支持情况如下所示：\n
+Internet Explorer 9+：支持MP3，不支持Wav和Ogg。\n\n
+
+Chrome 6+：支持MP3，Wav和Ogg。\n\n
+
+Firefox 3.6+：支持MP3，Wav和Ogg。\n\n
+
+Safari 5+：支持MP3，Wav，不支持Ogg。\n\n
+
+Opera 10+：支持MP3，Wav和Ogg。\n\n
+
+5.音频格式\n
+音频格式对应的MIME-type如下：\n
+MP3：audio/mpeg\n
+Ogg：audio/ogg\n
+Wav：audio/wav\n\n
+
+6.HTML5 Audio 标签\n
+&lt;audio&gt;：定义了声音内容。\n
+&lt;source&gt;：规定了多媒体资源, 可以是多个，在 &lt;video&gt; 与 &lt;audio&gt;标签中使用。\n\n
+
+实例：
+    </string>
+    <string name="content_audio_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+　　&lt;meta charset="utf-8"&gt; \n
+　　&lt;title&gt;测试音频播放&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+
+&lt;audio controls&gt;\n
+  &lt;source src="horse.ogg" type="audio/ogg"&gt;\n
+  &lt;source src="horse.mp3" type="audio/mpeg"&gt;\n
+您的浏览器不支持 audio 元素。\n
+&lt;/audio&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_audio_text2">运行结果如下图所示：</string>
+
+    <string name="content_inputleixing_title">HTML5 新的 Input 类型</string>
+    <string name="content_inputleixing_text1">
+        HTML5 拥有多个新的表单输入类型。这些新特性提供了更好的输入控制和验证。
+本章全面介绍这些新的输入类型：\n
+color\n
+date\n
+datetime\n
+datetime-local\n
+email\n
+month\n
+number\n
+range\n
+search\n
+tel\n
+time\n
+url\n
+week\n
+注意:并不是所有的主流浏览器都支持新的input类型，不过您已经可以在所有主流的浏览器中使用它们了。即使不被支持，仍然可以显示为常规的文本域。\n\n
+
+1.Input 类型: color\n
+color 类型用在input字段主要用于选取颜色，浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：不支持\n
+Opera ：支持\n
+实例\n
+从拾色器中选择一个颜色:\n
+选择你喜欢的颜色: \n
+&lt;input type="color" name="favcolor"&gt;\n\n
+
+2.Input 类型: date\n
+date 类型允许你从一个日期选择器选择一个日期。浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义一个时间控制器:\n
+生日: \n
+&lt;input type="date" name="bday"&gt;\n\n
+
+3.Input 类型: datetime\n
+datetime 类型允许你选择一个日期（UTC 时间）。浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：不支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义一个日期和时间控制器（本地时间）:\n
+生日 (日期和时间): \n
+&lt;input type="datetime" name="bdaytime"&gt;\n\n
+
+4.Input 类型: datetime-local\n
+datetime-local 类型允许你选择一个日期和时间 (无时区)。浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义一个日期和时间 (无时区):\n
+生日 (日期和时间):\n
+ &lt;input type="datetime-local" name="bdaytime"&gt;\n\n
+
+5.Input 类型: email\n
+email 类型用于应该包含 e-mail 地址的输入域。浏览器支持该标签情况如下：\n
+Internet Explorer ：支持\n
+Firefox ：支持\n
+Chrome ：支持\n
+Safari ：不支持\n
+Opera ：支持\n
+实例\n
+在提交表单时，会自动验证 email 域的值是否合法有效:\n
+E-mail: \n
+&lt;input type="email" name="email"\n
+提示: iPhone 中的 Safari 浏览器支持 email 输入类型，并通过改变触摸屏键盘来配合它（添加 @ 和 .com 选项）。\n\n
+
+6.Input 类型: month\n
+month 类型允许你选择一个月份。浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义月与年 (无时区):\n
+生日 (月和年): \n
+&lt;input type="month" name="bdaymonth"&gt;\n\n
+    </string>
+    <string name="content_inputleixing_text2">
+        7.Input 类型: number\n
+number 类型用于应该包含数值的输入域，您还能够设定对所接受的数字的限定。浏览器支持该标签情况如下：\n
+Internet Explorer ：支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义一个数值输入域(限定):\n
+数量 ( 1 到 5 之间 ):\n
+ &lt;input type="number" name="quantity" min="1" max="5"&gt;\n\n
+
+使用下面的属性来规定对数字类型的限定：\n
+disabled：规定输入字段是禁用的。\n
+max：规定允许的最大值。\n
+maxlength：规定输入字段的最大字符长度。\n
+min：规定允许的最小值。\n
+pattern：规定用于验证输入字段的模式。\n
+readonly：规定输入字段的值无法修改。\n
+required：规定输入字段的值是必需的。\n
+size：规定输入字段中的可见字符数。\n
+step：规定输入字段的的合法数字间隔。\n
+value：规定输入字段的默认值。\n\n
+
+8.Input 类型: range\n
+range 类型用于应该包含一定范围内数字值的输入域。\n
+range 类型显示为滑动条。\n
+浏览器支持该标签情况如下：\n
+Internet Explorer ：支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义一个不需要非常精确的数值（类似于滑块控制）:\n
+&lt;input type="range" name="points" min="1" max="10"&gt;\n\n
+
+请使用下面的属性来规定对数字类型的限定：\n
+max - 规定允许的最大值。\n
+min - 规定允许的最小值。\n
+step - 规定合法的数字间隔。\n
+value - 规定默认值。\n\n
+
+9.Input 类型: search\n
+search 类型用于搜索域，比如站点搜索或 Google 搜索。浏览器支持该标签情况如下：\n
+Internet Explorer ：支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：不支持\n
+实例\n
+定义一个搜索字段 (类似站点搜索或者Google搜索):\n
+Search Google: &lt;input type="search" name="googlesearch"&gt;\n\n
+
+10.Input 类型: tel\n
+浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：不支持\n
+Safari ：不支持\n
+Opera ：不支持\n
+实例\n
+定义输入电话号码字段:\n
+电话号码: \n
+&lt;input type="tel" name="usrtel"&gt;\n\n
+
+11.Input 类型: time\n
+time 类型允许你选择一个时间。浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义可输入时间控制器（无时区）：\n
+选择时间: \n
+&lt;input type="time" name="usr_time"&gt;\n\n
+
+12.Input 类型: url\n
+url 类型用于应该包含 URL 地址的输入域；在提交表单时，会自动验证 url 域的值。浏览器支持该标签情况如下：\n
+Internet Explorer ：支持\n
+Firefox ：支持\n
+Chrome ：支持\n
+Safari ：不支持\n
+Opera ：支持\n
+实例\n
+定义输入URL字段:\n
+添加您的主页: \n
+&lt;input type="url" name="homepage"&gt;\n
+提示: iPhone 中的 Safari 浏览器支持 url 输入类型，并通过改变触摸屏键盘来配合它（添加 .com 选项）。\n\n
+
+13.Input 类型: week\n
+week 类型允许你选择周和年。浏览器支持该标签情况如下：\n
+Internet Explorer ：不支持\n
+Firefox ：不支持\n
+Chrome ：支持\n
+Safari ：支持\n
+Opera ：支持\n
+实例\n
+定义周和年 (无时区):\n
+选择周: \n
+&lt;input type="week" name="week_year"&gt;
+    </string>
+
+    <string name="content_biaodanyuansu_title">HTML5 表单元素</string>
+    <string name="content_biaodanyuansu_text1">
+        1.HTML5 新的表单元素\n
+HTML5 有以下新的表单元素:\n
+  &lt;datalist&gt;\n
+  &lt;keygen&gt;\n
+  &lt;output&gt;\n
+注意:不是所有的浏览器都支持HTML5 新的表单元素，但是你可以在使用它们，即使浏览器不支持表单属性，仍然可以显示为常规的表单元素。\n\n
+
+2.HTML5 &lt;datalist&gt; 元素\n
+  &lt;datalist&gt; 元素规定输入域的选项列表。\n
+  &lt;datalist&gt; 属性规定 form 或 input 域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项；使用 &lt;input&gt; 元素的列表属性与 &lt;datalist&gt; 元素绑定。\n\n
+
+3.HTML5 &lt;keygen&gt; 元素\n
+&lt;keygen&gt; 元素的作用是提供一种验证用户的可靠方法。\n
+&lt;keygen&gt;标签规定用于表单的密钥对生成器字段。\n
+当提交表单时，会生成两个键，一个是私钥，一个公钥。\n
+私钥（private key）存储于客户端，公钥（public key）则被发送到服务器。公钥可用于之后验证用户的客户端证书（client certificate）。\n\n
+
+4.HTML5 &lt;output&gt; 元素\n
+&lt;output&gt; 元素用于不同类型的输出，比如计算或脚本输出。\n\n
+
+综合实例：
+    </string>
+    <string name="content_biaodanyuansu_html">
+        &lt;!DOCTYPE html&gt;\n
+&lt;html&gt;\n
+&lt;head&gt; \n
+    &lt;meta charset="utf-8"&gt; \n
+    &lt;title&gt;表单元素&lt;/title&gt; \n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+
+&lt;form action="demo_keygen.php" method="get"&gt;\n
+	&lt;!--测试 &lt;datalist&gt; 元素 --&gt;\n
+	&lt;input list="browsers" name="browser"&gt;\n
+	&lt;datalist id="browsers"&gt;\n
+  	&lt;option value="Internet Explorer"&gt;\n
+  	&lt;option value="Firefox"&gt;\n
+ 	&lt;option value="Chrome"&gt;\n
+  	&lt;option value="Opera"&gt;\n
+  	&lt;option value="Safari"&gt;\n
+	&lt;/datalist&gt;\n
+	&lt;input type="submit"&gt;\n
+	&lt;br/&gt;&lt;br/&gt;\n\n
+
+	&lt;!--  测试&lt;keygen&gt; 元素 --&gt;\n
+  	用户名: \n
+	&lt;input type="text" name="usr_name"&gt;\n
+  	加密: \n
+	&lt;keygen name="security"&gt;\n
+  	&lt;input type="submit"&gt;	\n
+	&lt;p&gt;\n
+		&lt;strong&gt;注意:&lt;/strong&gt; \n
+		Internet Explorer 不支持 keygen 标签。\n
+	&lt;/p&gt;\n
+	&lt;br/&gt;&lt;br/&gt;\n
+
+	&lt;!-- 测试 &lt;output&gt; 元素  --&gt;\n
+	&lt;form oninput="x.value=parseInt(a.value)+parseInt(b.value)"&gt;0\n
+	&lt;input type="range" id="a" value="50"&gt;100\n
+	+&lt;input type="number" id="b" value="50"&gt;\n
+	=&lt;output name="x" for="a b"&gt;&lt;/output&gt;\n
+	&lt;/form&gt;\n
+	&lt;p&gt;\n
+	&lt;strong&gt;注意:&lt;/strong&gt; \n
+		Internet Explorer 不支持 output 标签。\n
+	&lt;/p&gt;\n
+
+&lt;/form&gt;\n
+
+&lt;/body&gt;\n
+&lt;/html&gt;
+    </string>
+    <string name="content_biaodanyuansu_text2">以上代码运行结果如下所示：</string>
+
+
+    <string name="content_biaodanshuxing_title">HTML5 表单属性</string>
+    <string name="content_biaodanshuxing_text1">
+        1.HTML5 新的表单属性\n
+HTML5 的 &lt;form&gt; 和 &lt;input&gt;标签添加了几个新属性.\n
+&lt;form&gt;新属性：\n
+autocomplete\n
+novalidate\n
+&lt;input&gt;新属性：\n
+autocomplete\n
+autofocus\n
+form\n
+formaction\n
+formenctype\n
+formmethod\n
+formnovalidate\n
+formtarget\n
+height 与 width\n
+list\n
+min 与 max\n
+multiple\n
+pattern (regexp)\n
+placeholder\n
+required\n
+step\n
+
+2.&lt;form&gt; / &lt;input&gt; autocomplete 属性\n
+autocomplete 属性规定 form 或 input 域应该拥有自动完成功能。\n
+当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项。\n
+提示: autocomplete 属性有可能在 form元素中是开启的，而在input元素中是关闭的。\n
+注意: autocomplete 适用于 &lt;form&gt; 标签，以及以下类型的 &lt;input&gt; 标签：text, search, url, telephone, email, password, datepickers, range 以及 color。（opera浏览器不支持）\n
+实例\n
+HTML form 中开启 autocomplete (一个 input 字段关闭 autocomplete ):\n
+&lt;form action="demo-form.php" autocomplete="on"&gt; \n
+First name:\n
+&lt;input type="text" name="fname"&gt;\n
+&lt;br&gt; \n
+Last name: \n
+&lt;input type="text" name="lname"&gt;\n
+&lt;br&gt; \n
+E-mail: \n
+&lt;input type="email" name="email" autocomplete="off"&gt;\n
+&lt;br&gt; \n
+&lt;input type="submit"&gt; &lt;/form&gt;\n
+提示:某些浏览器中，您可能需要启用自动完成功能，以使该属性生效。\n\n
+
+3.&lt;form&gt; novalidate 属性\n
+novalidate 属性是一个 boolean(布尔) 属性。\n
+novalidate 属性规定在提交表单时不应该验证 form 或 input 域。（safari浏览器不支持）
+实例\n
+无需验证提交的表单数据\n
+&lt;form action="demo-form.php" novalidate&gt; \n
+E-mail: \n
+&lt;input type="email" name="user_email"&gt; \n
+&lt;input type="submit"&gt; \n
+&lt;/form&gt;\n\n
+
+4.&lt;input&gt; autofocus 属性\n
+autofocus 属性是一个 boolean 属性.\n
+autofocus 属性规定在页面加载时，域自动地获得焦点。\n
+实例\n
+让 "First name" input 输入域在页面载入时自动聚焦：\n
+First name:\n
+&lt;input type="text" name="fname" autofocus&gt;\n\n
+
+5.&lt;input&gt; form 属性\n
+form 属性规定输入域所属的一个或多个表单。\n
+提示:如需引用一个以上的表单，请使用空格分隔的列表。（IE浏览器不支持）
+实例\n
+位于form表单外的 input 字段引用了 HTML form (该 input 表单仍然属于form表单的一部分):\n
+&lt;form action="demo-form.php" id="form1"&gt; \n
+First name: \n
+&lt;input type="text" name="fname"&gt;\n
+&lt;br&gt; \n
+&lt;input type="submit" value="提交"&gt; \n
+&lt;/form&gt; \n
+Last name: \n
+&lt;input type="text" name="lname" form="form1"&gt;\n\n
+
+6.&lt;input&gt; formaction 属性\n
+The formaction 属性用于描述表单提交的URL地址。\n
+The formaction 属性会覆盖&lt;form&gt; 元素中的action属性。\n
+注意: The formaction 属性用于 type="submit" 和 type="image"。\n
+实例\n
+以下HTMLform表单包含了两个不同地址的提交按钮：\n
+    </string>
+    <string name="content_biaodanshuxing_html">
+        &lt;form action="demo-form.php"&gt; \n
+First name: \n
+&lt;input type="text" name="fname"&gt;\n
+&lt;br&gt; \n
+Last name: \n
+&lt;input type="text" name="lname"&gt;\n
+&lt;br&gt; \n
+&lt;input type="submit" value="提交"&gt;\n
+&lt;br&gt; \n
+&lt;input type="submit" formaction="demo-admin.php" value="提交"&gt; \n
+&lt;/form&gt;\n\n
+    </string>
+    <string name="content_biaodanshuxing_text2">
+        7.&lt;input&gt; formenctype 属性\n
+formenctype 属性描述了表单提交到服务器的数据编码 (只对form表单中 method="post" 表单)\n
+formenctype 属性覆盖 form 元素的 enctype 属性。\n
+主要: 该属性与 type="submit" 和 type="image" 配合使用。\n
+实例\n
+第一个提交按钮已默认编码发送表单数据，第二个提交按钮以 "multipart/form-data" 编码格式发送表单数据:\n
+&lt;form action="demo-post_enctype.php" method="post"&gt; \n
+First name: \n
+&lt;input type="text" name="fname"&gt;\n
+&lt;br&gt; \n
+&lt;input type="submit" value="提交"&gt; \n
+&lt;input type="submit" formenctype="multipart/form-data" value="以 Multipart/form-data 提交"&gt; \n
+&lt;/form&gt;\n\n
+
+8.&lt;input&gt; formmethod 属性\n
+formmethod 属性定义了表单提交的方式。\n
+formmethod 属性覆盖了 &lt;form&gt; 元素的的method 属性。\n
+注意: 该属性可以与 type="submit" 和 type="image" 配合使用。\n
+实例\n
+重新定义表单提交方式实例:\n
+&lt;form action="demo-form.php" method="get"&gt; \n
+First name: \n
+&lt;input type="text" name="fname"&gt;\n
+&lt;br&gt; \n
+Last name: \n
+&lt;input type="text" name="lname"&gt;\n
+&lt;br&gt; \n
+&lt;input type="submit" value="提交"&gt; \n
+&lt;input type="submit" formmethod="post" formaction="demo-post.php" value="使用 POST 提交"&gt; \n
+&lt;/form&gt;\n
+
+9.&lt;input&gt; formnovalidate 属性\n
+novalidate 属性是一个 boolean 属性.\n
+novalidate属性描述了 &lt;input&gt; 元素在表单提交时无需被验证。\n
+formnovalidate 属性会覆盖 &lt;form&gt; 元素的novalidate属性。\n
+注意: formnovalidate 属性与type="submit一起使用，safari浏览器不支持。\n
+实例\n
+两个提交按钮的表单(使用与不适用验证 ):\n
+&lt;form action="demo-form.php"&gt;\n
+  E-mail: &lt;input type="email" name="userid"&gt;&lt;br&gt;\n
+  &lt;input type="submit" value="提交"&gt;&lt;br&gt;\n
+  &lt;input type="submit" formnovalidate value="不验证提交"&gt;\n
+&lt;/form&gt;\n
+
+10.&lt;input&gt; formtarget 属性\n
+formtarget 属性指定一个名称或一个关键字来指明表单提交数据接收后的展示。\n
+The formtarget 属性覆盖 &lt;form&gt;元素的target属性.\n
+注意: formtarget 属性与type="submit" 和 type="image"配合使用.\n
+实例\n
+两个提交按钮的表单, 在不同窗口中显示:\n
+&lt;form action="demo-form.php"&gt;\n
+  First name: &lt;input type="text" name="fname"&gt;&lt;br&gt;\n
+  Last name: &lt;input type="text" name="lname"&gt;&lt;br&gt;\n
+  &lt;input type="submit" value="正常提交"&gt;\n
+  &lt;input type="submit" formtarget="_blank"\n
+  value="提交到一个新的页面上"&gt;\n
+&lt;/form&gt;\n
+
+11.&lt;input&gt; height 和 width 属性\n
+height 和 width 属性规定用于 image 类型的 &lt;input&gt; 标签的图像高度和宽度。
+注意: height 和 width 属性只适用于 image 类型的&lt;input&gt; 标签。\n
+提示:图像通常会同时指定高度和宽度属性。如果图像设置高度和宽度，图像所需的空间 在加载页时会被保留。如果没有这些属性， 浏览器不知道图像的大小，并不能预留 适当的空间。图片在加载过程中会使页面布局效果改变 （尽管图片已加载）。\n
+实例\n
+定义了一个图像提交按钮, 使用了 height 和 width 属性:\n
+&lt;input type="image" src="img_submit.gif" alt="Submit" width="48" height="48"&gt;\n\n
+
+12.&lt;input&gt; list 属性\n
+list 属性规定输入域的 datalist。datalist 是输入域的选项列表。（safari浏览器不支持）
+实例\n
+在 &lt;datalist&gt;中预定义 &lt;input&gt; 值:\n
+&lt;input list="browsers"&gt;\n
+&lt;datalist id="browsers"&gt;\n
+  &lt;option value="Internet Explorer"&gt;\n
+  &lt;option value="Firefox"&gt;\n
+  &lt;option value="Chrome"&gt;\n
+  &lt;option value="Opera"&gt;\n
+  &lt;option value="Safari"&gt;\n
+&lt;/datalist&gt;\n\n
+    </string>
+    <string name="content_biaodanshuxing_text3">
+        13.&lt;input&gt; min 和 max 属性\n
+min、max 和 step 属性用于为包含数字或日期的 input 类型规定限定（约束）。\n
+注意: min、max 和 step 属性适用于以下类型的 &lt;input&gt; 标签：date pickers、number 以及 range。（firefox浏览器不支持）\n
+实例\n
+&lt;input&gt; 元素最小值与最大值设置:\n
+Enter a date before 1980-01-01:\n
+&lt;input type="date" name="bday" max="1979-12-31"&gt;\n
+Enter a date after 2000-01-01:\n
+&lt;input type="date" name="bday" min="2000-01-02"&gt;\n
+Quantity (between 1 and 5):\n
+&lt;input type="number" name="quantity" min="1" max="5"&gt;\n\n
+
+14.&lt;input&gt; multiple 属性\n
+multiple 属性是一个 boolean 属性.\n
+multiple 属性规定&lt;input&gt; 元素中可选择多个值。\n
+注意: multiple 属性适用于以下类型的 &lt;input&gt; 标签：email 和 file。\n
+实例\n
+上传多个文件:\n
+Select images: &lt;input type="file" name="img" multiple&gt;\n\n
+
+15.&lt;input&gt; pattern 属性\n
+pattern 属性描述了一个正则表达式用于验证 &lt;input&gt; 元素的值。\n
+注意:pattern 属性适用于以下类型的 &lt;input&gt; 标签: text, search, url, tel, email, 和 password。（safari浏览器不支持）\n
+提示： 是用来全局 title 属性描述了模式。\n
+提示： 您可以在我们的 JavaScript 教程中学习到有关正则表达式的内容。\n
+实例\n
+下面的例子显示了一个只能包含三个字母的文本域（不含数字及特殊字符）：\n
+Country code:\n
+ &lt;input type="text" name="country_code" pattern="[A-Za-z]{3}" title="Three letter country code"&gt;\n\n
+
+16.&lt;input&gt; placeholder 属性\n
+placeholder 属性提供一种提示（hint），描述输入域所期待的值。\n
+简短的提示在用户输入值前会显示在输入域上。\n
+注意: placeholder 属性适用于以下类型的 &lt;input&gt; 标签：text, search, url, telephone, email 以及 password。\n
+实例\n
+input 字段提示文本:\n
+&lt;input type="text" name="fname" placeholder="First name"&gt;\n\n
+
+17.&lt;input&gt; required 属性\n
+required 属性是一个 boolean 属性。\n
+required 属性规定必须在提交之前填写输入域（不能为空）。\n
+注意:required 属性适用于以下类型的 &lt;input&gt; 标签：text, search, url, telephone, email, password, date pickers, number, checkbox, radio 以及 file。（safari浏览器不支持）\n
+实例\n
+不能为空的input字段:\n
+Username: \n
+&lt;input type="text" name="usrname" required&gt;\n
+\n
+18.&lt;input&gt; step 属性\n
+step 属性为输入域规定合法的数字间隔。\n
+如果 step="3"，则合法的数是 -3,0,3,6 等\n
+提示： step 属性可以与 max 和 min 属性创建一个区域值.\n
+注意: step 属性与以下type类型一起使用: number, range, date, datetime, datetime-local, month, time 和 week.（firefox浏览器不支持）\n
+实例\n
+规定input step步长为3:\n
+&lt;input type="number" name="points" step="3"&gt;
+    </string>
+
+    <string name="content_webcunchu_title">HTML5 Web存储</string>
+    <string name="content_webcunchu_text1">
+        1.什么是 HTML5 Web 存储?\n
+    HTML5 web 存储,一个比cookie更好的本地存储方式，使用HTML5可以在本地存储用户的浏览数据。早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能。数据以 键/值 对存在, web网页的数据只允许该网页访问使用。\n\n
+
+2.浏览器支持\n
+Internet Explorer 8+, Firefox, Opera, Chrome, 和 Safari支持Web 存储。\n
+注意: Internet Explorer 7 及更早IE版本不支持web 存储。\n\n
+
+3.localStorage 和 sessionStorage \n
+客户端存储数据的两个对象为：\n
+localStorage - 没有时间限制的数据存储\n
+sessionStorage - 针对一个 session 的数据存储\n
+在使用 web 存储前,应检查浏览器是否支持 localStorage 和sessionStorage:\n
+    </string>
+    <string name="content_webcunchu_html">
+        if(typeof(Storage)!=="undefined") \n
+{ // 是的! 支持 localStorage sessionStorage 对象! \n
+   // 一些代码..... } \n
+else { \n
+   // 抱歉! 不支持 web 存储。 \n
+}\n\n
+    </string>
+    <string name="content_webcunchu_text2">
+        4.localStorage 对象\n
+    localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。\n
+localStorage.sitename="百度"; document.getElementById("result").innerHTML="网站名：" + localStorage.sitename;\n
+上面的代码使用 key="sitename" 和 value="百度" 创建一个 localStorage 键/值对；检索键值为"sitename" 的值然后将数据插入 id="result"的元素中。\n
+以上实例也可以这么写：\n
+// 存储 \n
+localStorage.sitename = "百度"; \n
+// 查找 \n
+document.getElementById("result").innerHTML = localStorage.sitename;\n
+移除 localStorage 中的 "lastname" :\n
+  localStorage.removeItem("lastname");\n
+不管是 localStorage，还是 sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：\n
+  保存数据：localStorage.setItem(key,value);\n
+  读取数据：localStorage.getItem(key);\n
+  删除单个数据：localStorage.removeItem(key);\n
+  删除所有数据：localStorage.clear();\n
+  得到某个索引的key：localStorage.key(index);\n
+提示: 键/值对通常以字符串存储，你可以按自己的需要转换该格式。\n
+下面的实例展示了用户点击按钮的次数。\n
+代码中的字符串值转换为数字类型:\n
+实例\n
+if (localStorage.clickcount) { \n
+  localStorage.clickcount=Number(localStorage.clickcount)+1; \n
+} else { \n
+  localStorage.clickcount=1; \n
+} \n
+document.getElementById("result").innerHTML=" 你已经点击了按钮 " + localStorage.clickcount + " 次 ";\n\n
+
+5.sessionStorage 对象\n
+    sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。\n
+如何创建并访问一个 sessionStorage：:\n
+实例\n
+if (sessionStorage.clickcount) { \n
+  sessionStorage.clickcount=Number(sessionStorage.clickcount)+1; \n
+} else { \n
+  sessionStorage.clickcount=1; \n
+} \n
+document.getElementById("result").innerHTML="在这个会话中你已经点击了该按钮 " + sessionStorage.clickcount + " 次 ";\n\n
+
+6.Web Storage 开发一个简单的网站列表程序\n
+网站列表程序实现以下功能：\n
+可以输入网站名，网址，以网站名作为key存入localStorage；根据网站名，查找网址；列出当前已保存的所有网站。
+    </string>
+    <string name="content_webcunchu_text3">
+        以下代码用于保存于查找数据：\n
+save() 与 find() 方法\n
+//保存数据 \n
+function save(){ \n
+  var siteurl = document.getElementById("siteurl").value; \n
+  var sitename = document.getElementById("sitename").value;\n
+  localStorage.setItem(sitename, siteurl); \n
+  alert("添加成功"); \n
+} \n
+//查找数据 \n
+function find(){ \n
+  var search_site = document.getElementById("search_site").value; \n
+  var sitename = localStorage.getItem(search_site); \n
+  var find_result = document.getElementById("find_result"); \n
+  find_result.innerHTML = search_site + "的网址是：" + sitename; \n
+}\n
+
+综合实例：\n
+&lt;!DOCTYPE html&gt;\n
+&lt;html&gt;  \n
+&lt;head&gt;  \n
+    &lt;meta charset="utf-8"&gt;  \n
+    &lt;title&gt;HTML5本地存储之Web Storage篇&lt;/title&gt;  \n
+&lt;/head&gt;  \n
+&lt;body&gt;  \n
+    &lt;div style="border: 2px dashed #ccc;width:320px;text-align:center;"&gt;\n
+        &lt;label for="keyname"&gt;别名(key):&lt;/label&gt;  \n
+        &lt;input type="text" id="keyname" name="keyname" class="text"/&gt;  \n
+        &lt;br/&gt;  \n
+        &lt;label for="sitename"&gt;网站名：&lt;/label&gt;  \n
+        &lt;input type="text" id="sitename" name="sitename" class="text"/&gt;  \n
+        &lt;br/&gt;  \n
+        &lt;label for="siteurl"&gt;网 址：&lt;/label&gt;  \n
+        &lt;input type="text" id="siteurl" name="siteurl"/&gt;  \n
+        &lt;br/&gt;  \n
+        &lt;input type="button" onclick="save()" value="新增记录"/&gt;  \n
+        &lt;hr/&gt;  \n
+        &lt;label for="search_phone"&gt;输入别名(key)：&lt;/label&gt;  \n
+        &lt;input type="text" id="search_site" name="search_site"/&gt;  \n
+        &lt;input type="button" onclick="find()" value="查找网站"/&gt;  \n
+        &lt;p id="find_result"&gt;&lt;br/&gt;&lt;/p&gt;  \n
+    &lt;/div&gt;  \n
+    &lt;br/&gt;  \n
+    &lt;div id="list"&gt;  \n
+    &lt;/div&gt;  \n
+    &lt;script&gt;\n
+    //保存数据  \n
+    function save(){  \n
+        var site = new Object;\n
+        site.keyname = document.getElementById("keyname").value;\n
+        site.sitename = document.getElementById("sitename").value;  \n
+        site.siteurl = document.getElementById("siteurl").value;\n
+        var str = JSON.stringify(site); // 将对象转换为字符串\n
+        localStorage.setItem(site.keyname,str);  \n
+        alert("保存成功");\n
+    }  \n
+    //查找数据  \n
+    function find(){  \n
+        var search_site = document.getElementById("search_site").value;  \n
+        var str = localStorage.getItem(search_site);  \n
+        var find_result = document.getElementById("find_result");\n
+        var site = JSON.parse(str);  \n
+        find_result.innerHTML = search_site + "的网站名是：" + site.sitename + "，网址是：" + site.siteurl;  \n
+    }  \n\n
+
+    //将所有存储在localStorage中的对象提取出来，并展现到界面上\n
+	// 确保存储的 keyname 对应的值为转换对象，否则JSON.parse会报错\n
+    function loadAll(){  \n
+        var list = document.getElementById("list");  \n
+        if(localStorage.length&gt;0){  \n
+            var result = "&lt;table border='1'&gt;";  \n
+            result += "&lt;tr&gt;&lt;td&gt;别名&lt;/td&gt;&lt;td&gt;网站名&lt;/td&gt;&lt;td&gt;网址&lt;/td&gt;&lt;/tr&gt;";  \n
+            for(var i=0;i&lt;localStorage.length;i++){ \n
+                var keyname = localStorage.key(i);  \n
+                var str = localStorage.getItem(keyname);  \n
+                var site = JSON.parse(str);  \n
+                result += "&lt;tr&gt;&lt;td&gt;"+site.keyname+"&lt;/td&gt;&lt;td&gt;"+site.sitename+"&lt;/td&gt;&lt;td&gt;"+site.siteurl+"&lt;/td&gt;&lt;/tr&gt;";  \n
+            }  \n
+            result += "&lt;/table&gt;";  \n
+            list.innerHTML = result;  \n
+        }else{  \n
+            list.innerHTML = "数据为空...";  \n
+        }  \n
+    }  \n
+    &lt;/script&gt;\n
+&lt;/body&gt;  \n
+&lt;/html&gt;
+
+运行及测试结果如下图所示：
+    </string>
+
+    <string name="content_websql_title">Web SQL</string>
+    <string name="content_websql_text1">
+     Web SQL 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。如果你是一个 Web 后端程序员，应该很容易理解 SQL 的操作。你也可以参考我们的 SQL 教程，了解更多数据库操作知识。Web SQL 数据库可以在最新版的 Safari, Chrome 和 Opera 浏览器中工作。\n\n
+
+1.核心方法\n
+以下是规范中定义的三个核心方法：\n
+1.1  openDatabase：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。\n
+1.2  transaction：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。\n
+1.3  executeSql：这个方法用于执行实际的 SQL 查询。\n\n
+
+2.打开数据库\n
+    我们可以使用 openDatabase() 方法来打开已存在的数据库，如果数据库不存在，则会创建一个新的数据库，使用代码如下：\n
+var db = openDatabase(\'mydb\', \'1.0\', \'Test DB\', 2 * 1024 * 1024);\n
+openDatabase() 方法对应的五个参数说明：\n
+数据库名称\n
+版本号\n
+描述文本\n
+数据库大小\n
+创建回调\n
+第五个参数，创建回调会在创建数据库后被调用。\n\n
+
+3.执行查询操作\n
+执行操作使用 database.transaction() 函数：\n
+var db = openDatabase(\'mydb\', \'1.0\', \'Test DB\', 2 * 1024 * 1024);\n
+db.transaction(function (tx) { \n
+    tx.executeSql(\'CREATE TABLE IF NOT EXISTS LOGS (id unique, log)\'); \n
+});\n
+上面的语句执行后会在 \'mydb\' 数据库中创建一个名为 LOGS 的表。\n\n
+
+4.插入数据\n
+在执行上面的创建表语句后，我们可以插入一些数据：\n
+var db = openDatabase(\'mydb\', \'1.0\', \'Test DB\', 2 * 1024 * 1024);\n
+db.transaction(function (tx) { \n
+    tx.executeSql(\'CREATE TABLE IF NOT EXISTS LOGS (id unique, log)\');\n
+    tx.executeSql(\'INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")\');\n
+    tx.executeSql(\'INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")\'); \n
+});\n
+我们也可以使用动态值来插入数据：\n
+var db = openDatabase(\'mydb\', \'1.0\', \'Test DB\', 2 * 1024 * 1024);\n
+db.transaction(function (tx) { \n
+tx.executeSql(\'CREATE TABLE IF NOT EXISTS LOGS (id unique, log)\');\n
+    tx.executeSql(\'INSERT INTO LOGS (id,log) VALUES (?, ?)\', [e_id, e_log]); \n
+});\n
+实例中的 e_id 和 e_log 是外部变量，executeSql 会映射数组参数中的每个条目给 "?"。\n\n
+
+5.读取数据\n
+以下实例演示了如何读取数据库中已经存在的数据：\n
+var db = openDatabase(\'mydb\', \'1.0\', \'Test DB\', 2 * 1024 * 1024);\n
+db.transaction(function (tx) { \n
+    tx.executeSql(\'CREATE TABLE IF NOT EXISTS LOGS (id unique, log)\');\n
+    tx.executeSql(\'INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")\');\n
+    tx.executeSql(\'INSERT INTO LOGS (id, log) VALUES (2,"www.runoob.com")\'); });\n
+db.transaction(function (tx) { \n
+tx.executeSql(\'SELECT * FROM LOGS\', [], \n
+function (tx, results) { \n
+    var len = results.rows.length, i; \n
+    msg = "&lt;p&gt;查询记录条数: " + len + "&lt;/p&gt;";\n
+    document.querySelector(\'#status\').innerHTML += msg; \n
+    for (i = 0; i &lt; len; i++){ \n
+      alert(results.rows.item(i).log ); \n
+    } \n
+}, null); \n
+});\n\n
+
+6.删除记录\n
+删除记录使用的格式如下：\n
+db.transaction(function (tx) {\n
+    tx.executeSql(\'DELETE FROM LOGS  WHERE id=1\');\n
+});\n
+删除指定的数据id也可以是动态的：\n
+db.transaction(function(tx) {\n
+    tx.executeSql(\'DELETE FROM LOGS WHERE id=?\', [id]);\n
+});\n
+\n
+7.更新记录\n
+更新记录使用的格式如下：\n
+db.transaction(function (tx) {\n
+    tx.executeSql(\'UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=2\');\n
+});\n
+更新指定的数据id也可以是动态的：\n
+db.transaction(function(tx) {\n
+    tx.executeSql(\'UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=?\', [id]);\n\n
+});\n\n
+
+综合实例：
+    </string>
+    <string name="content_websql_html">
+        &lt;!DOCTYPE HTML&gt;\n
+&lt;html&gt;\n
+   &lt;head&gt;\n
+      &lt;meta charset="UTF-8"&gt;  \n
+	   &lt;title&gt;测试WebSql&lt;/title&gt; \n
+      &lt;script type="text/javascript"&gt;\n\n
+
+         var db = openDatabase(\'mydb\', \'1.0\', \'Test DB\', 2 * 1024 * 1024);\n
+         var msg;\n\n
+
+         db.transaction(function (tx) {\n
+            tx.executeSql(\'CREATE TABLE IF NOT EXISTS LOGS (id unique, log)\');\n
+            tx.executeSql(\'INSERT INTO LOGS (id, log) VALUES (1, "百度")\');\n
+            tx.executeSql(\'INSERT INTO LOGS (id, log) VALUES (2, "www.baidu.com")\');\n
+            msg = \'&lt;p&gt;数据表已创建，且插入了两条数据。&lt;/p&gt;\';\n
+            document.querySelector(\'#status\').innerHTML =  msg;\n
+         });\n\n
+
+         db.transaction(function (tx) {\n
+              tx.executeSql(\'DELETE FROM LOGS  WHERE id=1\');\n
+              msg = \'&lt;p&gt;删除 id 为 1 的记录。&lt;/p&gt;\';\n
+              document.querySelector(\'#status\').innerHTML =  msg;\n
+         });\n\n
+
+         db.transaction(function (tx) {\n
+             tx.executeSql(\'UPDATE LOGS SET log=\'baidu.com\' WHERE id=2\');\n
+              msg = \'&lt;p&gt;更新 id 为 2 的记录。&lt;/p&gt;\';\n
+              document.querySelector(\'#status\').innerHTML =  msg;\n
+         });\n
+\n
+         db.transaction(function (tx) {\n
+            tx.executeSql(\'SELECT * FROM LOGS\', [], function (tx, results) {\n
+               var len = results.rows.length, i;\n
+               msg = "&lt;p&gt;查询记录条数: " + len + "&lt;/p&gt;";\n
+               document.querySelector(\'#status\').innerHTML +=  msg;\n\n
+
+               for (i = 0; i &lt; len; i++){\n
+                  msg = "&lt;p&gt;&lt;b&gt;" + results.rows.item(i).log + "&lt;/b&gt;&lt;/p&gt;";\n
+                  document.querySelector(\'#status\').innerHTML +=  msg;\n
+               }\n
+            }, null);\n
+         });\n\n
+
+      &lt;/script&gt;\n\n
+
+   &lt;/head&gt;\n\n
+
+   &lt;body&gt;\n
+      &lt;div id="status" name="status"&gt;状态信息&lt;/div&gt;\n
+   &lt;/body&gt;\n\n
+
+&lt;/html&gt;
+    </string>
+    <string name="content_websql_text2">运行结果图如下所示：</string>
+
+
+    <string name="content_websocket_title">WebSocket</string>
+    <string name="content_websocket_text1">
+            WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。在WebSocket API中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。当你获取 Web Socket 连接后，你可以通过 send() 方法来向服务器发送数据，并通过 onmessage 事件来接收服务器返回的数据。\n
+以下 API 用于创建 WebSocket 对象。\n
+    var Socket = new WebSocket(url, [protocol] );\n
+以上代码中的第一个参数 url, 指定连接的 URL。第二个参数 protocol 是可选的，指定了可接受的子协议。\n\n
+
+2.WebSocket 属性\n
+以下是 WebSocket 对象的属性。假定我们使用了以上代码创建了 Socket 对象：\n
+Socket.readyState--只读属性 readyState 表示连接状态，可以是以下值：\n
+    0 - 表示连接尚未建立。\n
+    1 - 表示连接已建立，可以进行通信。\n
+    2 - 表示连接正在进行关闭。\n
+    3 - 表示连接已经关闭或者连接不能打开。\n
+Socket.bufferedAmount--只读属性 bufferedAmount 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数。\n\n
+
+3.WebSocket 事件\n\n
+以下是 WebSocket 对象的相关事件。假定我们使用了以上代码创建了 Socket 对象。\n
+open事件：Socket.onopen事件处理程序，连接建立时触发。\n\n
+
+message事件：Socket.onmessage事件处理程序，客户端接收服务端数据时触发。\n\n
+
+error事件：Socket.onerror事件处理程序，通信发生错误时触发。\n\n
+
+close事件：Socket.onclose事件处理程序，连接关闭时触发。\n\n
+
+4.WebSocket 方法\n\n
+以下是 WebSocket 对象的相关方法。假定我们使用了以上代码创建了 Socket 对象。\n\n
+Socket.send()：使用连接发送数据。\n\n
+Socket.close()：关闭连接。\n\n
+
+5.WebSocket 实例\n
+WebSocket 协议本质上是一个基于 TCP 的协议。为了建立一个 WebSocket 连接，客户端浏览器首先要向服务器发起一个 HTTP 请求，这个请求和通常的 HTTP 请求不同，包含了一些附加头信息，其中附加头信息"Upgrade: WebSocket"表明这是一个申请协议升级的 HTTP 请求，服务器端解析这些附加的头信息然后产生应答信息返回给客户端，客户端和服务器端的 WebSocket 连接就建立起来了，双方就可以通过这个连接通道自由的传递信息，并且这个连接会持续存在直到客户端或者服务器端的某一方主动的关闭连接。\n\n
+
+5.1客户端的 HTML 和 JavaScript\n
+目前大部分浏览器支持 WebSocket() 接口，你可以在以下浏览器中尝试实例： Chrome, Mozilla, Opera 和 Safari。\n
+test.html 文件内容:
+    </string>
+    <string name="content_websocket_html">
+        &lt;!DOCTYPE HTML&gt;\n
+&lt;html&gt;\n
+   &lt;head&gt;\n
+   &lt;meta charset="utf-8"&gt;\n
+   &lt;title&gt;测试&lt;/title&gt;\n
+      &lt;script type="text/javascript"&gt;\n
+         function WebSocketTest(){\n
+            if ("WebSocket" in window){\n
+               alert("您的浏览器支持 WebSocket!");\n
+               // 打开一个 web socket\n
+               var ws = new WebSocket("ws://localhost:9998/echo");		\n
+               ws.onopen = function(){\n
+                  // Web Socket 已连接上，使用 send() 方法发送数据\n
+                  ws.send("发送数据");\n
+                  alert("数据发送中...");\n
+               };		\n
+               ws.onmessage = function (evt) { \n
+                  var received_msg = evt.data;\n
+                  alert("数据已接收...");\n
+               };\n\n
+
+               ws.onclose = function(){ \n
+                  // 关闭 websocket\n
+                  alert("连接已关闭..."); \n
+               };\n
+            } else {\n
+               // 浏览器不支持 WebSocket\n
+               alert("您的浏览器不支持 WebSocket!");\n
+            }\n
+         }\n
+      &lt;/script&gt;\n
+   &lt;/head&gt;\n
+   &lt;body&gt;\n
+      &lt;div id="sse"&gt;\n
+         &lt;a href="javascript:WebSocketTest()"&gt;运行 WebSocket&lt;/a&gt;\n
+      &lt;/div&gt;\n
+   &lt;/body&gt;\n
+&lt;/html&gt;\n
+    </string>
+    <string name="content_websocket_text2">5.2安装 pywebsocket\n
+    在执行以上程序前，我们需要创建一个支持 WebSocket 的服务。从 pywebsocket 下载 mod_pywebsocket ,或者使用 git 命令下载：\n
+git clone https://github.com/google/pywebsocket.git\n\n
+
+mod_pywebsocket 需要 python 环境支持。\n
+mod_pywebsocket 是一个 Apache HTTP 的 Web Socket扩展，安装步骤如下：\n
+a. 解压下载的文件。\n
+b. 进入 pywebsocket 目录。\n
+c. 执行命令：\n
+    $ python setup.py build\n
+    $ sudo python setup.py install\n
+d. 查看文档说明命令:\n
+    $ pydoc mod_pywebsocket\n
+\n
+5.3开启服务\n
+    在 pywebsocket/mod_pywebsocket 目录下执行以下命令：\n
+$ sudo python standalone.py -p 9998 -w ../example/\n
+以上命令会开启一个端口号为 9998 的服务，使用 -w 来设置处理程序 echo_wsh.py 所在的目录。\n
+现在我们可以在 Chrome 浏览器打开前面创建的 test.html 文件。如果你的浏览器支持 WebSocket(), 点击"运行 WebSocket"，你就可以看到整个流程各个步骤弹出的窗口。\n</string>
+
+
 
     <string name="content_remark_ining">加载中.....</string>
     <string name="content_bottom">~~~~~~~到底啦~~~~~~~</string>

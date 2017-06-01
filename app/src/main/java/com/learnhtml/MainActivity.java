@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity
     private Button liuyan_btn_submit;           //发表留言按钮
     private Button liuyan_btn_all;              //查看全部留言按钮
     private EditText liuyan_editext_text;       //留言内容输入框
+    LinearLayout layout_liuyan;                 //主界面的留言功能界面布局
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        contentList = new ArrayList<>();
         //其他Activity传来数据进行处理
         Intent intent = getIntent();
         Serializable lg = intent.getSerializableExtra("light");
@@ -135,7 +137,9 @@ public class MainActivity extends AppCompatActivity
         }
         //设置初始化界面
         setContentViewToNull();
-        findContentFromService(StaticData.HTML_JIANJIE_CODE);
+        //单机版时设置提示信息
+        content_remark.setText("欢迎来到HTML5学习基地！");
+       // findContentFromService(StaticData.HTML_JIANJIE_CODE);
         //findMenu();
 
     }
@@ -149,6 +153,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        //单机版时隐藏侧滑页面页头
+        headerLayout.setVisibility(View.GONE);
         nav_tes = (ImageView) headerLayout.findViewById(R.id.nav_header_btn_img);
         nav_tes.setVisibility(View.INVISIBLE);
         nav_text = (TextView) headerLayout.findViewById(R.id.nav_header_text1);
@@ -241,6 +247,9 @@ public class MainActivity extends AppCompatActivity
         liuyan_btn_submit = (Button) findViewById(R.id.content_liuyan_submit);
         liuyan_btn_all = (Button) findViewById(R.id.content_liuyan_all);
         liuyan_editext_text = (EditText) findViewById(R.id.content_liuyan_text);
+        layout_liuyan = (LinearLayout) findViewById(R.id.main_liuyan_layout);
+        //单机版时需要隐藏此布局
+        layout_liuyan.setVisibility(View.GONE);
 
     }
 
@@ -382,179 +391,361 @@ public class MainActivity extends AppCompatActivity
 
         switch (title) {
             case "HTML简介":
-                findContentFromService(StaticData.HTML_JIANJIE_CODE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_jiaocheng_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_jiaocheng_text1)));
+                rowID = Integer.toString(StaticData.HTML_JIANJIE_CODE);
+                mhandler.obtainMessage(1).sendToTarget();
+
+                //findContentFromService(StaticData.HTML_JIANJIE_CODE);
                 break;
 
             case "HTML编辑器":
-                findContentFromService(StaticData.HTML_BIANJIQI_CODE);
-                content_image1.setImageResource(R.mipmap.content_bianjiqi_img2);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_bianjiqi_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_bianjiqi_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_bianjiqi_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_bianjiqi_text2)));
+                rowID = Integer.toString(StaticData.HTML_BIANJIQI_CODE);
+
+                // findContentFromService(StaticData.HTML_BIANJIQI_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_bianjiqi_img2);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML元素":
-                findContentFromService(StaticData.HTML_YUANSU_CODE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_yuansu_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_yuansu_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_yuansu_text2)));
+                rowID = Integer.toString(StaticData.HTML_YUANSU_CODE);
+                mhandler.obtainMessage(1).sendToTarget();
+
+
+                // findContentFromService(StaticData.HTML_YUANSU_CODE);
                 break;
 
             case "HTML标题":
-                findContentFromService(StaticData.HTML_BIAOTI_CODE);
-                content_image1.setImageResource(R.mipmap.content_biaoti_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_biaoti_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoti_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoti_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoti_text2)));
+                rowID = Integer.toString(StaticData.HTML_BIAOTI_CODE);
+
+                //findContentFromService(StaticData.HTML_BIAOTI_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_biaoti_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML链接":
-                findContentFromService(StaticData.HTML_LIANJIE_CODE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_lianjie_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_lianjie_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_lianjie_text2)));
+                rowID = Integer.toString(StaticData.HTML_LIANJIE_CODE);
+
+                //findContentFromService(StaticData.HTML_LIANJIE_CODE);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML头部":
-                findContentFromService(StaticData.HTML_TOUBU_CODE);
-                // content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_toubu_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_toubu_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_toubu_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_toubu_text2)));
+                rowID = Integer.toString(StaticData.HTML_TOUBU_CODE);
+                mhandler.obtainMessage(1).sendToTarget();
+
+                //findContentFromService(StaticData.HTML_TOUBU_CODE);
                 break;
 
             case "HTML表格":
-                findContentFromService(StaticData.HTML_BIAOGE_CODE);
-                content_image1.setImageResource(R.mipmap.content_biaoge_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_biaoge_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoge_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoge_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoge_text2)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaoge_text3)));
+                rowID = Integer.toString(StaticData.HTML_BIAOGE_CODE);
+
+                //findContentFromService(StaticData.HTML_BIAOGE_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_biaoge_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML图片":
-                findContentFromService(StaticData.HTML_TUPIAN_CODE);
-                content_image1.setImageResource(R.mipmap.content_tupian_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_tupian_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_tupian_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_tupian_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_tupian_text2)));
+                rowID = Integer.toString(StaticData.HTML_TUPIAN_CODE);
+
+                // findContentFromService(StaticData.HTML_TUPIAN_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_tupian_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML区块":
-                findContentFromService(StaticData.HTML_QUKUAI_CODE);
-                content_image1.setImageResource(R.mipmap.content_qukuai_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_qukuai_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_qukuai_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_qukuai_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_qukuai_text2)));
+                rowID = Integer.toString(StaticData.HTML_QUKUAI_CODE);
+
+                //findContentFromService(StaticData.HTML_QUKUAI_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_qukuai_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML布局":
-                findContentFromService(StaticData.HTML_BUJU_CODE);
-                content_image1.setImageResource(R.mipmap.content_buju_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                // content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_buju_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_buju_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_buju_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_buju_text2)));
+                rowID = Integer.toString(StaticData.HTML_BUJU_CODE);
+
+                // findContentFromService(StaticData.HTML_BUJU_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_buju_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML表单":
-                findContentFromService(StaticData.HTML_BIAODAN_CODE);
-                content_image1.setImageResource(R.mipmap.content_biaodan_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_biaodan_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodan_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodan_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodan_text2)));
+                rowID = Integer.toString(StaticData.HTML_BIAODAN_CODE);
+
+                // findContentFromService(StaticData.HTML_BIAODAN_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_biaodan_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML框架":
-                findContentFromService(StaticData.HTML_KUANGJIA_CODE);
-                content_image1.setImageResource(R.mipmap.content_kuangjia_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_kuangjia_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_kuangjia_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_kuangjia_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_kuangjia_text2)));
+                rowID = Integer.toString(StaticData.HTML_KUANGJIA_CODE);
+                //findContentFromService(StaticData.HTML_KUANGJIA_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_kuangjia_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "HTML总结":
-                findContentFromService(StaticData.HTML_ZONGJIE_CODE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_zongjie_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_zongjie_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_zongjie_text2)));
+                rowID = Integer.toString(StaticData.HTML_ZONGJIE_CODE);
+
+                mhandler.obtainMessage(1).sendToTarget();
+                // findContentFromService(StaticData.HTML_ZONGJIE_CODE);
                 break;
 
             //HTML5模块
             case "HTML5教程":
-                findContentFromService(StaticData.HTML5_JIAOCHENG_CODE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_html5jiaocheng_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_html5jiaocheng_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_html5jiaocheng_text2)));
+                rowID = Integer.toString(StaticData.HTML5_JIAOCHENG_CODE);
+
+                mhandler.obtainMessage(1).sendToTarget();
+                // findContentFromService(StaticData.HTML5_JIAOCHENG_CODE);
                 break;
 
             case "浏览器支持":
-                findContentFromService(StaticData.HTML5_LIULANQI_CODE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_html5liulanqi_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_html5liulanqi_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_html5liulanqi_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_html5liulanqi_text2)));
+                rowID = Integer.toString(StaticData.HTML5_LIULANQI_CODE);
+
+                mhandler.obtainMessage(1).sendToTarget();
+                //findContentFromService(StaticData.HTML5_LIULANQI_CODE);
                 break;
 
             case "Canvas":
-                findContentFromService(StaticData.HTML5_CANVAS_CODE);
-                content_image1.setImageResource(R.mipmap.content_canvas_img1);
-                // content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_canvas_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_canvas_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_canvas_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_canvas_text2)));
+                rowID = Integer.toString(StaticData.HTML5_CANVAS_CODE);
+
+                // findContentFromService(StaticData.HTML5_CANVAS_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_canvas_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "内联SVG":
-                findContentFromService(StaticData.HTML5_NEILIANSVG_CODE);
-                content_image1.setImageResource(R.mipmap.content_neiliansvg_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_neiliansvg_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_neiliansvg_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_neiliansvg_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_neiliansvg_text2)));
+                rowID = Integer.toString(StaticData.HTML5_NEILIANSVG_CODE);
+
+                // findContentFromService(StaticData.HTML5_NEILIANSVG_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_neiliansvg_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "MathML":
-                findContentFromService(StaticData.HTML5_MATHML_CODE);
-                content_image1.setImageResource(R.mipmap.content_mathml_img1);
-                // content_image1.setVisibility(View.VISIBLE);
-                // content_html.setVisibility(View.VISIBLE);
-                content_image2.setImageResource(R.mipmap.content_mathml_img2);
-                // content_image2.setVisibility(View.VISIBLE);
-                content_text3.setTextSize(13);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_mathml_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_mathml_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_mathml_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_mathml_text2)));
+                contentList.add(new ContentInfo(getString(R.string.content_mathml_text3)));
+                rowID = Integer.toString(StaticData.HTML5_MATHML_CODE);
 
+                //findContentFromService(StaticData.HTML5_MATHML_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_mathml_img1);
+                content_image2.setBackgroundResource(R.mipmap.content_mathml_img2);
+                content_text3.setTextSize(13);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "拖放":
-                findContentFromService(StaticData.HTML5_TUOFANG_CODE);
-                content_image1.setImageResource(R.mipmap.content_tuofang_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_tuofang_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_tuofang_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_tuofang_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_tuofang_text2)));
+                contentList.add(new ContentInfo(getString(R.string.content_tuofang_text3)));
+                rowID = Integer.toString(StaticData.HTML5_TUOFANG_CODE);
+
+                //findContentFromService(StaticData.HTML5_TUOFANG_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_tuofang_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "地理定位":
-                findContentFromService(StaticData.HTML5_DILIDINGWEI_CODE);
-                content_image1.setImageResource(R.mipmap.content_dilidingwei_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                content_image2.setImageResource(R.mipmap.content_dilidingwei_img2);
-                //content_image2.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_dilidingwei_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_dilidingwei_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_dilidingwei_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_dilidingwei_text2)));
+                contentList.add(new ContentInfo(getString(R.string.content_dilidingwei_text3)));
+                rowID = Integer.toString(StaticData.HTML5_DILIDINGWEI_CODE);
+
+                // findContentFromService(StaticData.HTML5_DILIDINGWEI_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_dilidingwei_img1);
+                content_image2.setBackgroundResource(R.mipmap.content_dilidingwei_img2);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "video":
-                findContentFromService(StaticData.HTML5_VIDEO_CODE);
-                content_image1.setImageResource(R.mipmap.content_video_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_video_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_video_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_video_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_video_text2)));
+                rowID = Integer.toString(StaticData.HTML5_VIDEO_CODE);
+
+                //findContentFromService(StaticData.HTML5_VIDEO_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_video_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "audio":
-                findContentFromService(StaticData.HTML5_AUDIO_CODE);
-                content_image1.setImageResource(R.mipmap.content_audio_img1);
-                //content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_audio_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_audio_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_audio_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_audio_text2)));
+                rowID = Integer.toString(StaticData.HTML5_AUDIO_CODE);
+
+                // findContentFromService(StaticData.HTML5_AUDIO_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_audio_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "input类型":
-                findContentFromService(StaticData.HTML5_INPUTLEIXING_CODE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_inputleixing_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_inputleixing_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_inputleixing_text2)));
+                rowID = Integer.toString(StaticData.HTML5_INPUTLEIXING_CODE);
+
+                mhandler.obtainMessage(1).sendToTarget();
+                // findContentFromService(StaticData.HTML5_INPUTLEIXING_CODE);
                 break;
 
             case "表单元素":
-                findContentFromService(StaticData.HTML5_BIAODANYUANSU_CODE);
-                content_image1.setImageResource(R.mipmap.content_biaodanyuansu_img1);
-                // content_image1.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanyuansu_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanyuansu_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanyuansu_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanyuansu_text2)));
+                rowID = Integer.toString(StaticData.HTML5_BIAODANYUANSU_CODE);
+
+                //findContentFromService(StaticData.HTML5_BIAODANYUANSU_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_biaodanyuansu_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "表单属性":
-                findContentFromService(StaticData.HTML5_BIAODANSHUXING_CODE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanshuxing_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanshuxing_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanshuxing_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanshuxing_text2)));
+                contentList.add(new ContentInfo(getString(R.string.content_biaodanshuxing_text3)));
+                rowID = Integer.toString(StaticData.HTML5_BIAODANSHUXING_CODE);
+                mhandler.obtainMessage(1).sendToTarget();
+
+                // findContentFromService(StaticData.HTML5_BIAODANSHUXING_CODE);
                 break;
 
             case "web存储":
-                findContentFromService(StaticData.HTML5_WEBCUNCHU_CODE);
-                content_image2.setImageResource(R.mipmap.content_webcunchu_img1);
-                //content_image2.setVisibility(View.VISIBLE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_webcunchu_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_webcunchu_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_webcunchu_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_webcunchu_text2)));
+                contentList.add(new ContentInfo(getString(R.string.content_webcunchu_text3)));
+                rowID = Integer.toString(StaticData.HTML5_WEBCUNCHU_CODE);
+
+                //findContentFromService(StaticData.HTML5_WEBCUNCHU_CODE);
+                content_image2.setBackgroundResource(R.mipmap.content_webcunchu_img1);
                 content_text3.setTextSize(13);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "WebSql":
-                findContentFromService(StaticData.HTML5_WEBSQL_CODE);
-                content_image1.setImageResource(R.mipmap.content_websql_img1);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_websql_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_websql_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_websql_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_websql_text2)));
+                rowID = Integer.toString(StaticData.HTML5_WEBSQL_CODE);
+
+                //findContentFromService(StaticData.HTML5_WEBSQL_CODE);
+                content_image1.setBackgroundResource(R.mipmap.content_websql_img1);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
 
             case "WebSocket":
-                findContentFromService(StaticData.HTML5_WEBSOKET_CODE);
-                //content_html.setVisibility(View.VISIBLE);
+                contentList = new ArrayList<>();
+                contentList.add(new ContentInfo(getString(R.string.content_websocket_title)));
+                contentList.add(new ContentInfo(getString(R.string.content_websocket_text1)));
+                contentList.add(new ContentInfo(getString(R.string.content_websocket_html)));
+                contentList.add(new ContentInfo(getString(R.string.content_websocket_text2)));
+                rowID = Integer.toString(StaticData.HTML5_WEBSOKET_CODE);
+
+                //findContentFromService(StaticData.HTML5_WEBSOKET_CODE);
+                mhandler.obtainMessage(1).sendToTarget();
                 break;
         }
         return true;
@@ -758,6 +949,8 @@ public class MainActivity extends AppCompatActivity
         content_image2.setVisibility(View.GONE);
         content_image1.setBackground(null);
         content_image2.setBackground(null);
+        content_image2.setBackgroundResource(0);
+        content_image1.setBackgroundResource(0);
         content_remark.setText(R.string.content_remark_ining);
     }
 
