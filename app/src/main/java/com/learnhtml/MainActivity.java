@@ -23,6 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity
     private String rowID = "0";                     //知识内容组号
     private UserInfo mInfo = null;                  //个人信息
     private String appLight = "日间模式";            //亮度模式常量
-    private int networkState = 0;                     //网络状态，以便知道是联网版还是单机版,0表示单机版
+    private int networkState = 1;                   //网络状态，以便知道是联网版还是单机版,0表示单机版
 
     //侧滑页头
     private NavigationView navigationView = null;   //侧滑界面
@@ -151,13 +152,13 @@ public class MainActivity extends AppCompatActivity
         //设置初始化界面
         setContentViewToNull();
 
-        //单机版时设置提示信息
-        content_remark.setText("欢迎来到HTML5学习基地！");
+        //单机版时需要设置提示信息
+       // content_remark.setText("欢迎来到HTML5学习基地！");
 
         //联网版需要加载菜单
-        // findMenu();
+        findMenu();
         //联网版需要加载初始化知识界面
-        //findContentFromService(StaticData.HTML_JIANJIE_CODE);
+        findContentFromService(StaticData.HTML_JIANJIE_CODE);
 
     }
 
@@ -171,7 +172,7 @@ public class MainActivity extends AppCompatActivity
 
         headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         //单机版时隐藏侧滑页面页头
-        headerLayout.setVisibility(View.GONE);
+        // headerLayout.setVisibility(View.GONE);
         nav_tes = (ImageView) headerLayout.findViewById(R.id.nav_header_btn_img);
         nav_tes.setVisibility(View.INVISIBLE);
         nav_text = (TextView) headerLayout.findViewById(R.id.nav_header_text1);
@@ -192,6 +193,14 @@ public class MainActivity extends AppCompatActivity
         });
 
         nav_listview = (ListView) findViewById(R.id.nav_listview);
+        nav_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //初始化界面
+                setContentViewToNull();
+                setActionToNavMenu(menutList.get(i).getMenuName());
+            }
+        });
     }
 
     //ActionBar右上角组件
@@ -279,7 +288,7 @@ public class MainActivity extends AppCompatActivity
         liuyan_editext_text = (EditText) findViewById(R.id.content_liuyan_text);
         layout_liuyan = (LinearLayout) findViewById(R.id.main_liuyan_layout);
         //单机版时需要隐藏此布局
-        layout_liuyan.setVisibility(View.GONE);
+        //layout_liuyan.setVisibility(View.GONE);
 
     }
 
@@ -352,374 +361,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    Handler mhandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            //显示服务器返回的知识内容
-            if (msg.what == 1) {
-                content_title.setText(contentList.get(0).getContent());//标题
-                content_text1.setText(contentList.get(1).getContent());//内容1
-                content_remark.setText(R.string.content_bottom);
-                content_image1.setVisibility(View.VISIBLE);
-                content_image2.setVisibility(View.VISIBLE);
-
-                //list中有5个内容,表示只有一个标题,一个内容1，一个内容2
-                if (contentList.size() == 3) {
-                    content_text2.setText(contentList.get(2).getContent());
-                }
-                //list中有4个内容,表示只有一个标题,一个内容1，一个代码块，一个内容2
-                else if (contentList.size() == 4) {
-                    content_html.setVisibility(View.VISIBLE);
-                    content_html.setText(contentList.get(2).getContent());
-                    content_text2.setText(contentList.get(3).getContent());
-                }
-                //list中有5个内容,表示只有一个标题,一个内容1，一个代码块，一个内容2，一个内容3
-                else if (contentList.size() == 5) {
-                    content_html.setVisibility(View.VISIBLE);
-                    content_html.setText(contentList.get(2).getContent());
-                    content_text2.setText(contentList.get(3).getContent());
-                    content_text3.setText(contentList.get(4).getContent());
-                }
-            }
-            //提示
-            else if (msg.what == 0) {
-                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
-            }
-            //留言成功后
-            else if (msg.what == 2) {
-                liuyan_editext_text.setText("");
-                scrollViewGetFocusable();
-                checkDialog(StaticData.MAINACTIVITY_WORDS_GO, getString(R.string.mainactivity_dialog_wordssuccess)
-                        , getString(R.string.mainactivity_dialog_gonow), getString(R.string.mainactivity_dialog_goletter));
-            }
-            //提示
-            else if (msg.what == 4) {
-                content_remark.setText(msg.obj.toString());
-            }
-            //获取侧滑菜单成功
-            else if (msg.what == 5) {
-                navigationView.getMenu().clear();
-                nav_listview.setVisibility(View.VISIBLE);
-                setMenuToListView();
-            }
-            //获取侧滑菜单失败
-            else if (msg.what == 6) {
-                nav_listview.setVisibility(View.GONE);
-                navigationView.inflateMenu(R.menu.activity_main_drawer);
-                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
-            }
-        }
-    };
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        String title = item.getTitle().toString();
         setContentViewToNull();
+        setActionToNavMenu(item.getTitle().toString());
 
-        switch (title) {
-            case "HTML简介":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList2(getString(R.string.content_jiaocheng_title), getString(R.string.content_jiaocheng_text1));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_JIANJIE_CODE);
-                }
-                break;
-
-            case "HTML编辑器":
-                content_image1.setBackgroundResource(R.mipmap.content_bianjiqi_img2);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_bianjiqi_title), getString(R.string.content_bianjiqi_text1)
-                            , getString(R.string.content_bianjiqi_html), getString(R.string.content_bianjiqi_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_BIANJIQI_CODE);
-                }
-                break;
-
-            case "HTML元素":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentListText3(getString(R.string.content_yuansu_title), getString(R.string.content_yuansu_text1), getString(R.string.content_yuansu_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_YUANSU_CODE);
-                }
-                break;
-
-            case "HTML标题":
-                content_image1.setBackgroundResource(R.mipmap.content_biaoti_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_biaoti_title), getString(R.string.content_biaoti_text1)
-                            , getString(R.string.content_biaoti_html), getString(R.string.content_biaoti_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_BIAOTI_CODE);
-                }
-                break;
-
-            case "HTML链接":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentListText3(getString(R.string.content_lianjie_title), getString(R.string.content_lianjie_text1), getString(R.string.content_lianjie_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_LIANJIE_CODE);
-                }
-                break;
-
-            case "HTML头部":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_toubu_title), getString(R.string.content_toubu_text1)
-                            , getString(R.string.content_toubu_html), getString(R.string.content_toubu_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_TOUBU_CODE);
-                }
-                break;
-
-            case "HTML表格":
-                content_image1.setBackgroundResource(R.mipmap.content_biaoge_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList5(getString(R.string.content_biaoge_title), getString(R.string.content_biaoge_text1),
-                            getString(R.string.content_biaoge_html), getString(R.string.content_biaoge_text2), getString(R.string.content_biaoge_text3));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_BIAOGE_CODE);
-                }
-                break;
-
-            case "HTML图片":
-                content_image1.setBackgroundResource(R.mipmap.content_tupian_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_tupian_title), getString(R.string.content_tupian_text1)
-                            , getString(R.string.content_tupian_html), getString(R.string.content_tupian_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_TUPIAN_CODE);
-                }
-                break;
-
-            case "HTML区块":
-                content_image1.setBackgroundResource(R.mipmap.content_qukuai_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_qukuai_title), getString(R.string.content_qukuai_text1)
-                            , getString(R.string.content_qukuai_html), getString(R.string.content_qukuai_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_QUKUAI_CODE);
-                }
-                break;
-
-            case "HTML布局":
-                content_image1.setBackgroundResource(R.mipmap.content_buju_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_buju_title), getString(R.string.content_buju_text1)
-                            , getString(R.string.content_buju_html), getString(R.string.content_buju_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_BUJU_CODE);
-                }
-                break;
-
-            case "HTML表单":
-                content_image1.setBackgroundResource(R.mipmap.content_biaodan_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_biaodan_title), getString(R.string.content_biaodan_text1)
-                            , getString(R.string.content_biaodan_html), getString(R.string.content_biaodan_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_BIAODAN_CODE);
-                }
-                break;
-
-            case "HTML框架":
-                content_image1.setBackgroundResource(R.mipmap.content_kuangjia_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_kuangjia_title), getString(R.string.content_kuangjia_text1)
-                            , getString(R.string.content_kuangjia_html), getString(R.string.content_kuangjia_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_KUANGJIA_CODE);
-                }
-                break;
-
-            case "HTML总结":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentListText3(getString(R.string.content_zongjie_title), getString(R.string.content_zongjie_text1)
-                            , getString(R.string.content_zongjie_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML_ZONGJIE_CODE);
-                }
-                break;
-
-            //HTML5模块
-            case "HTML5教程":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentListText3(getString(R.string.content_html5jiaocheng_title), getString(R.string.content_html5jiaocheng_text1)
-                            , getString(R.string.content_html5jiaocheng_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_JIAOCHENG_CODE);
-                }
-                break;
-
-            case "浏览器支持":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_html5liulanqi_title), getString(R.string.content_html5liulanqi_text1)
-                            , getString(R.string.content_html5liulanqi_html), getString(R.string.content_html5liulanqi_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_LIULANQI_CODE);
-                }
-                break;
-
-            case "Canvas":
-                content_image1.setBackgroundResource(R.mipmap.content_canvas_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_canvas_title), getString(R.string.content_canvas_text1)
-                            , getString(R.string.content_canvas_html), getString(R.string.content_canvas_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_CANVAS_CODE);
-                }
-                break;
-
-            case "内联SVG":
-                content_image1.setBackgroundResource(R.mipmap.content_neiliansvg_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_neiliansvg_title), getString(R.string.content_neiliansvg_text1)
-                            , getString(R.string.content_neiliansvg_html), getString(R.string.content_neiliansvg_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_NEILIANSVG_CODE);
-                }
-                break;
-
-            case "MathML":
-                content_image1.setBackgroundResource(R.mipmap.content_mathml_img1);
-                content_image2.setBackgroundResource(R.mipmap.content_mathml_img2);
-                content_text3.setTextSize(13);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList5(getString(R.string.content_mathml_title), getString(R.string.content_mathml_text1)
-                            , getString(R.string.content_mathml_html), getString(R.string.content_mathml_text2), getString(R.string.content_mathml_text3));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_MATHML_CODE);
-                }
-                break;
-
-            case "拖放":
-                content_image1.setBackgroundResource(R.mipmap.content_tuofang_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList5(getString(R.string.content_tuofang_title), getString(R.string.content_tuofang_text1)
-                            , getString(R.string.content_tuofang_html), getString(R.string.content_tuofang_text2), getString(R.string.content_tuofang_text3));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_TUOFANG_CODE);
-                }
-                break;
-
-            case "地理定位":
-                content_image1.setBackgroundResource(R.mipmap.content_dilidingwei_img1);
-                content_image2.setBackgroundResource(R.mipmap.content_dilidingwei_img2);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList5(getString(R.string.content_dilidingwei_title), getString(R.string.content_dilidingwei_text1)
-                            , getString(R.string.content_dilidingwei_html), getString(R.string.content_dilidingwei_text2), getString(R.string.content_dilidingwei_text3));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_DILIDINGWEI_CODE);
-                }
-                break;
-
-            case "video":
-                content_image1.setBackgroundResource(R.mipmap.content_video_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_video_title), getString(R.string.content_video_text1)
-                            , getString(R.string.content_video_html), getString(R.string.content_video_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_VIDEO_CODE);
-                }
-                break;
-
-            case "audio":
-                content_image1.setBackgroundResource(R.mipmap.content_audio_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_audio_title), getString(R.string.content_audio_text1)
-                            , getString(R.string.content_audio_html), getString(R.string.content_audio_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_AUDIO_CODE);
-                }
-                break;
-
-            case "input类型":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentListText3(getString(R.string.content_inputleixing_title), getString(R.string.content_inputleixing_text1)
-                            , getString(R.string.content_inputleixing_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_INPUTLEIXING_CODE);
-                }
-                break;
-
-            case "表单元素":
-                content_image1.setBackgroundResource(R.mipmap.content_biaodanyuansu_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_biaodanyuansu_title), getString(R.string.content_biaodanyuansu_text1)
-                            , getString(R.string.content_biaodanyuansu_html), getString(R.string.content_biaodanyuansu_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_BIAODANYUANSU_CODE);
-                }
-                break;
-
-            case "表单属性":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList5(getString(R.string.content_biaodanshuxing_title), getString(R.string.content_biaodanshuxing_text1)
-                            , getString(R.string.content_biaodanshuxing_html), getString(R.string.content_biaodanshuxing_text2), getString(R.string.content_biaodanshuxing_text3));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_BIAODANSHUXING_CODE);
-                }
-                break;
-
-            case "web存储":
-                content_image2.setBackgroundResource(R.mipmap.content_webcunchu_img1);
-                content_text3.setTextSize(13);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList5(getString(R.string.content_webcunchu_title), getString(R.string.content_webcunchu_text1)
-                            , getString(R.string.content_webcunchu_html), getString(R.string.content_webcunchu_text2), getString(R.string.content_webcunchu_text3));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_WEBCUNCHU_CODE);
-                }
-                break;
-
-            case "WebSql":
-                content_image1.setBackgroundResource(R.mipmap.content_websql_img1);
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_websql_title), getString(R.string.content_websql_text1)
-                            , getString(R.string.content_websql_html), getString(R.string.content_websql_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_WEBSQL_CODE);
-                }
-                break;
-
-            case "WebSocket":
-                if (networkState == 0) {
-                    contentList = ContentListData.getContentList4(getString(R.string.content_websocket_title), getString(R.string.content_websocket_text1)
-                            , getString(R.string.content_websocket_html), getString(R.string.content_websocket_text2));
-                    mhandler.obtainMessage(1).sendToTarget();
-                } else {
-                    findContentFromService(StaticData.HTML5_WEBSOKET_CODE);
-                }
-                break;
-        }
         return true;
     }
 
@@ -891,6 +538,319 @@ public class MainActivity extends AppCompatActivity
         thread.start();
     }
 
+
+    //侧滑菜单点击事件
+    private void setActionToNavMenu(String title) {
+        switch (title) {
+            case "HTML简介":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList2(getString(R.string.content_jiaocheng_title), getString(R.string.content_jiaocheng_text1));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_JIANJIE_CODE);
+                }
+                break;
+
+            case "HTML编辑器":
+                content_image1.setBackgroundResource(R.mipmap.content_bianjiqi_img2);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_bianjiqi_title), getString(R.string.content_bianjiqi_text1)
+                            , getString(R.string.content_bianjiqi_html), getString(R.string.content_bianjiqi_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_BIANJIQI_CODE);
+                }
+                break;
+
+            case "HTML元素":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentListText3(getString(R.string.content_yuansu_title), getString(R.string.content_yuansu_text1), getString(R.string.content_yuansu_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_YUANSU_CODE);
+                }
+                break;
+
+            case "HTML标题":
+                content_image1.setBackgroundResource(R.mipmap.content_biaoti_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_biaoti_title), getString(R.string.content_biaoti_text1)
+                            , getString(R.string.content_biaoti_html), getString(R.string.content_biaoti_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_BIAOTI_CODE);
+                }
+                break;
+
+            case "HTML链接":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentListText3(getString(R.string.content_lianjie_title), getString(R.string.content_lianjie_text1), getString(R.string.content_lianjie_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_LIANJIE_CODE);
+                }
+                break;
+
+            case "HTML头部":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_toubu_title), getString(R.string.content_toubu_text1)
+                            , getString(R.string.content_toubu_html), getString(R.string.content_toubu_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_TOUBU_CODE);
+                }
+                break;
+
+            case "HTML表格":
+                content_image1.setBackgroundResource(R.mipmap.content_biaoge_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList5(getString(R.string.content_biaoge_title), getString(R.string.content_biaoge_text1),
+                            getString(R.string.content_biaoge_html), getString(R.string.content_biaoge_text2), getString(R.string.content_biaoge_text3));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_BIAOGE_CODE);
+                }
+                break;
+
+            case "HTML图片":
+                content_image1.setBackgroundResource(R.mipmap.content_tupian_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_tupian_title), getString(R.string.content_tupian_text1)
+                            , getString(R.string.content_tupian_html), getString(R.string.content_tupian_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_TUPIAN_CODE);
+                }
+                break;
+
+            case "HTML区块":
+                content_image1.setBackgroundResource(R.mipmap.content_qukuai_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_qukuai_title), getString(R.string.content_qukuai_text1)
+                            , getString(R.string.content_qukuai_html), getString(R.string.content_qukuai_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_QUKUAI_CODE);
+                }
+                break;
+
+            case "HTML布局":
+                content_image1.setBackgroundResource(R.mipmap.content_buju_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_buju_title), getString(R.string.content_buju_text1)
+                            , getString(R.string.content_buju_html), getString(R.string.content_buju_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_BUJU_CODE);
+                }
+                break;
+
+            case "HTML表单":
+                content_image1.setBackgroundResource(R.mipmap.content_biaodan_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_biaodan_title), getString(R.string.content_biaodan_text1)
+                            , getString(R.string.content_biaodan_html), getString(R.string.content_biaodan_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_BIAODAN_CODE);
+                }
+                break;
+
+            case "HTML框架":
+                content_image1.setBackgroundResource(R.mipmap.content_kuangjia_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_kuangjia_title), getString(R.string.content_kuangjia_text1)
+                            , getString(R.string.content_kuangjia_html), getString(R.string.content_kuangjia_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_KUANGJIA_CODE);
+                }
+                break;
+
+            case "HTML总结":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentListText3(getString(R.string.content_zongjie_title), getString(R.string.content_zongjie_text1)
+                            , getString(R.string.content_zongjie_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML_ZONGJIE_CODE);
+                }
+                break;
+
+            //HTML5模块
+            case "HTML5教程":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentListText3(getString(R.string.content_html5jiaocheng_title), getString(R.string.content_html5jiaocheng_text1)
+                            , getString(R.string.content_html5jiaocheng_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_JIAOCHENG_CODE);
+                }
+                break;
+
+            case "浏览器支持":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_html5liulanqi_title), getString(R.string.content_html5liulanqi_text1)
+                            , getString(R.string.content_html5liulanqi_html), getString(R.string.content_html5liulanqi_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_LIULANQI_CODE);
+                }
+                break;
+
+            case "Canvas":
+            case "CANVAS":
+                content_image1.setBackgroundResource(R.mipmap.content_canvas_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_canvas_title), getString(R.string.content_canvas_text1)
+                            , getString(R.string.content_canvas_html), getString(R.string.content_canvas_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_CANVAS_CODE);
+                }
+                break;
+
+            case "内联SVG":
+                content_image1.setBackgroundResource(R.mipmap.content_neiliansvg_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_neiliansvg_title), getString(R.string.content_neiliansvg_text1)
+                            , getString(R.string.content_neiliansvg_html), getString(R.string.content_neiliansvg_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_NEILIANSVG_CODE);
+                }
+                break;
+
+            case "MathML":
+            case "MATHML":
+                content_image1.setBackgroundResource(R.mipmap.content_mathml_img1);
+                content_image2.setBackgroundResource(R.mipmap.content_mathml_img2);
+                content_text3.setTextSize(13);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList5(getString(R.string.content_mathml_title), getString(R.string.content_mathml_text1)
+                            , getString(R.string.content_mathml_html), getString(R.string.content_mathml_text2), getString(R.string.content_mathml_text3));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_MATHML_CODE);
+                }
+                break;
+
+            case "拖放":
+                content_image1.setBackgroundResource(R.mipmap.content_tuofang_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList5(getString(R.string.content_tuofang_title), getString(R.string.content_tuofang_text1)
+                            , getString(R.string.content_tuofang_html), getString(R.string.content_tuofang_text2), getString(R.string.content_tuofang_text3));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_TUOFANG_CODE);
+                }
+                break;
+
+            case "地理定位":
+                content_image1.setBackgroundResource(R.mipmap.content_dilidingwei_img1);
+                content_image2.setBackgroundResource(R.mipmap.content_dilidingwei_img2);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList5(getString(R.string.content_dilidingwei_title), getString(R.string.content_dilidingwei_text1)
+                            , getString(R.string.content_dilidingwei_html), getString(R.string.content_dilidingwei_text2), getString(R.string.content_dilidingwei_text3));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_DILIDINGWEI_CODE);
+                }
+                break;
+
+            case "video":
+            case "VIDEO":
+                content_image1.setBackgroundResource(R.mipmap.content_video_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_video_title), getString(R.string.content_video_text1)
+                            , getString(R.string.content_video_html), getString(R.string.content_video_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_VIDEO_CODE);
+                }
+                break;
+
+            case "AUDIO":
+            case "audio":
+                content_image1.setBackgroundResource(R.mipmap.content_audio_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_audio_title), getString(R.string.content_audio_text1)
+                            , getString(R.string.content_audio_html), getString(R.string.content_audio_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_AUDIO_CODE);
+                }
+                break;
+
+            case "input类型":
+            case "INPUT类型":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentListText3(getString(R.string.content_inputleixing_title), getString(R.string.content_inputleixing_text1)
+                            , getString(R.string.content_inputleixing_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_INPUTLEIXING_CODE);
+                }
+                break;
+
+            case "表单元素":
+                content_image1.setBackgroundResource(R.mipmap.content_biaodanyuansu_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_biaodanyuansu_title), getString(R.string.content_biaodanyuansu_text1)
+                            , getString(R.string.content_biaodanyuansu_html), getString(R.string.content_biaodanyuansu_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_BIAODANYUANSU_CODE);
+                }
+                break;
+
+            case "表单属性":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList5(getString(R.string.content_biaodanshuxing_title), getString(R.string.content_biaodanshuxing_text1)
+                            , getString(R.string.content_biaodanshuxing_html), getString(R.string.content_biaodanshuxing_text2), getString(R.string.content_biaodanshuxing_text3));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_BIAODANSHUXING_CODE);
+                }
+                break;
+
+            case "web存储":
+            case "WEB存储":
+                content_image2.setBackgroundResource(R.mipmap.content_webcunchu_img1);
+                content_text3.setTextSize(13);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList5(getString(R.string.content_webcunchu_title), getString(R.string.content_webcunchu_text1)
+                            , getString(R.string.content_webcunchu_html), getString(R.string.content_webcunchu_text2), getString(R.string.content_webcunchu_text3));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_WEBCUNCHU_CODE);
+                }
+                break;
+
+            case "WebSql":
+            case "WEBSQL":
+                content_image1.setBackgroundResource(R.mipmap.content_websql_img1);
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_websql_title), getString(R.string.content_websql_text1)
+                            , getString(R.string.content_websql_html), getString(R.string.content_websql_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_WEBSQL_CODE);
+                }
+                break;
+
+            case "WebSocket":
+            case "WEBSOCKET":
+                if (networkState == 0) {
+                    contentList = ContentListData.getContentList4(getString(R.string.content_websocket_title), getString(R.string.content_websocket_text1)
+                            , getString(R.string.content_websocket_html), getString(R.string.content_websocket_text2));
+                    mhandler.obtainMessage(1).sendToTarget();
+                } else {
+                    findContentFromService(StaticData.HTML5_WEBSOKET_CODE);
+                }
+                break;
+        }
+    }
 
     //滚动框获取焦点，并关闭系统输入法
     private void scrollViewGetFocusable() {
@@ -1110,4 +1070,63 @@ public class MainActivity extends AppCompatActivity
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
 
     }
+
+    Handler mhandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            //显示服务器返回的知识内容
+            if (msg.what == 1) {
+                content_title.setText(contentList.get(0).getContent());//标题
+                content_text1.setText(contentList.get(1).getContent());//内容1
+                content_remark.setText(R.string.content_bottom);
+                content_image1.setVisibility(View.VISIBLE);
+                content_image2.setVisibility(View.VISIBLE);
+
+                //list中有5个内容,表示只有一个标题,一个内容1，一个内容2
+                if (contentList.size() == 3) {
+                    content_text2.setText(contentList.get(2).getContent());
+                }
+                //list中有4个内容,表示只有一个标题,一个内容1，一个代码块，一个内容2
+                else if (contentList.size() == 4) {
+                    content_html.setVisibility(View.VISIBLE);
+                    content_html.setText(contentList.get(2).getContent());
+                    content_text2.setText(contentList.get(3).getContent());
+                }
+                //list中有5个内容,表示只有一个标题,一个内容1，一个代码块，一个内容2，一个内容3
+                else if (contentList.size() == 5) {
+                    content_html.setVisibility(View.VISIBLE);
+                    content_html.setText(contentList.get(2).getContent());
+                    content_text2.setText(contentList.get(3).getContent());
+                    content_text3.setText(contentList.get(4).getContent());
+                }
+            }
+            //提示
+            else if (msg.what == 0) {
+                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+            }
+            //留言成功后
+            else if (msg.what == 2) {
+                liuyan_editext_text.setText("");
+                scrollViewGetFocusable();
+                checkDialog(StaticData.MAINACTIVITY_WORDS_GO, getString(R.string.mainactivity_dialog_wordssuccess)
+                        , getString(R.string.mainactivity_dialog_gonow), getString(R.string.mainactivity_dialog_goletter));
+            }
+            //提示
+            else if (msg.what == 4) {
+                content_remark.setText(msg.obj.toString());
+            }
+            //获取侧滑菜单成功
+            else if (msg.what == 5) {
+                navigationView.getMenu().clear();
+                nav_listview.setVisibility(View.VISIBLE);
+                setMenuToListView();
+            }
+            //获取侧滑菜单失败
+            else if (msg.what == 6) {
+                nav_listview.setVisibility(View.GONE);
+                navigationView.inflateMenu(R.menu.activity_main_drawer);
+                Toast.makeText(MainActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+            }
+        }
+    };
 }

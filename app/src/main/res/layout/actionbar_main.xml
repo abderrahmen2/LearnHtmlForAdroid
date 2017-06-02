@@ -27,6 +27,7 @@
             android:layout_weight="0.85"
             android:background="@android:color/transparent"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:text="夜间模式"
             android:theme="@style/AppTheme.ActionBarItem" />

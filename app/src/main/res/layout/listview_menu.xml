@@ -18,6 +18,7 @@
             android:background="@drawable/ic_menu_send" />
 
         <Button
+            android:focusable="false"
             android:id="@+id/menu_listview_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
