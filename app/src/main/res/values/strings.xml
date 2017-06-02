@@ -2220,7 +2220,6 @@ $ sudo python standalone.py -p 9998 -w ../example/\n
 现在我们可以在 Chrome 浏览器打开前面创建的 test.html 文件。如果你的浏览器支持 WebSocket(), 点击"运行 WebSocket"，你就可以看到整个流程各个步骤弹出的窗口。\n</string>
 
 
-
     <string name="content_remark_ining">加载中.....</string>
     <string name="content_bottom">~~~~~~~到底啦~~~~~~~</string>
     <string name="app_name">H5学习基地</string>

@@ -103,6 +103,38 @@
         android:background="@color/nav_back_color_white" />
 
     <LinearLayout
+        android:id="@+id/action_layout_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.15"
+            android:background="@mipmap/ic_launcher_round"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/action_btn_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.85"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="分享"
+            android:theme="@style/AppTheme.ActionBarItem" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/nav_back_color_white" />
+
+    <LinearLayout
         android:id="@+id/action_layout_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

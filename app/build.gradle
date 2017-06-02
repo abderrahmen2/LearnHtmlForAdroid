@@ -32,4 +32,11 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.alibaba:fastjson:1.2.20'
     testCompile 'junit:junit:4.12'
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/SocialSDK_QQ_Simplify.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_tool.jar')
 }

@@ -4,6 +4,8 @@ package com.learnhtml;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,6 +40,12 @@ import com.entity.ContentInfo;
 import com.entity.SysMenu;
 import com.entity.UserInfo;
 import com.entity.WordsInfo;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 import com.utils.ContentListData;
 import com.utils.ResultListData;
 import com.utils.ResultSimple;
@@ -66,6 +75,8 @@ public class MainActivity extends AppCompatActivity
     private Button store;                           //书籍推荐商城
     private Button happy;                           //开心一刻
     private Button about;                           //关于
+    private Button share;                           //分享
+    PopupWindow popWnd;
 
     private DrawerLayout drawer = null;
     private Toolbar toolbar = null;
@@ -141,7 +152,7 @@ public class MainActivity extends AppCompatActivity
         setContentViewToNull();
 
         //单机版时设置提示信息
-         content_remark.setText("欢迎来到HTML5学习基地！");
+        content_remark.setText("欢迎来到HTML5学习基地！");
 
         //联网版需要加载菜单
         // findMenu();
@@ -193,17 +204,28 @@ public class MainActivity extends AppCompatActivity
         store = (Button) contentView.findViewById(R.id.action_btn_store);
         light = (Button) contentView.findViewById(R.id.action_btn_light);
         about = (Button) contentView.findViewById(R.id.action_btn_about);
+        share = (Button) contentView.findViewById(R.id.action_btn_share);
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popWnd.dismiss();
+                shareApp();
+            }
+        });
 
         light.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str = light.getText().toString();
                 setMainLight(str);
+                popWnd.dismiss();
             }
         });
         store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                popWnd.dismiss();
                 Intent intent = new Intent(MainActivity.this, BookActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("light", appLight);
@@ -214,6 +236,7 @@ public class MainActivity extends AppCompatActivity
         happy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                popWnd.dismiss();
                 Intent intent = new Intent();
                 intent.setAction("android.intent.action.VIEW");
                 Uri content_url = Uri.parse("https://www.qiushibaike.com/");
@@ -225,6 +248,7 @@ public class MainActivity extends AppCompatActivity
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                popWnd.dismiss();
                 detailsDialog();
             }
         });
@@ -997,7 +1021,7 @@ public class MainActivity extends AppCompatActivity
     //右上角弹出菜单
     private void actionBarMenu() {
 
-        PopupWindow popWnd = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popWnd = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         // 设置背景图片
         popWnd.setBackgroundDrawable(getResources().getDrawable(R.mipmap.actionbar_img));
         // 需要设置一下此参数，点击外边可消失
@@ -1029,6 +1053,8 @@ public class MainActivity extends AppCompatActivity
         nav_listview.setAdapter(simpleAdapter);
     }
 
+    private static final String TAG = "TAG";
+
     //关于
     private void detailsDialog() {
         LinearLayout mainView = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_book_details, null);
@@ -1046,4 +1072,42 @@ public class MainActivity extends AppCompatActivity
                 .create().show();
     }
 
+    //社会化分享
+    private void shareApp() {
+        UMWeb web = new UMWeb("https://mr.baidu.com/26nxsqe");
+        web.setTitle("App名称:HTML5学习基地");//标题
+        web.setDescription("一款专门为HTML5初学者设计的App;从HTML到HTML5都有细致的讲解，里面各个知识模块均有实例；初学者可以根据软件提供的流程对内容进行学习，便可有良好的学习效果。");//描述
+
+        new ShareAction(MainActivity.this)
+                .withMedia(web)
+                .setDisplayList(SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE)
+                .setCallback(new UMShareListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+                        Log.e(TAG, "onStart: ");
+                    }
+
+                    @Override
+                    public void onResult(SHARE_MEDIA share_media) {
+                        Log.e(TAG, "onResult: ");
+                    }
+
+                    @Override
+                    public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                        Log.e(TAG, "onError: ");
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media) {
+                        Log.e(TAG, "onCancel: ");
+                    }
+                }).open();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+
+    }
 }
