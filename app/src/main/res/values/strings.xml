@@ -2395,7 +2395,7 @@ $ sudo python standalone.py -p 9998 -w ../example/\n
     <string name="login_layout_forgetpw">忘记密码？</string>
 
     <!-- activity_words.xml -->
-    <string name="wrods_layout_nowords">还没有人说话呢，快去</string>
+    <string name="wrods_layout_nowords">留言为空，去</string>
     <string name="wrods_layout_liuyan">留言</string>
     <string name="wrods_layout_pagepre">上一页</string>
     <string name="wrods_layout_text1">第</string>

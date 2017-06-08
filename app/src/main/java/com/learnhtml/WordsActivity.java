@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -46,6 +47,7 @@ import okhttp3.ResponseBody;
 
 public class WordsActivity extends AppCompatActivity {
 
+    private String TAG = "WordsActivity";
     private LinearLayout words_main_layout;
 
     private int listPosition = 1;               //listview位置
@@ -77,16 +79,16 @@ public class WordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        Serializable lg= intent.getSerializableExtra("light");
+        Serializable lg = intent.getSerializableExtra("light");
         if (lg == null) {
             setTheme(R.style.AppTheme_Light_White);
         }
         //点了日间模式
-        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_white))){
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_white))) {
             setTheme(R.style.AppTheme_Light_Black);
         }
         //点了夜间模式
-        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_black))){
+        else if (lg.toString().equals(getString(R.string.mainactivitu_actionbar_black))) {
             setTheme(R.style.AppTheme_Light_White);
         }
 
@@ -150,8 +152,8 @@ public class WordsActivity extends AppCompatActivity {
                 answerText = null;
 
                 ResultSimple resultSimple = ValidateUtils.msIsNum(page);
-                if(!resultSimple.isBoolean()){
-                    mhandler.obtainMessage(0, getString(R.string.wrodsactivity_tips_valipage)+resultSimple.getMessage()).sendToTarget();
+                if (!resultSimple.isBoolean()) {
+                    mhandler.obtainMessage(0, getString(R.string.wrodsactivity_tips_valipage) + resultSimple.getMessage()).sendToTarget();
                     return;
                 }
 
@@ -276,7 +278,7 @@ public class WordsActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             //提示
             if (msg.what == 0) {
-                Toast.makeText(WordsActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(WordsActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
             }
             //查找到留言内容了
             else if (msg.what == 1) {
@@ -293,6 +295,9 @@ public class WordsActivity extends AppCompatActivity {
 
                 textView_totlepage.setText(getString(R.string.wrodsactivity_tips_all1) + Integer.toString(pageNumber) + getString(R.string.wordsactivity_tips_all2));
                 setListView();
+                if (answerText != null) {
+                    Toast.makeText(WordsActivity.this, "回复成功!", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     };
@@ -303,15 +308,9 @@ public class WordsActivity extends AppCompatActivity {
      */
     public void findContentToService(final String url) {
         final FormBody formBody = setDataToService();
-
         Thread thread = new Thread(new Runnable() {
-
             //step 1: 同样的需要创建一个OkHttpClick对象
             OkHttpClient okHttpClient = new OkHttpClient();
-
-            //step 2: 创建  FormBody.Builder
-
-
             //step 3: 创建请求
             Request request = new Request.Builder().url(url)
                     .post(formBody)
@@ -322,7 +321,7 @@ public class WordsActivity extends AppCompatActivity {
                 try {
                     Response response = okHttpClient.newCall(request).execute();
                     if (response.isSuccessful()) {
-                        System.out.println("请求成功");
+                        Log.i(TAG, "请求服务器成功!");
                         ResponseBody s = response.body();
                         String responsestr = s.string();
 
@@ -333,19 +332,20 @@ public class WordsActivity extends AppCompatActivity {
                             if (resultListData.getList() != null) {
                                 wordsList = resultListData.getList();
                             }
-                            //获取数据
                             pageNumber = resultListData.getPageNumber();    //获取总页数
+                            Log.i(TAG, wordsList.toString());
                             mhandler.obtainMessage(1).sendToTarget();
 
                         } else {//服务器端出现异常
                             mhandler.obtainMessage(0, resultListData.getMessage()).sendToTarget();
                         }
                     } else {
-                        System.out.println("请求服务器失败");
+                        Log.e(TAG, getString(R.string.wrodsactivity_tips_service1));
                         mhandler.obtainMessage(0, getString(R.string.wrodsactivity_tips_service1)).sendToTarget();
                     }
 
                 } catch (Exception e) {
+                    Log.e(TAG, e.getMessage());
                     e.printStackTrace();
                     mhandler.obtainMessage(0, getString(R.string.wordsactivity_tips_service2)).sendToTarget();
                 }
@@ -398,10 +398,10 @@ public class WordsActivity extends AppCompatActivity {
                     listItem.put("name", wordsInfo.getUserName() + " 说 : ");
                 }
 
-                int rowmum = (Integer.valueOf(nowpageNumber) - 1) * 10 + Integer.valueOf(wordsInfo.getRowNum());
                 if (theState == 1) {
                     listItem.put("rownum", "");
                 } else {
+                    int rowmum = (Integer.valueOf(nowpageNumber) - 1) * 10 + Integer.valueOf(wordsInfo.getRowNum());
                     listItem.put("rownum", rowmum + "楼");
                 }
                 listItem.put("content", wordsInfo.getWordsContent());

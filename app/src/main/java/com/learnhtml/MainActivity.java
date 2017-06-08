@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
     private String rowID = "0";                     //知识内容组号
     private UserInfo mInfo = null;                  //个人信息
     private String appLight = "日间模式";            //亮度模式常量
-    private int networkState = 1;                   //网络状态，以便知道是联网版还是单机版,0表示单机版
+    private int networkState = 0;                   //网络状态，以便知道是联网版还是单机版,0表示单机版
 
     //侧滑页头
     private NavigationView navigationView = null;   //侧滑界面
@@ -153,12 +153,12 @@ public class MainActivity extends AppCompatActivity
         setContentViewToNull();
 
         //单机版时需要设置提示信息
-       // content_remark.setText("欢迎来到HTML5学习基地！");
+        content_remark.setText("欢迎来到HTML5学习基地！");
 
         //联网版需要加载菜单
-        findMenu();
+        //findMenu();
         //联网版需要加载初始化知识界面
-        findContentFromService(StaticData.HTML_JIANJIE_CODE);
+        //findContentFromService(StaticData.HTML_JIANJIE_CODE);
 
     }
 
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity
 
         headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         //单机版时隐藏侧滑页面页头
-        // headerLayout.setVisibility(View.GONE);
+        headerLayout.setVisibility(View.GONE);
         nav_tes = (ImageView) headerLayout.findViewById(R.id.nav_header_btn_img);
         nav_tes.setVisibility(View.INVISIBLE);
         nav_text = (TextView) headerLayout.findViewById(R.id.nav_header_text1);
@@ -287,8 +287,8 @@ public class MainActivity extends AppCompatActivity
         liuyan_btn_all = (Button) findViewById(R.id.content_liuyan_all);
         liuyan_editext_text = (EditText) findViewById(R.id.content_liuyan_text);
         layout_liuyan = (LinearLayout) findViewById(R.id.main_liuyan_layout);
-        //单机版时需要隐藏此布局
-        //layout_liuyan.setVisibility(View.GONE);
+        //单机版时需要隐藏留言布局
+        layout_liuyan.setVisibility(View.GONE);
 
     }
 
@@ -850,6 +850,9 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
         }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     //滚动框获取焦点，并关闭系统输入法
@@ -1007,7 +1010,9 @@ public class MainActivity extends AppCompatActivity
         //定义特定的适配器
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems, R.layout.listview_menu,
                 new String[]{"menu"},
-                new int[]{R.id.menu_listview_btn});
+                new int[]{R.id.menu_listview_btn}){
+
+        };
 
         //为ListView添加是配置
         nav_listview.setAdapter(simpleAdapter);
