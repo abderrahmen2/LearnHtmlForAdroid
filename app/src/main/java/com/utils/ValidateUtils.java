@@ -20,7 +20,7 @@ public class ValidateUtils {
      * 判断字符串是否符合最大，最短长度
      *
      * @param str 原字符串
-     * @return true表示符合规则，false表示不符合
+     * @return true 表示符合规则，false表示不符合
      */
     public static ResultSimple msIsStrRule(String str, int minLength, int maxLength) {
 
